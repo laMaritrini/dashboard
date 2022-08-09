@@ -11,13 +11,36 @@ import { Contact } from "./pages/Contact";
 import { NewBooking } from "./pages/NewBooking";
 import { NewRoom } from "./pages/NewRoom";
 import { NewUser } from "./pages/NewUser";
+import { useState } from "react";
+import { useEffect } from "react";
+import { Login } from "./components/Login";
+
+import { RequireAuth } from "./components/auth";
+
 
 function App() {
+  const [auth, setAuth] = useState(
+    JSON.parse(localStorage.getItem("auth") !== null)
+  );
+
+  useEffect(() => {
+    if (auth) {
+      localStorage.setItem("auth", JSON.stringify("1"));
+    } else localStorage.removeItem("auth");
+  }, [auth]);
+
   return (
     <div className="App">
-      <main>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
+      <Routes>
+        <Route path="/login" element={<Login setAuth={setAuth} />} />
+        <Route
+          path="/"
+          element={
+            <RequireAuth auth={auth}>
+              <Dashboard auth={auth} setAuth={setAuth} />
+            </RequireAuth>
+          }
+        >
           <Route path="/bookings" element={<Bookings />} />
           <Route path="/bookings/new" element={<NewBooking />} />
           <Route path="/bookings/:id" element={<Booking />} />
@@ -28,8 +51,8 @@ function App() {
           <Route path="/users/new" element={<NewUser />} />
           <Route path="/users/:id" element={<User />} />
           <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
+        </Route>
+      </Routes>
     </div>
   );
 }

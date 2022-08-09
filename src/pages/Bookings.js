@@ -1,3 +1,3 @@
-export function Bookings(props) {
+export function Bookings() {
   return <h1>Bookings</h1>;
 }
