@@ -1,4 +1,6 @@
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { StyledFontAwesomeIcon } from "./styles/icons";
 
 export function AuthStatus(props) {
   let navigate = useNavigate();
@@ -8,18 +10,14 @@ export function AuthStatus(props) {
   }
 
   return (
-    <p>
-      Welcome!{" "}
-      <button
-        onClick={() => {
-          props.setAuth(false);
+    <StyledFontAwesomeIcon
+      icon={faArrowRightFromBracket}
+      onClick={() => {
+        props.setAuth(false);
 
-          navigate("/");
-        }}
-      >
-        Sign out
-      </button>
-    </p>
+        navigate("/");
+      }}
+    />
   );
 }
 export function RequireAuth(props) {
