@@ -2,8 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  color: #135846;
   margin: 2%;
-  padding: 5px;
+  padding: 15px;
   font-size: 1.5rem;
   cursor: pointer;
 `;
@@ -29,10 +30,7 @@ export const StyledIconKpi = styled.div`
   & svg {
     font-size: 20px;
   }
-  &:hover {
-    color: white;
-    background-color: #e23428;
-  }
+
 `;
 
 export const IconLateral = styled.div`

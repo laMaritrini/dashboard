@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
+import { FormLogin, NavLink } from "./styles/style";
+import { DefaultButton } from "./styles/style-buttons";
 
 export function Login(props) {
   let navigate = useNavigate();
@@ -19,30 +21,30 @@ export function Login(props) {
   }
 
   return (
-    <div>
+    <FormLogin onSubmit={handleSubmit}>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:{" "}
-          <input
-            name="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <label>
-          Password:{" "}
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-      <Link to={"/"}>Dashboard</Link>
-    </div>
+      <label>
+        Username:
+        <input
+          name="username"
+          placeholder="tim"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </label>
+      <label>
+        Password:{" "}
+        <input
+          name="password"
+          type="password"
+          placeholder="123"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </label>
+      <DefaultButton type="submit">Login</DefaultButton>
+      <NavLink to={"/"}>Dashboard</NavLink>
+    </FormLogin>
   );
 }

@@ -3,7 +3,11 @@ import { useState } from "react";
 import { ListItem } from "../components/ListItem";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
-import { ContainerColumn, Table } from "../components/styles/containers";
+import {
+  ContainerColumn,
+  ContainerPage,
+  Table,
+} from "../components/styles/containers";
 import { TrHead } from "../components/styles/style";
 import { MockReservations } from "../data/mockReservations";
 
@@ -26,16 +30,16 @@ export function Bookings({ auth, setAuth }) {
   );
 
   return (
-    <div>
-      <Nav title="Bookings" auth={auth} setAuth={setAuth} />
+    <ContainerPage>
+      <NavLateral />
       <ContainerColumn>
-        <NavLateral />
+        <Nav title="Bookings" auth={auth} setAuth={setAuth} />
         <Table>
           <thead>
             <TrHead>
               <th
                 style={{
-                  width: "30px",
+                  width: "55px",
                   borderTopLeftRadius: "20px",
                   padding: "20px",
                 }}
@@ -71,6 +75,6 @@ export function Bookings({ auth, setAuth }) {
           </tbody>
         </Table>
       </ContainerColumn>
-    </div>
+    </ContainerPage>
   );
 }

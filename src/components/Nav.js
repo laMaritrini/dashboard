@@ -3,22 +3,26 @@ import { AuthStatus } from "../components/auth";
 import { StyledFontAwesomeIcon } from "./styles/icons";
 import { faEnvelope, faBell } from "@fortawesome/free-regular-svg-icons";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { ContainerColumn, ContainerMenuHead } from "./styles/containers";
+import {
+  ContainerRow,
+  ContainerMenuHead,
+  SectionTitleBar,
+} from "./styles/containers";
 
 export function Nav({ title, auth, setAuth }) {
   return (
     <ContainerMenuHead>
-      <div>
+      <SectionTitleBar>
         <StyledFontAwesomeIcon icon={faArrowRightArrowLeft} />
-        <h1>{title}</h1>
-      </div>
+        <h2 style={{ padding: "20px", whiteSpace: "nowrap" }}>{title}</h2>
+      </SectionTitleBar>
 
-      <ContainerColumn>
+      <ContainerRow>
         <StyledFontAwesomeIcon icon={faEnvelope} />
         <StyledFontAwesomeIcon icon={faBell} />
         <AuthStatus auth={auth} setAuth={setAuth} />
         <Outlet />
-      </ContainerColumn>
+      </ContainerRow>
     </ContainerMenuHead>
   );
 }

@@ -5,20 +5,22 @@ import {
   UserContainer,
 } from "./styles/containers";
 import { DefaultButton } from "./styles/style-buttons";
-import { Image } from "./styles/style-image";
+import { Image, Logo } from "./styles/style-image";
 import { MdOutlineDashboard } from "react-icons/md";
 import { BiKey } from "react-icons/bi";
 import { AiOutlineSchedule } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { TbPuzzle } from "react-icons/tb";
 import { IconLateral } from "./styles/icons";
+import travl from "../travl.png";
 
-export function NavLateral() {
+
+export function NavLateral({ selected }) {
   return (
     <ContainerMenuLateral className="container-lateral-menu">
       <div>
         <div>
-          <img src="../../public/travl.png" alt="logo" />
+          <Logo src={travl} alt="logo" />
         </div>
         <nav>
           <LinkContainer>

@@ -1,6 +1,10 @@
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
-import { ContainerColumn, Table } from "../components/styles/containers";
+import {
+  ContainerColumn,
+  ContainerPage,
+  Table,
+} from "../components/styles/containers";
 import {
   Id,
   TrHead,
@@ -15,10 +19,10 @@ import { MockRooms } from "../data/mockRooms";
 
 export function Rooms({ auth, setAuth }) {
   return (
-    <div>
-      <Nav title="Rooms" auth={auth} setAuth={setAuth} />
+    <ContainerPage>
+      <NavLateral />
       <ContainerColumn>
-        <NavLateral />
+        <Nav title="Rooms" auth={auth} setAuth={setAuth} />
         <Table>
           <thead>
             <TrHead>
@@ -79,6 +83,6 @@ export function Rooms({ auth, setAuth }) {
           </tbody>
         </Table>
       </ContainerColumn>
-    </div>
+    </ContainerPage>
   );
 }

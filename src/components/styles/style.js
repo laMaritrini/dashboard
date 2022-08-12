@@ -5,12 +5,13 @@ const { default: styled } = require("styled-components");
 export const NavLink = styled(Link)`
   list-style-type: none;
   font-size: 18px;
-  color: #799283;
   text-decoration: none;
   text-align: left;
   padding: 8px;
+  color: #799283;
+  // color: ${(selected) => (selected ? "red" : "")};
 `;
-
+// #799283
 export const TRow = styled.tr`
   background-color: #ffffff;
   margin: 0;
@@ -25,6 +26,7 @@ export const TrHead = styled.tr`
   background-color: white;
   border-radius: 20px;
   padding: 60px;
+  margin-bottom: 2px;
 `;
 
 export const KpiNumber = styled.p`
@@ -62,4 +64,32 @@ export const Date = styled.td`
 export const PriceRoom = styled.td`
   font-weight: 700;
   font-size: 16px;
+`;
+export const FormLogin = styled.form`
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  height: 450px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: white;
+  border-radius: 20px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  & > label {
+    color: #799283;
+    margin: 10px;
+    & > input {
+      padding: 7px;
+      margin: 7px;
+      border: none;
+      border-bottom: 1px solid #799283;
+      background-color: transparent;
+      resize: none;
+      outline: none;
+    }
+  }
 `;

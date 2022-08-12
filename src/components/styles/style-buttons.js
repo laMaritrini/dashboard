@@ -17,12 +17,18 @@ export const Button = styled.button`
       : "" || props.status === "Check Out"
       ? "#ffedec"
       : ""};
-  font-size: 14px;
+  width: 70%;
+  font-size: 0.9vw;
   font-weight: 600;
   margin: 1em;
   padding: 15px 30px;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 export const CheckStatusRoom = styled(Button)`
@@ -33,6 +39,8 @@ export const CheckStatusRoom = styled(Button)`
 export const DefaultButton = styled(Button)`
   color: #135846;
   background-color: #ebf1ef;
+  font-size: 14px;
+  width: fit-content;
 `;
 // export const InProgressButton = styled(Button)`
 //   color: #fec260;

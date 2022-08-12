@@ -1,14 +1,25 @@
 import styled from "styled-components";
 
-export const ContainerColumn = styled.div`
+export const ContainerPage = styled.div`
+  margin: 0;
+  width: 100%;
   display: flex;
 `;
+export const ContainerColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 export const ContainerRow = styled.div`
+  display: flex;
+`;
+export const ContainerRowWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 export const ContainerMenuHead = styled.div`
-  padding: 40px;
+  background-color: white;
+  padding: 20px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -17,26 +28,30 @@ export const ContainerMenuHead = styled.div`
     display: flex;
   }
 `;
+export const SectionTitleBar = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const ContainerMenuLateral = styled.div`
   background-color: white;
-  float: left;
-  padding-left: 30px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding-left: 20px;
   text-align: left;
-  box-sizing: border-box;
-  width: 300px;
-  height: 100vh;
+
+  width: 400px;
 `;
 export const Table = styled.table`
   border-collapse: separate;
-  border-spacing: 0;
+  border-spacing: 0 2px;
   float: right;
   width: 100%;
   table-layout: fixed;
   width: 100%;
   border: none;
-  margin-bottom: 2px;
+  margin: 5px;
   text-align: left;
+  padding: 30px;
 `;
 
 export const KpiBox = styled.div`
@@ -51,17 +66,25 @@ export const KpiBox = styled.div`
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  
+  & > :first-child {
+    color: white;
+    background-color: #e23428;
   }
 `;
 export const LinkContainer = styled.div`
   display: flex;
   text-align: center;
+  & > :hover {
+    color: red;
+  }
 `;
 export const UserContainer = styled.div`
+  margin: 20px;
   padding: 20px;
   margin-bottom: 70px;
   text-align: center;
-  width: 200px;
+  width: 215px;
   height: 225px;
   background-color: white;
   border-radius: 18px;

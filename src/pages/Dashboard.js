@@ -5,8 +5,9 @@ import { AiOutlineSchedule } from "react-icons/ai";
 import { NavLateral } from "../components/Nav-lateral";
 import {
   ContainerColumn,
+  ContainerPage,
   ContainerReview,
-  ContainerRow,
+  ContainerRowWrap,
   KpiBox,
   Review,
 } from "../components/styles/containers";
@@ -24,14 +25,13 @@ import { Image } from "../components/styles/style-image";
 
 export function Dashboard({ auth, setAuth }) {
   return (
-    <div>
-      <div>
-        <Nav title="Dashboard" auth={auth} setAuth={setAuth} />
-        <NavLateral />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+    <ContainerPage>
+      <NavLateral />
+      <div style={{ width: "100%" }}>
         <ContainerColumn>
-          <ContainerRow>
+          <Nav title="Dashboard" auth={auth} setAuth={setAuth} />
+
+          <ContainerRowWrap>
             <KpiBox>
               <StyledIconKpi>
                 <MdBed />
@@ -71,7 +71,7 @@ export function Dashboard({ auth, setAuth }) {
                 <KpiTitle>Check Out</KpiTitle>
               </div>
             </KpiBox>
-          </ContainerRow>
+          </ContainerRowWrap>
         </ContainerColumn>
         <ContainerReview>
           <h3>Latest Review by Customers</h3>
@@ -133,6 +133,6 @@ export function Dashboard({ auth, setAuth }) {
           </div>
         </ContainerReview>
       </div>
-    </div>
+    </ContainerPage>
   );
 }
