@@ -1,6 +1,5 @@
+import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-const { default: styled } = require("styled-components");
 
 export const NavLink = styled(Link)`
   list-style-type: none;
@@ -11,7 +10,7 @@ export const NavLink = styled(Link)`
   color: #799283;
   // color: ${(selected) => (selected ? "red" : "")};
 `;
-// #799283
+
 export const TRow = styled.tr`
   background-color: #ffffff;
   margin: 0;

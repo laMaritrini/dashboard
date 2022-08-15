@@ -16,6 +16,8 @@ import travl from "../travl.png";
 
 
 export function NavLateral({ selected }) {
+
+  
   return (
     <ContainerMenuLateral className="container-lateral-menu">
       <div>
@@ -55,7 +57,7 @@ export function NavLateral({ selected }) {
           </LinkContainer>
         </nav>
 
-        <UserContainer>
+        <UserContainer >
           <Image src="" alt="" />
           <UserName>William Johanson</UserName>
           <UserEmail>williamjohn@mail.com</UserEmail>

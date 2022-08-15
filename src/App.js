@@ -28,7 +28,9 @@ function App() {
   useEffect(() => {
     if (auth) {
       localStorage.setItem("auth", JSON.stringify("1"));
-    } else localStorage.removeItem("auth");
+    } else {
+      localStorage.removeItem("auth");
+    }
   }, [auth]);
 
   return (
@@ -47,9 +49,7 @@ function App() {
           path="/bookings"
           element={
             <RequireAuth auth={auth}>
-              <DndProvider backend={HTML5Backend}>
-                <Bookings auth={auth} setAuth={setAuth} />
-              </DndProvider>
+              <Bookings auth={auth} setAuth={setAuth} />
             </RequireAuth>
           }
         >
@@ -60,7 +60,9 @@ function App() {
           path="/rooms"
           element={
             <RequireAuth auth={auth}>
-              <Rooms auth={auth} setAuth={setAuth} />
+              <DndProvider backend={HTML5Backend}>
+                <Rooms auth={auth} setAuth={setAuth} />
+              </DndProvider>
             </RequireAuth>
           }
         >

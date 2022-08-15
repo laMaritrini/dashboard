@@ -1,3 +1,5 @@
+import { useCallback, useState } from "react";
+import { ListItem } from "../components/ListItem";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import {
@@ -5,19 +7,27 @@ import {
   ContainerPage,
   Table,
 } from "../components/styles/containers";
-import {
-  Id,
-  TrHead,
-  TRow,
-  Date,
-  UserName,
-  PriceRoom,
-} from "../components/styles/style";
-import { CheckStatusRoom } from "../components/styles/style-buttons";
-import { Image } from "../components/styles/style-image";
+import { TrHead } from "../components/styles/style";
+
 import { MockRooms } from "../data/mockRooms";
 
 export function Rooms({ auth, setAuth }) {
+  const [rooms, setRooms] = useState(MockRooms);
+
+  const moveRoomListItem = useCallback(
+    (dragIndex, hoverIndex) => {
+      const dragItem = rooms[dragIndex];
+      const hoverItem = rooms[hoverIndex];
+
+      setRooms((rooms) => {
+        const updateRooms = [...rooms];
+        updateRooms[dragIndex] = hoverItem;
+        updateRooms[hoverIndex] = dragItem;
+        return updateRooms;
+      });
+    },
+    [rooms]
+  );
   return (
     <ContainerPage>
       <NavLateral />
@@ -43,43 +53,15 @@ export function Rooms({ auth, setAuth }) {
             </TrHead>
           </thead>
           <tbody>
-            {MockRooms.map((item) => {
-              return (
-                <TRow key={item.id}>
-                  <td>
-                    <Image src={item.photos.photo1} alt="" />
-                  </td>
-
-                  <Date>{item.room_number}</Date>
-                  <td>
-                    <UserName>{item.room_type}</UserName>
-                    <Id>{item.id}</Id>
-                  </td>
-
-                  <td style={{ textOverflow: "" }}>{item.amenities}</td>
-
-                  <PriceRoom>
-                    {item.price}
-                    <span style={{ color: "grey", fontWeight: "400" }}>
-                      /night
-                    </span>
-                  </PriceRoom>
-
-                  <PriceRoom>
-                    {item.discount}{" "}
-                    <span style={{ color: "grey", fontWeight: "400" }}>
-                      /night
-                    </span>
-                  </PriceRoom>
-
-                  <td>
-                    <CheckStatusRoom status={item.offer}>
-                      {item.offer}
-                    </CheckStatusRoom>
-                  </td>
-                </TRow>
-              );
-            })}
+            {rooms.map((room, index) => (
+              <ListItem
+                key={room.id}
+                index={index}
+                item={room}
+                number={room.id}
+                moveListItem={moveRoomListItem}
+              />
+            ))}
           </tbody>
         </Table>
       </ContainerColumn>

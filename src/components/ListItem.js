@@ -2,8 +2,9 @@
 import React, { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
-import { TRow, UserName, Date, Id } from "./styles/style";
-import { Button, ViewNotesButton } from "./styles/style-buttons";
+import { TRow, UserName, Date, Id, PriceRoom } from "./styles/style";
+import { CheckStatusRoom } from "./styles/style-buttons";
+import { Image } from "./styles/style-image";
 
 export const ListItem = ({ item, index, moveListItem }) => {
   const [{ isDragging }, dragRef] = useDrag({
@@ -39,32 +40,32 @@ export const ListItem = ({ item, index, moveListItem }) => {
   const opacity = isDragging ? { opacity: "0" } : { opacity: "1" };
   return (
     <TRow key={item.id} ref={dragDropRef} style={opacity}>
-      <td style={{ padding: "20px" }}>
-        <input type="checkbox" />
-      </td>
       <td>
-        <UserName>{item.full_name}</UserName>
+        <Image src={item.photos.photo1} alt="" />
+      </td>
+      <Date>{item.room_number}</Date>
+
+      <td>
+        <UserName>{item.room_type}</UserName>
         <Id>{item.id}</Id>
       </td>
+      <td style={{ textOverflow: "" }}>{item.amenities}</td>
 
-      <Date>{item.order_date}</Date>
+      <PriceRoom>
+        {item.price}
 
-      <Date>{item.check_in}</Date>
+        <span style={{ color: "grey", fontWeight: "400" }}>/night </span>
+      </PriceRoom>
 
-      <Date>{item.check_out}</Date>
-
-      <td>
-        <ViewNotesButton>View Notes</ViewNotesButton>
-      </td>
-      <Date>
-        <div>
-          {item.room_type.type} <span>- {item.room_type.number}</span>
-        </div>
-      </Date>
+      <PriceRoom>
+        {item.discount}
+        <span style={{ color: "grey", fontWeight: "400" }}>/night</span>
+      </PriceRoom>
 
       <td>
-        <Button status={item.status}>{item.status}</Button>
+        <CheckStatusRoom status={item.offer}>{item.offer}</CheckStatusRoom>
       </td>
+
     </TRow>
   );
 };

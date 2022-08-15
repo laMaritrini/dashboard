@@ -1,6 +1,3 @@
-import { useCallback } from "react";
-import { useState } from "react";
-import { ListItem } from "../components/ListItem";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import {
@@ -8,27 +5,11 @@ import {
   ContainerPage,
   Table,
 } from "../components/styles/containers";
-import { TrHead } from "../components/styles/style";
+import { Date, Id, TrHead, TRow, UserName } from "../components/styles/style";
+import { Button, ViewNotesButton } from "../components/styles/style-buttons";
 import { MockReservations } from "../data/mockReservations";
 
 export function Bookings({ auth, setAuth }) {
-  const [rooms, setRooms] = useState(MockReservations);
-
-  const moveRoomListItem = useCallback(
-    (dragIndex, hoverIndex) => {
-      const dragItem = rooms[dragIndex];
-      const hoverItem = rooms[hoverIndex];
-
-      setRooms((rooms) => {
-        const updateRooms = [...rooms];
-        updateRooms[dragIndex] = hoverItem;
-        updateRooms[hoverIndex] = dragItem;
-        return updateRooms;
-      });
-    },
-    [rooms]
-  );
-
   return (
     <ContainerPage>
       <NavLateral />
@@ -63,14 +44,35 @@ export function Bookings({ auth, setAuth }) {
             </TrHead>
           </thead>
           <tbody>
-            {rooms.map((room, index) => (
-              <ListItem
-                key={room.id}
-                index={index}
-                item={room}
-                number={room.id}
-                moveListItem={moveRoomListItem}
-              />
+            {MockReservations.map((room, index) => (
+              <TRow key={room.id}>
+                <td style={{ padding: "20px" }}>
+                  <input type="checkbox" />
+                </td>
+                <td>
+                  <UserName>{room.full_name}</UserName>
+                  <Id>{room.id}</Id>
+                </td>
+
+                <Date>{room.order_date}</Date>
+
+                <Date>{room.check_in}</Date>
+
+                <Date>{room.check_out}</Date>
+
+                <td>
+                  <ViewNotesButton>View Notes</ViewNotesButton>
+                </td>
+                <Date>
+                  <div>
+                    {room.room_type.type} <span>- {room.room_type.number}</span>
+                  </div>
+                </Date>
+
+                <td>
+                  <Button status={room.status}>{room.status}</Button>
+                </td>
+              </TRow>
             ))}
           </tbody>
         </Table>
