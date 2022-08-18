@@ -8,6 +8,7 @@ export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 1.5rem;
   cursor: pointer;
 `;
+
 export const StyledIconReviewGreen = styled(StyledFontAwesomeIcon)`
   color: green;
   font-size: 1.4rem;
@@ -27,17 +28,6 @@ export const StyledIconKpi = styled.div`
   border-radius: 8px;
   padding: 20px;
   margin: 20px;
-  & svg {
-    font-size: 20px;
-  }
-
-`;
-
-export const IconLateral = styled.div`
-  width: 60px;
-  height: 60px;
-  color: #799283;
-  padding: 10px;
   & svg {
     font-size: 20px;
   }

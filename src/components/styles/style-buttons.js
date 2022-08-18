@@ -33,7 +33,7 @@ export const Button = styled.button`
 
 export const CheckStatusRoom = styled(Button)`
   color: white;
-  background-color: ${(props) => (props.status ? "green" : "red")};
+  background-color: ${(props) => (props.status ==='Available'? "green" : "red")};
 `;
 
 export const DefaultButton = styled(Button)`

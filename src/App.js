@@ -21,6 +21,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
+  const [open, setOpen] = useState(true);
   const [auth, setAuth] = useState(
     JSON.parse(localStorage.getItem("auth") !== null)
   );
@@ -41,7 +42,12 @@ function App() {
           path="/"
           element={
             <RequireAuth auth={auth}>
-              <Dashboard auth={auth} setAuth={setAuth} />
+              <Dashboard
+                auth={auth}
+                setAuth={setAuth}
+                open={open}
+                setOpen={setOpen}
+              />
             </RequireAuth>
           }
         ></Route>
@@ -49,7 +55,12 @@ function App() {
           path="/bookings"
           element={
             <RequireAuth auth={auth}>
-              <Bookings auth={auth} setAuth={setAuth} />
+              <Bookings
+                auth={auth}
+                setAuth={setAuth}
+                open={open}
+                setOpen={setOpen}
+              />
             </RequireAuth>
           }
         >
@@ -61,7 +72,12 @@ function App() {
           element={
             <RequireAuth auth={auth}>
               <DndProvider backend={HTML5Backend}>
-                <Rooms auth={auth} setAuth={setAuth} />
+                <Rooms
+                  auth={auth}
+                  setAuth={setAuth}
+                  open={open}
+                  setOpen={setOpen}
+                />
               </DndProvider>
             </RequireAuth>
           }
@@ -73,7 +89,12 @@ function App() {
           path="/users"
           element={
             <RequireAuth auth={auth}>
-              <Users auth={auth} setAuth={setAuth} />
+              <Users
+                auth={auth}
+                setAuth={setAuth}
+                open={open}
+                setOpen={setOpen}
+              />
             </RequireAuth>
           }
         >
@@ -84,7 +105,12 @@ function App() {
           path="/contact"
           element={
             <RequireAuth auth={auth}>
-              <Contact auth={auth} setAuth={setAuth} />
+              <Contact
+                auth={auth}
+                setAuth={setAuth}
+                open={open}
+                setOpen={setOpen}
+              />
             </RequireAuth>
           }
         />

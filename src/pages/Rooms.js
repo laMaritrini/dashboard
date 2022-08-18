@@ -11,7 +11,7 @@ import { TrHead } from "../components/styles/style";
 
 import { MockRooms } from "../data/mockRooms";
 
-export function Rooms({ auth, setAuth }) {
+export function Rooms({ auth, setAuth , open, setOpen}) {
   const [rooms, setRooms] = useState(MockRooms);
 
   const moveRoomListItem = useCallback(
@@ -30,9 +30,15 @@ export function Rooms({ auth, setAuth }) {
   );
   return (
     <ContainerPage>
-      <NavLateral />
+      <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
-        <Nav title="Rooms" auth={auth} setAuth={setAuth} />
+        <Nav
+          title="Rooms"
+          auth={auth}
+          setAuth={setAuth}
+          open={open}
+          setOpen={setOpen}
+        />
         <Table>
           <thead>
             <TrHead>

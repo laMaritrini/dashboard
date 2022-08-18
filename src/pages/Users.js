@@ -5,12 +5,18 @@ import {
   ContainerPage,
 } from "../components/styles/containers";
 
-export function Users({ auth, setAuth }) {
+export function Users({ auth, setAuth, open, setOpen }) {
   return (
     <ContainerPage>
-      <NavLateral />
+      <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
-        <Nav  title="Guest List" auth={auth} setAuth={setAuth} />
+        <Nav
+          title="Guest List"
+          auth={auth}
+          setAuth={setAuth}
+          open={open}
+          setOpen={setOpen}
+        />
       </ContainerColumn>
     </ContainerPage>
   );

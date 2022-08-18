@@ -40,7 +40,7 @@ export const ListItem = ({ item, index, moveListItem }) => {
   return (
     <TRow key={item.id} ref={dragDropRef} style={opacity}>
       <td>
-        <Image src={item.photos.photo1} alt="" />
+        <Image src={item.photo} alt="" />
       </td>
       <Date>{item.room_number}</Date>
 
@@ -62,9 +62,8 @@ export const ListItem = ({ item, index, moveListItem }) => {
       </PriceRoom>
 
       <td>
-        <CheckStatusRoom status={item.offer}>{item.offer}</CheckStatusRoom>
+        <CheckStatusRoom status={item.status}>{item.status}</CheckStatusRoom>
       </td>
-
     </TRow>
   );
 };

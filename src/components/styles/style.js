@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const NavLink = styled(Link)`
+  text-align: center;
   list-style-type: none;
   font-size: 18px;
   text-decoration: none;
   text-align: left;
   padding: 8px;
   color: #799283;
-  // color: ${(selected) => (selected ? "red" : "")};
 `;
 
 export const TRow = styled.tr`

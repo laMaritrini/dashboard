@@ -9,11 +9,14 @@ import {
   SectionTitleBar,
 } from "./styles/containers";
 
-export function Nav({ title, auth, setAuth }) {
+export function Nav({ title, auth, setAuth, open, setOpen }) {
   return (
     <ContainerMenuHead>
       <SectionTitleBar>
-        <StyledFontAwesomeIcon icon={faArrowRightArrowLeft} />
+        <StyledFontAwesomeIcon
+          icon={faArrowRightArrowLeft}
+          onClick={ () => {setOpen(!open)}}
+        />
         <h2 style={{ padding: "20px", whiteSpace: "nowrap" }}>{title}</h2>
       </SectionTitleBar>
 

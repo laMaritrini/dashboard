@@ -23,13 +23,19 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import { Image } from "../components/styles/style-image";
 
-export function Dashboard({ auth, setAuth }) {
+export function Dashboard({ auth, setAuth, open, setOpen }) {
   return (
     <ContainerPage>
-      <NavLateral />
+      <NavLateral open={open} setOpen={setOpen} />
       <div style={{ width: "100%" }}>
         <ContainerColumn>
-          <Nav title="Dashboard" auth={auth} setAuth={setAuth} />
+          <Nav
+            title="Dashboard"
+            auth={auth}
+            setAuth={setAuth}
+            open={open}
+            setOpen={setOpen}
+          />
 
           <ContainerRowWrap>
             <KpiBox>

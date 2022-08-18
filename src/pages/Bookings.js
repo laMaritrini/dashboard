@@ -9,25 +9,30 @@ import { Date, Id, TrHead, TRow, UserName } from "../components/styles/style";
 import { Button, ViewNotesButton } from "../components/styles/style-buttons";
 import { MockReservations } from "../data/mockReservations";
 
-export function Bookings({ auth, setAuth }) {
+export function Bookings({ auth, setAuth, open, setOpen }) {
   return (
     <ContainerPage>
-      <NavLateral />
+      <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
-        <Nav title="Bookings" auth={auth} setAuth={setAuth} />
+        <Nav
+          title="Bookings"
+          auth={auth}
+          setAuth={setAuth}
+          open={open}
+          setOpen={setOpen}
+        />
         <Table>
           <thead>
             <TrHead>
               <th
                 style={{
-                  width: "55px",
+                  width: "200px",
                   borderTopLeftRadius: "20px",
-                  padding: "20px",
+                  padding: '20px'
                 }}
               >
-                <input type="checkbox" />
+                Guest
               </th>
-              <th>Guest</th>
               <th>Order Date</th>
               <th>Check in</th>
               <th>Check out</th>
@@ -46,10 +51,7 @@ export function Bookings({ auth, setAuth }) {
           <tbody>
             {MockReservations.map((room) => (
               <TRow key={room.id}>
-                <td style={{ padding: "20px" }}>
-                  <input type="checkbox" />
-                </td>
-                <td>
+                <td style={{ padding:'20px'}}>
                   <UserName>{room.full_name}</UserName>
                   <Id>{room.id}</Id>
                 </td>

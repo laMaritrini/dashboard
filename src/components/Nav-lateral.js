@@ -11,52 +11,38 @@ import { BiKey } from "react-icons/bi";
 import { AiOutlineSchedule } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { TbPuzzle } from "react-icons/tb";
-import { IconLateral } from "./styles/icons";
-import travl from "../travl.png";
-import { useLocation } from "react-router-dom";
 
-export function NavLateral() {
-  const location = useLocation();
-  console.log("pathname", location.pathname);
+import travl from "../travl.png";
+
+export function NavLateral({ open, setOpen }) {
   return (
-    <ContainerMenuLateral className="container-lateral-menu">
+    <ContainerMenuLateral open={open} className="container-lateral-menu">
       <div>
         <div>
-          <Logo src={travl} alt="logo" />
+          <Logo src={travl} alt="logo" width="250px" />
         </div>
         <nav>
           <LinkContainer>
-            <IconLateral>
-              <MdOutlineDashboard />
-            </IconLateral>
+            <MdOutlineDashboard />
             <NavLink to="/">Dashboard</NavLink>
           </LinkContainer>
           <LinkContainer>
-            <IconLateral>
-              <AiOutlineSchedule />
-            </IconLateral>
+            <AiOutlineSchedule />
             <NavLink to="/bookings">Bookings</NavLink>
           </LinkContainer>
           <LinkContainer>
-            <IconLateral>
-              <BiKey style={{ transform: "rotate(90deg)" }} />
-            </IconLateral>
+            <BiKey style={{ transform: "rotate(90deg)" }} />
             <NavLink to="/rooms">Rooms</NavLink>
           </LinkContainer>
           <LinkContainer>
-            <IconLateral>
-              <TbPuzzle />
-            </IconLateral>
+            <TbPuzzle />
             <NavLink to="/contact">Contact</NavLink>
           </LinkContainer>
           <LinkContainer>
-            <IconLateral>
-              <FiUser />
-            </IconLateral>
+            <FiUser />
             <NavLink to="/users">Guest</NavLink>
           </LinkContainer>
         </nav>
-
         <UserContainer>
           <Image src="" alt="" />
           <UserName>William Johanson</UserName>

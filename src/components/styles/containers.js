@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ContainerPage = styled.div`
   margin: 0;
@@ -18,6 +18,9 @@ export const ContainerRowWrap = styled.div`
   flex-wrap: wrap;
 `;
 export const ContainerMenuHead = styled.div`
+  position: sticky;
+  top: 0px;
+  z-index: 1;
   background-color: white;
   padding: 20px;
   width: 100%;
@@ -34,12 +37,25 @@ export const SectionTitleBar = styled.div`
 `;
 
 export const ContainerMenuLateral = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
+  transition-duration: 2s;
+  ${(props) => {
+    return props.open
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `;
+  }};
   background-color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding-left: 20px;
   text-align: left;
-
   width: 400px;
+  height: 100vh;
 `;
 export const Table = styled.table`
   border-collapse: separate;
@@ -74,10 +90,27 @@ export const KpiBox = styled.div`
 `;
 export const LinkContainer = styled.div`
   display: flex;
-  text-align: center;
-  & > :hover {
-    color: red;
+  height: 70px;
+  align-items: center;
+  padding-left: 20px;
+  & svg {
+    font-size: 30px;
+    margin: 5px;
+    color: #799283;
   }
+  &:hover,
+  :focus-within {
+    border-left: 4px solid red;
+    & > svg {
+      color: red;
+      font-weight: 600;
+    }
+    & > a {
+      color: red;
+      font-weight: 600;
+    }
+  }
+
 `;
 export const UserContainer = styled.div`
   margin: 20px;
