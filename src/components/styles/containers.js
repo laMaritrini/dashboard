@@ -22,7 +22,7 @@ export const ContainerMenuHead = styled.div`
   top: 0px;
   z-index: 1;
   background-color: white;
-  padding: 20px;
+  padding: 10px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -54,8 +54,8 @@ export const ContainerMenuLateral = styled.div`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding-left: 20px;
   text-align: left;
-  width: 400px;
-  height: 100vh;
+  width: 300px;
+  height: 100%;
 `;
 export const Table = styled.table`
   border-collapse: separate;
@@ -90,7 +90,7 @@ export const KpiBox = styled.div`
 `;
 export const LinkContainer = styled.div`
   display: flex;
-  height: 70px;
+  height: 50px;
   align-items: center;
   padding-left: 20px;
   & svg {
@@ -110,7 +110,6 @@ export const LinkContainer = styled.div`
       font-weight: 600;
     }
   }
-
 `;
 export const UserContainer = styled.div`
   margin: 20px;
@@ -139,8 +138,8 @@ export const ContainerReview = styled.div`
 `;
 export const Review = styled.div`
   margin: 20px;
-  padding: 20px;
-  width: 400px;
+  padding: 10px;
+  width: 350px;
   height: 250px;
   background-color: white;
   border-radius: 20px;

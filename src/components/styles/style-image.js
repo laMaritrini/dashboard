@@ -7,5 +7,5 @@ export const Image = styled.img`
   border-radius: 8px;
 `;
 export const Logo = styled.img`
-  padding: 40px 0;
+  padding: 20px 0;
 `;

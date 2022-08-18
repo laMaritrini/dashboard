@@ -19,7 +19,7 @@ export function NavLateral({ open, setOpen }) {
     <ContainerMenuLateral open={open} className="container-lateral-menu">
       <div>
         <div>
-          <Logo src={travl} alt="logo" width="250px" />
+          <Logo src={travl} alt="logo" width="200px" />
         </div>
         <nav>
           <LinkContainer>
