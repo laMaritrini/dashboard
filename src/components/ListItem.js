@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
-
 import { TRow, UserName, Date, Id, PriceRoom } from "./styles/style";
 import { CheckStatusRoom } from "./styles/style-buttons";
 import { Image } from "./styles/style-image";

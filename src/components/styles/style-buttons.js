@@ -42,10 +42,6 @@ export const DefaultButton = styled(Button)`
   font-size: 14px;
   width: fit-content;
 `;
-// export const InProgressButton = styled(Button)`
-//   color: #fec260;
-//   background-color: #fff8bc;
-// `;
 
 export const ViewNotesButton = styled(Button)`
   color: #212121;

@@ -13,11 +13,11 @@ import { FiUser } from "react-icons/fi";
 import { TbPuzzle } from "react-icons/tb";
 import { IconLateral } from "./styles/icons";
 import travl from "../travl.png";
+import { useLocation } from "react-router-dom";
 
-
-export function NavLateral({ selected }) {
-
-  
+export function NavLateral() {
+  const location = useLocation();
+  console.log("pathname", location.pathname);
   return (
     <ContainerMenuLateral className="container-lateral-menu">
       <div>
@@ -57,7 +57,7 @@ export function NavLateral({ selected }) {
           </LinkContainer>
         </nav>
 
-        <UserContainer >
+        <UserContainer>
           <Image src="" alt="" />
           <UserName>William Johanson</UserName>
           <UserEmail>williamjohn@mail.com</UserEmail>

@@ -26,6 +26,7 @@ export function Login(props) {
       <label>
         Username:
         <input
+        className="username"
           name="username"
           placeholder="tim"
           type="text"
@@ -36,6 +37,7 @@ export function Login(props) {
       <label>
         Password:{" "}
         <input
+        className="password"
           name="password"
           type="password"
           placeholder="123"

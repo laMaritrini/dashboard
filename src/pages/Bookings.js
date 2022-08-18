@@ -44,7 +44,7 @@ export function Bookings({ auth, setAuth }) {
             </TrHead>
           </thead>
           <tbody>
-            {MockReservations.map((room, index) => (
+            {MockReservations.map((room) => (
               <TRow key={room.id}>
                 <td style={{ padding: "20px" }}>
                   <input type="checkbox" />
