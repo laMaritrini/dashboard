@@ -21,7 +21,7 @@ export const Button = styled.button`
   font-size: 0.9vw;
   font-weight: 600;
   margin: 1em;
-  padding: 15px 30px;
+  padding: 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -33,6 +33,7 @@ export const Button = styled.button`
 
 export const CheckStatusRoom = styled(Button)`
   color: white;
+  font-size: 0.9vw;
   text-align: center;
   background-color: ${(props) =>
     props.status === "Available" ? "green" : "red"};
@@ -42,6 +43,7 @@ export const DefaultButton = styled(Button)`
   color: #135846;
   background-color: #ebf1ef;
   font-size: 14px;
+  padding: 16px 24px;
   width: fit-content;
 `;
 
@@ -54,4 +56,18 @@ export const NavPageButton = styled(Button)`
   color: #135846;
   background-color: #ffffff;
   border: 1px solid #135846;
+`;
+export const SelectButton = styled.select`
+  width: 200px;
+  margin-top: 20px;
+  margin-left: 70%;
+  padding: 10px;
+  background-color: #135846;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  border-right: 16px solid transparent;
+  & > option {
+    padding: 20px;
+  }
 `;
