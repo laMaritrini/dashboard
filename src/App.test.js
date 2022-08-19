@@ -7,9 +7,9 @@ test("renders learn react link", () => {
   const history = createMemoryHistory();
   render(
     <Router location={history.location} navigator={history}>
-      <App  /> <h1>Edit</h1>
+      <App  /> 
     </Router>
   );
-  const linkElement = screen.getByText(/Edit/i);
+  const linkElement = screen.getByText(/Login/i);
   expect(linkElement).toBeInTheDocument();
 });

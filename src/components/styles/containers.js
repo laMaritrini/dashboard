@@ -55,7 +55,7 @@ export const ContainerMenuLateral = styled.div`
   padding-left: 20px;
   text-align: left;
   width: 300px;
-  height: 100%;
+  height: 100vh;
 `;
 export const Table = styled.table`
   border-collapse: separate;
