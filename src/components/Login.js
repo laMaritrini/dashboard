@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { myContext, types } from "../App";
-import { FormLogin, NavLink } from "./styles/style";
-import { DefaultButton } from "./styles/style-buttons";
+import { FormLogin, NavLink } from "../styles/style";
+import { DefaultButton } from "../styles/style-buttons";
 
 export function Login() {
   let navigate = useNavigate();
@@ -35,7 +35,7 @@ export function Login() {
         type="text"
         value={auth.username}
         onChange={(e) =>
-          dispatchAuth({ type: types.username, value: e.target.value })
+          dispatchAuth({ type: types.changeUsername, value: e.target.value })
         }
       />
 
@@ -47,7 +47,7 @@ export function Login() {
         type="email"
         value={auth.email}
         onChange={(e) =>
-          dispatchAuth({ type: types.email, value: e.target.value })
+          dispatchAuth({ type: types.changeEmail, value: e.target.value })
         }
       />
 

@@ -3,7 +3,7 @@ import { NavLateral } from "../components/Nav-lateral";
 import {
   ContainerColumn,
   ContainerPage,
-} from "../components/styles/containers";
+} from "../styles/containers";
 
 export function Users({ auth, setAuth, open, setOpen }) {
   return (

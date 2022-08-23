@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { StyledFontAwesomeIcon } from "./styles/icons";
+import { StyledFontAwesomeIcon } from "../styles/icons";
 import { useContext } from "react";
 import { myContext, types } from "../App";
 

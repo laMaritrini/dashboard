@@ -1,11 +1,12 @@
-import { Footer, NavLink, UserEmail, UserName } from "./styles/style";
+/* eslint-disable no-unused-vars */
+import { Footer, NavLink, UserEmail, UserName } from "../styles/style";
 import {
   ContainerMenuLateral,
   LinkContainer,
   UserContainer,
-} from "./styles/containers";
-import { DefaultButton } from "./styles/style-buttons";
-import { Image, Logo } from "./styles/style-image";
+} from "../styles/containers";
+import { DefaultButton } from "../styles/style-buttons";
+import { Image, Logo } from "../styles/style-image";
 import { MdOutlineDashboard } from "react-icons/md";
 import { BiKey } from "react-icons/bi";
 import { AiOutlineSchedule } from "react-icons/ai";

@@ -10,18 +10,18 @@ import {
   ContainerRowWrap,
   KpiBox,
   Review,
-} from "../components/styles/containers";
-import { KpiNumber, KpiTitle } from "../components/styles/style";
+} from "../styles/containers";
+import { KpiNumber, KpiTitle } from "../styles/style";
 import {
   StyledIconKpi,
   StyledIconReviewGreen,
   StyledIconReviewRed,
-} from "../components/styles/icons";
+} from "../styles/icons";
 import {
   faCheckCircle,
   faTimesCircle,
 } from "@fortawesome/free-regular-svg-icons";
-import { Image } from "../components/styles/style-image";
+import { Image } from "../styles/style-image";
 
 export function Dashboard({ auth, setAuth, open, setOpen }) {
   return (

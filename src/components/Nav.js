@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { AuthStatus } from "../components/auth";
-import { StyledFontAwesomeIcon } from "./styles/icons";
+import { StyledFontAwesomeIcon } from "../styles/icons";
 import { faEnvelope, faBell } from "@fortawesome/free-regular-svg-icons";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import {
   ContainerRow,
   ContainerMenuHead,
   SectionTitleBar,
-} from "./styles/containers";
+} from "../styles/containers";
 
 export function Nav({ title, auth, setAuth, open, setOpen }) {
   return (

@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import { Pagination } from "../components/pagination";
@@ -8,22 +9,38 @@ import {
   ContainerColumn,
   ContainerPage,
   Table,
-} from "../components/styles/containers";
-import { Date, Id, TrHead, TRow, UserName } from "../components/styles/style";
+} from "../styles/containers";
+import { Date, Id, TrHead, TRow, UserName } from "../styles/style";
 import {
   Button,
+  LightButton,
   SelectButton,
   ViewNotesButton,
-} from "../components/styles/style-buttons";
-import { MockReservations } from "../data/mockReservations";
+} from "../styles/style-buttons";
+import { AddBooking } from "../features/booking/addBooking";
+
+import { fetchBookings, selectState } from "../features/booking/bookingsSlice";
 
 let PageSize = 10;
 
 export function Bookings({ auth, setAuth, open, setOpen }) {
+  const bookings = useSelector(selectState);
+  const dispatch = useDispatch();
   const [roomState, setRoomState] = useState([]);
   const [orderBy, setOrderBy] = useState("full_name");
-
   const [currentPage, setCurrentPage] = useState(1);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpen = () => {
+    setOpenModal(true);
+  };
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+
+  useEffect(() => {
+    dispatch(fetchBookings());
+  }, [dispatch]);
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -32,7 +49,7 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
   }, [currentPage, roomState]);
 
   useEffect(() => {
-    const orderedRooms = MockReservations.filter((room) => room[orderBy]);
+    const orderedRooms = bookings.filter((room) => room[orderBy]);
     orderedRooms.sort((a, b) => {
       if (a[orderBy] < b[orderBy]) {
         return -1;
@@ -42,7 +59,7 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
       return 0;
     });
     setRoomState(orderedRooms);
-  }, [orderBy]);
+  }, [bookings, orderBy]);
 
   return (
     <ContainerPage>
@@ -55,16 +72,19 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
           open={open}
           setOpen={setOpen}
         />
-        <SelectButton
-          value={orderBy}
-          onChange={(e) => setOrderBy(e.target.value)}
-        >
-          <option value="full_name">Guest</option>
-          <option value="order_date">Order Date</option>
-          <option value="check_in">Check In</option>
-          <option value="check_out">Check Out</option>
-        </SelectButton>
-
+        <div>
+          <SelectButton
+            value={orderBy}
+            onChange={(e) => setOrderBy(e.target.value)}
+          >
+            <option value="full_name">Guest</option>
+            <option value="order_date">Order Date</option>
+            <option value="check_in">Check In</option>
+            <option value="check_out">Check Out</option>
+          </SelectButton>
+          <AddBooking openModal={openModal} handleClose={handleClose} />
+          <LightButton onClick={handleOpen}>Add New Booking</LightButton>
+        </div>
         <Table>
           <thead>
             <TrHead>
@@ -122,6 +142,7 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
             ))}
           </tbody>
         </Table>
+
         <Pagination
           currentPage={currentPage}
           totalCount={roomState.length}

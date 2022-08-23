@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { myContext, types } from "../App";
-import { FormModal, Modal, TitleModal } from "./styles/modal";
-import { DefaultButton } from "./styles/style-buttons";
+import { FormModal, Modal, TitleModal } from "../styles/modal";
+import { DefaultButton } from "../styles/style-buttons";
 
 export function ModalUser({ openModal, handleClose }) {
   const { auth, dispatchAuth } = useContext(myContext);
@@ -26,7 +26,7 @@ export function ModalUser({ openModal, handleClose }) {
           type="text"
           value={auth.username}
           onChange={(e) =>
-            dispatchAuth({ type: types.username, value: e.target.value })
+            dispatchAuth({ type: types.changeUsername, value: e.target.value })
           }
         />
         <br />
@@ -38,7 +38,7 @@ export function ModalUser({ openModal, handleClose }) {
           type="email"
           value={auth.email}
           onChange={(e) =>
-            dispatchAuth({ type: types.email, value: e.target.value })
+            dispatchAuth({ type: types.changeEmail, value: e.target.value })
           }
         />
       </FormModal>

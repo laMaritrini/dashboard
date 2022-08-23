@@ -59,9 +59,9 @@ export const NavPageButton = styled(Button)`
   border: 1px solid #135846;
 `;
 export const SelectButton = styled.select`
+  cursor: pointer;
   width: 200px;
-  margin-top: 20px;
-  margin-left: 70%;
+margin: 20px;
   padding: 10px;
   background-color: #135846;
   color: white;
@@ -71,4 +71,25 @@ export const SelectButton = styled.select`
   & > option {
     padding: 20px;
   }
+`;
+export const CloseButton = styled.button`
+  padding: 10px;
+  align-items: center;
+  color: #135846;
+  background-color: #ebf1ef;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  &:hover {
+    background-color: #135846;
+    color: white;
+  }
+`;
+export const LightButton = styled.button`
+  color: #135846;
+  font-weight: 900;
+  background-color: #ebf1ef;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 `;

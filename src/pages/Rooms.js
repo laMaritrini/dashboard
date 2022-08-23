@@ -6,8 +6,8 @@ import {
   ContainerColumn,
   ContainerPage,
   Table,
-} from "../components/styles/containers";
-import { TrHead } from "../components/styles/style";
+} from "../styles/containers";
+import { TrHead } from "../styles/style";
 
 import { MockRooms } from "../data/mockRooms";
 import { Pagination } from "../components/pagination";

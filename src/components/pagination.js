@@ -2,7 +2,7 @@ import {
   ButtonPage,
   PageNumber,
   PaginationContainer,
-} from "./styles/pagination";
+} from "../styles/pagination";
 import { usePagination} from "./usePagination";
 
 export function Pagination({

@@ -26,8 +26,8 @@ export const myContext = createContext();
 export const types = {
   login: "login",
   logout: "logout",
-  username: "username",
-  email: "email",
+  changeUsername: "changeUsername",
+  changeEmail: "changeEmail",
   password: "password",
 };
 
@@ -37,11 +37,9 @@ const authReducer = (state, action) => {
       return { ...state, isAuth: true };
     case types.logout:
       return { ...state, isAuth: false };
-    case types.username:
-      localStorage.setItem("auth_data", JSON.stringify(state));
+    case types.changeUsername:
       return { ...state, username: action.value };
-    case types.email:
-      localStorage.setItem("auth_data", JSON.stringify(state));
+    case types.changeEmail:
       return { ...state, email: action.value };
     case types.password:
       return { ...state, password: action.value };
@@ -52,7 +50,7 @@ const authReducer = (state, action) => {
 const initialAuthState = {
   isAuth: false,
   username: "",
-  email: "",
+  changeEmail: "",
   password: "",
 };
 
