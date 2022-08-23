@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ListItem } from "../components/ListItem";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
@@ -10,9 +10,18 @@ import {
 import { TrHead } from "../components/styles/style";
 
 import { MockRooms } from "../data/mockRooms";
+import { Pagination } from "../components/pagination";
 
-export function Rooms({ auth, setAuth , open, setOpen}) {
+export function Rooms({ auth, setAuth, open, setOpen }) {
   const [rooms, setRooms] = useState(MockRooms);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  let PageSize = 10;
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return rooms.slice(firstPageIndex, lastPageIndex);
+  }, [PageSize, currentPage, rooms]);
 
   const moveRoomListItem = useCallback(
     (dragIndex, hoverIndex) => {
@@ -59,7 +68,7 @@ export function Rooms({ auth, setAuth , open, setOpen}) {
             </TrHead>
           </thead>
           <tbody>
-            {rooms.map((room, index) => (
+            {currentTableData.map((room, index) => (
               <ListItem
                 key={room.id}
                 index={index}
@@ -70,6 +79,13 @@ export function Rooms({ auth, setAuth , open, setOpen}) {
             ))}
           </tbody>
         </Table>
+        <Pagination
+          className="pagination-bar"
+          currentPage={currentPage}
+          totalCount={rooms.length}
+          pageSize={PageSize}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </ContainerColumn>
     </ContainerPage>
   );

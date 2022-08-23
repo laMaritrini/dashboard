@@ -1,18 +1,35 @@
+import { useMemo } from "react";
 import { useEffect, useState } from "react";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
+import { Pagination } from "../components/pagination";
+
 import {
   ContainerColumn,
   ContainerPage,
   Table,
 } from "../components/styles/containers";
 import { Date, Id, TrHead, TRow, UserName } from "../components/styles/style";
-import { Button, SelectButton, ViewNotesButton } from "../components/styles/style-buttons";
+import {
+  Button,
+  SelectButton,
+  ViewNotesButton,
+} from "../components/styles/style-buttons";
 import { MockReservations } from "../data/mockReservations";
+
+let PageSize = 10;
 
 export function Bookings({ auth, setAuth, open, setOpen }) {
   const [roomState, setRoomState] = useState([]);
   const [orderBy, setOrderBy] = useState("full_name");
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return roomState.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, roomState]);
 
   useEffect(() => {
     const orderedRooms = MockReservations.filter((room) => room[orderBy]);
@@ -42,9 +59,7 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
           value={orderBy}
           onChange={(e) => setOrderBy(e.target.value)}
         >
-          <option value="full_name" selected>
-            Guest
-          </option>
+          <option value="full_name">Guest</option>
           <option value="order_date">Order Date</option>
           <option value="check_in">Check In</option>
           <option value="check_out">Check Out</option>
@@ -78,38 +93,41 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
             </TrHead>
           </thead>
           <tbody>
-            {roomState.length
-              ? roomState.map((room) => (
-                  <TRow key={room.id}>
-                    <td style={{ padding: "20px" }}>
-                      <UserName>{room.full_name}</UserName>
-                      <Id>{room.id}</Id>
-                    </td>
+            {currentTableData.map((room) => (
+              <TRow key={room.id}>
+                <td style={{ padding: "20px" }}>
+                  <UserName>{room.full_name}</UserName>
+                  <Id>{room.id}</Id>
+                </td>
 
-                    <Date>{room.order_date}</Date>
+                <Date>{room.order_date}</Date>
 
-                    <Date>{room.check_in}</Date>
+                <Date>{room.check_in}</Date>
 
-                    <Date>{room.check_out}</Date>
+                <Date>{room.check_out}</Date>
 
-                    <td>
-                      <ViewNotesButton>View Notes</ViewNotesButton>
-                    </td>
-                    <Date>
-                      <div>
-                        {room.room_type.type}{" "}
-                        <span>- {room.room_type.number}</span>
-                      </div>
-                    </Date>
+                <td>
+                  <ViewNotesButton>View Notes</ViewNotesButton>
+                </td>
+                <Date>
+                  <div>
+                    {room.room_type.type} <span>- {room.room_type.number}</span>
+                  </div>
+                </Date>
 
-                    <td>
-                      <Button status={room.status}>{room.status}</Button>
-                    </td>
-                  </TRow>
-                ))
-              : "No guest found..."}
+                <td>
+                  <Button status={room.status}>{room.status}</Button>
+                </td>
+              </TRow>
+            ))}
           </tbody>
         </Table>
+        <Pagination
+          currentPage={currentPage}
+          totalCount={roomState.length}
+          pageSize={PageSize}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </ContainerColumn>
     </ContainerPage>
   );
