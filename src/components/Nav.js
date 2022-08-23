@@ -15,7 +15,10 @@ export function Nav({ title, auth, setAuth, open, setOpen }) {
       <SectionTitleBar>
         <StyledFontAwesomeIcon
           icon={faArrowRightArrowLeft}
-          onClick={ () => {setOpen(!open)}}
+         
+          onClick={() => {
+            setOpen(!open);
+          }}
         />
         <h2 style={{ padding: "20px", whiteSpace: "nowrap" }}>{title}</h2>
       </SectionTitleBar>

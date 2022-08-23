@@ -13,8 +13,21 @@ import { FiUser } from "react-icons/fi";
 import { TbPuzzle } from "react-icons/tb";
 
 import travl from "../travl.png";
+import { useContext } from "react";
+import { myContext } from "../App";
+import { useState } from "react";
+import { ModalUser } from "./modalUser";
 
 export function NavLateral({ open, setOpen }) {
+  const { auth, dispatchAuth } = useContext(myContext);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpen = () => {
+    setOpenModal(true);
+  };
+  const handleClose = () => {
+    setOpenModal(false);
+  };
   return (
     <ContainerMenuLateral open={open} className="container-lateral-menu">
       <div>
@@ -40,14 +53,15 @@ export function NavLateral({ open, setOpen }) {
           </LinkContainer>
           <LinkContainer>
             <FiUser />
-            <NavLink to="/users">Guest</NavLink>
+            <NavLink to="/users">Users</NavLink>
           </LinkContainer>
         </nav>
         <UserContainer>
           <Image src="" alt="" />
-          <UserName>William Johanson</UserName>
-          <UserEmail>williamjohn@mail.com</UserEmail>
-          <DefaultButton>Edit</DefaultButton>
+          <UserName>{auth.username}</UserName>
+          <UserEmail>{auth.email}</UserEmail>
+          <ModalUser openModal={openModal} handleClose={handleClose}></ModalUser>
+          <DefaultButton onClick={handleOpen}>Edit</DefaultButton>
         </UserContainer>
       </div>
       <footer>

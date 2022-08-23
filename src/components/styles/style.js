@@ -81,14 +81,13 @@ export const FormLogin = styled.form`
   & > label {
     color: #799283;
     margin: 10px;
-    & > input {
-      padding: 7px;
-      margin: 7px;
-      border: none;
-      border-bottom: 1px solid #799283;
-      background-color: transparent;
-      resize: none;
-      outline: none;
-    }
+  }
+  & > input {
+    margin: 5px;
+    border: none;
+    border-bottom: 1px solid #799283;
+    background-color: transparent;
+    resize: none;
+    outline: none;
   }
 `;

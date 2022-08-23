@@ -11,7 +11,7 @@ export function Users({ auth, setAuth, open, setOpen }) {
       <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
         <Nav
-          title="Guest List"
+          title="Users List"
           auth={auth}
           setAuth={setAuth}
           open={open}

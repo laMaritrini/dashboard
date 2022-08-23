@@ -50,6 +50,7 @@ export const DefaultButton = styled(Button)`
 export const ViewNotesButton = styled(Button)`
   color: #212121;
   background-color: #eef9f2;
+  z-index: 0;
 `;
 
 export const NavPageButton = styled(Button)`
