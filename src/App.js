@@ -16,43 +16,13 @@ import { useReducer, useState } from "react";
 import { useEffect } from "react";
 import { Login } from "./components/Login";
 
-import { RequireAuth } from "./components/auth";
+import { RequireAuth } from "./components/Auth";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { createContext } from "react";
+import { authReducer, initialAuthState } from "./reducerLogin/ReducerLogin";
 
 export const myContext = createContext();
-
-export const types = {
-  login: "login",
-  logout: "logout",
-  changeUsername: "changeUsername",
-  changeEmail: "changeEmail",
-  password: "password",
-};
-
-const authReducer = (state, action) => {
-  switch (action.type) {
-    case types.login:
-      return { ...state, isAuth: true };
-    case types.logout:
-      return { ...state, isAuth: false };
-    case types.changeUsername:
-      return { ...state, username: action.value };
-    case types.changeEmail:
-      return { ...state, email: action.value };
-    case types.password:
-      return { ...state, password: action.value };
-    default:
-      return state;
-  }
-};
-const initialAuthState = {
-  isAuth: false,
-  username: "",
-  changeEmail: "",
-  password: "",
-};
 
 function App() {
   const [open, setOpen] = useState(true);
@@ -92,8 +62,16 @@ function App() {
             }
           >
             <Route path="/bookings/new" element={<NewBooking />} />
-            <Route path="/bookings/:id" element={<Booking />} />
           </Route>
+
+          <Route
+            path="/bookings/:id"
+            element={
+              <RequireAuth>
+                <Booking />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/rooms"
             element={

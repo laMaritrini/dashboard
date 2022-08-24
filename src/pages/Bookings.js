@@ -3,13 +3,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
-import { Pagination } from "../components/pagination";
+import { Pagination } from "../components/Pagination";
+import { LinkList } from "../styles/style";
 
-import {
-  ContainerColumn,
-  ContainerPage,
-  Table,
-} from "../styles/containers";
+import { ContainerColumn, ContainerPage, Table } from "../styles/containers";
 import { Date, Id, TrHead, TRow, UserName } from "../styles/style";
 import {
   Button,
@@ -17,9 +14,9 @@ import {
   SelectButton,
   ViewNotesButton,
 } from "../styles/style-buttons";
-import { AddBooking } from "../features/booking/addBooking";
+import { AddBooking } from "../features/booking/AddBooking";
 
-import { fetchBookings, selectState } from "../features/booking/bookingsSlice";
+import { fetchBookings, selectState } from "../features/booking/BookingsSlice";
 
 let PageSize = 10;
 
@@ -116,8 +113,10 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
             {currentTableData.map((room) => (
               <TRow key={room.id}>
                 <td style={{ padding: "20px" }}>
-                  <UserName>{room.full_name}</UserName>
-                  <Id>{room.id}</Id>
+                  <LinkList to={`/bookings/${room.id}`}>
+                    <UserName>{room.full_name}</UserName>
+                    <Id>{room.id}</Id>
+                  </LinkList>
                 </td>
 
                 <Date>{room.order_date}</Date>
@@ -131,7 +130,8 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
                 </td>
                 <Date>
                   <div>
-                    {room.room_type.type} <span>- {room.room_type.number}</span>
+                    {room.room_type.type}
+                    <span>- {room.room_type.number}</span>
                   </div>
                 </Date>
 

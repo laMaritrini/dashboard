@@ -1,15 +1,13 @@
-import { useDispatch } from "react-redux";
-import { addBooking } from "./bookingsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { createNewBooking, selectState } from "./BookingsSlice";
 import { useState } from "react";
-import {
-  BookingModal,
-  FormBooking,
-  TitleModal,
-} from "../../styles/modal";
+import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
 
 export function AddBooking({ openModal, handleClose }) {
-  const [newBooking, setNewBooking] = useState({
+  const bookings = useSelector(selectState);
+
+  const [booking, setBooking] = useState({
     full_name: "",
     id: "",
     order_date: "",
@@ -22,8 +20,8 @@ export function AddBooking({ openModal, handleClose }) {
     },
     status: "",
   });
-
   const dispatch = useDispatch();
+
   let id = Math.floor(Math.random() * 100000);
   if (!openModal) {
     return null;
@@ -31,25 +29,30 @@ export function AddBooking({ openModal, handleClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addBooking(newBooking));
-    setNewBooking({
-      full_name: "",
-      id: id,
-      order_date: "",
-      check_in: "",
-      check_out: "",
-      special_request: "",
-      room_type: {
-        type: "",
-        number: "",
+    dispatch(createNewBooking(booking));
+    setBooking(
+      {
+        full_name: "",
+        id: id,
+        order_date: "",
+        check_in: "",
+        check_out: "",
+        special_request: "",
+        room_type: {
+          type: "",
+          number: "",
+        },
+        status: "",
       },
-      status: "",
-    });
+      ...bookings
+    );
+    handleClose();
   };
 
   const handleChange = (e) => {
-    setNewBooking({ ...newBooking, [e.target.name]: e.target.value });
+    setBooking({ ...booking, [e.target.name]: e.target.value });
   };
+
   return (
     <BookingModal>
       <CloseButton onClick={handleClose}>X</CloseButton>
@@ -60,7 +63,7 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="full_name">Full name:</label>
           <input
             type="text"
-            value={newBooking.full_name}
+            value={booking.full_name}
             name="full_name"
             onChange={handleChange}
           />
@@ -69,7 +72,7 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="order_date">Order date:</label>
           <input
             type="date"
-            value={newBooking.order_date}
+            value={booking.order_date}
             name="order_date"
             onChange={handleChange}
           />
@@ -78,7 +81,7 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="check_in">Check In:</label>
           <input
             type="date"
-            value={newBooking.check_in}
+            value={booking.check_in}
             name="check_in"
             onChange={handleChange}
           />
@@ -87,7 +90,7 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="check_out">Check Out:</label>
           <input
             type="date"
-            value={newBooking.check_out}
+            value={booking.check_out}
             name="check_out"
             onChange={handleChange}
           />
@@ -96,7 +99,7 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="special_request">Special Request:</label>
           <input
             type="text "
-            value={newBooking.special_request}
+            value={booking.special_request}
             name="special_request"
             onChange={handleChange}
           />
@@ -105,7 +108,7 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="type">Room Type:</label>
           <input
             type="text"
-            value={newBooking.room_type.type}
+            value={booking.room_type.type}
             name="type"
             onChange={handleChange}
           />
@@ -114,7 +117,7 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="number">Room Number:</label>
           <input
             type="number"
-            value={newBooking.room_type.number}
+            value={booking.room_type.number}
             name="number"
             onChange={handleChange}
           />
@@ -123,7 +126,7 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="status">Status:</label>
           <input
             type="text"
-            value={newBooking.status}
+            value={booking.status}
             name="status"
             onChange={handleChange}
           />

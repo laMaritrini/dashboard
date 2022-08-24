@@ -16,24 +16,69 @@ export const fetchBookings = createAsyncThunk(
   }
 );
 
-const initialState = { results: [] };
+export const fetchBooking = createAsyncThunk("get/fetchBooking", async (id) => {
+  const oneBooking = MockReservations.find((item) => item.id === id);
+  return await delay(oneBooking, 100);
+});
+
+export const createNewBooking = createAsyncThunk(
+  "create/createNewBooking",
+  async (data) => {
+    const newArray = data;
+    return await delay((MockReservations, newArray), 100);
+  }
+);
+export const removeBooking = createAsyncThunk(
+  "delete/removeBooking",
+  async (id) => {
+    const newBookingsArray = MockReservations.filter((item) => item.id !== id);
+    return await delay(newBookingsArray, 100);
+  }
+);
+export const updateBooking = createAsyncThunk(
+  "update/updateBooking",
+  async (id, data) => {
+    const newBookingsArray = MockReservations.map((item) =>
+      item.id === id ?{...item, data }: item
+    );
+    return await delay(newBookingsArray, 100);
+  }
+);
+
+const initialState = {
+  bookings: [],
+  booking: [],
+};
 
 const bookingsSlice = createSlice({
   name: "bookings",
   initialState,
-  reducers: {
-    addBooking(state, action) {
-      state.results.push(action.payload);
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchBookings.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.results = action.payload;
+      state.bookings = action.payload;
+    });
+    builder.addCase(fetchBooking.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.booking = action.payload;
+    });
+    builder.addCase(createNewBooking.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.bookings = [...state.bookings, action.payload];
+    });
+    builder.addCase(removeBooking.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.bookings = action.payload;
+    });
+    builder.addCase(updateBooking.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.bookings = action.payload;
     });
   },
 });
 
 export default bookingsSlice.reducer;
-export const {addBooking} = bookingsSlice.actions;
-export const selectState = (state) => state.bookings.results;
+
+export const selectState = (state) => state.bookings.bookings;
+export const selectStateDetail = (state) => state.bookings.booking;

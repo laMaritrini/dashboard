@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { myContext, types } from "../App";
+import { myContext} from "../App";
+import { types } from "../reducerLogin/ReducerLogin";
 import { FormLogin, NavLink } from "../styles/style";
 import { DefaultButton } from "../styles/style-buttons";
 

@@ -61,7 +61,7 @@ export const NavPageButton = styled(Button)`
 export const SelectButton = styled.select`
   cursor: pointer;
   width: 200px;
-margin: 20px;
+  margin: 20px;
   padding: 10px;
   background-color: #135846;
   color: white;
@@ -80,6 +80,7 @@ export const CloseButton = styled.button`
   border-radius: 10px;
   border: none;
   font-weight: 700;
+  cursor: pointer;
   &:hover {
     background-color: #135846;
     color: white;

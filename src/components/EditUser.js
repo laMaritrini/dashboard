@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { myContext, types } from "../App";
+import { myContext } from "../App";
+import { types } from "../reducerLogin/ReducerLogin";
 import { FormModal, Modal, TitleModal } from "../styles/modal";
 import { DefaultButton } from "../styles/style-buttons";
 

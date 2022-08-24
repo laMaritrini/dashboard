@@ -10,7 +10,7 @@ import {
 import { TrHead } from "../styles/style";
 
 import { MockRooms } from "../data/mockRooms";
-import { Pagination } from "../components/pagination";
+import { Pagination } from "../components/Pagination";
 
 export function Rooms({ auth, setAuth, open, setOpen }) {
   const [rooms, setRooms] = useState(MockRooms);

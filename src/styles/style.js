@@ -10,7 +10,9 @@ export const NavLink = styled(Link)`
   padding: 8px;
   color: #799283;
 `;
-
+export const LinkList = styled(NavLink)`
+color: black;
+`
 export const TRow = styled.tr`
   background-color: #ffffff;
   margin: 0;

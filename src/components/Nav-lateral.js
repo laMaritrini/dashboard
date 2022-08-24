@@ -17,7 +17,7 @@ import travl from "../travl.png";
 import { useContext } from "react";
 import { myContext } from "../App";
 import { useState } from "react";
-import { ModalUser } from "./modalUser";
+import { ModalUser } from "./EditUser";
 
 export function NavLateral({ open, setOpen }) {
   const { auth, dispatchAuth } = useContext(myContext);
