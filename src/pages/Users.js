@@ -1,21 +1,149 @@
+import { useMemo } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
-import {
-  ContainerColumn,
-  ContainerPage,
-} from "../styles/containers";
+import { Pagination } from "../components/Pagination";
+import { LinkList, NumberTd, StateUser, TableTd } from "../styles/style";
 
-export function Users({ auth, setAuth, open, setOpen }) {
+import { ContainerColumn, ContainerPage, Table } from "../styles/containers";
+import { Id, TrHead, TRow, UserName } from "../styles/style";
+import { LightButton } from "../styles/style-buttons";
+
+import {
+  fetchUsers,
+  removeUser,
+  selectStateUsers,
+} from "../features/users/UsersSlice";
+import { Image } from "../styles/style-image";
+import { AddUser } from "../features/users/AddUser";
+
+let PageSize = 10;
+
+export function Users({ open, setOpen }) {
+  const users = useSelector(selectStateUsers);
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpen = () => {
+    setOpenModal(true);
+  };
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return users.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, users]);
+
+  const handleRemove = (id) => {
+    dispatch(removeUser(id));
+  };
+
   return (
     <ContainerPage>
       <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
-        <Nav
-          title="Users List"
-          auth={auth}
-          setAuth={setAuth}
-          open={open}
-          setOpen={setOpen}
+        <Nav title="Users List" open={open} setOpen={setOpen} />
+        <div>
+          <AddUser openModal={openModal} handleClose={handleClose} />
+          <LightButton onClick={handleOpen}>Add New User</LightButton>
+        </div>
+        <Table>
+          <thead>
+            <TrHead>
+              <th
+                style={{
+                  width: "130px",
+                  borderTopLeftRadius: "20px",
+                  padding: "20px",
+                }}
+              >
+                Photo
+              </th>
+              <th>User</th>
+              <th>Job</th>
+              <th
+                style={{
+                  width: "200px",
+                }}
+              >
+                Email
+              </th>
+              <th>Phone</th>
+              <th>Start Date</th>
+              <th>Functions</th>
+              <th
+                style={{
+                  width: "110px",
+                }}
+              >
+                Status
+              </th>
+              <th
+                style={{
+                  borderTopRightRadius: "20px",
+                  padding: "20px",
+                  width: "40px",
+                }}
+              ></th>
+            </TrHead>
+          </thead>
+          <tbody>
+            {currentTableData.map((user) => (
+              <TRow key={user.id}>
+                <td
+                  style={{
+                    padding: "20px",
+                  }}
+                >
+                  <Image src={user.photo} alt="" />
+                </td>
+                <td>
+                  <LinkList to={`/users/${user.id}`}>
+                    <UserName>{user.full_name}</UserName>
+                    <Id>{user.id}</Id>
+                  </LinkList>
+                </td>
+                <td>{user.job_title}</td>
+                <TableTd>{user.email}</TableTd>
+                <NumberTd>
+                  <span>📞</span>
+                  {user.phone_number}
+                </NumberTd>
+                <NumberTd>{user.start_date}</NumberTd>
+                <TableTd>{user.working_functions}</TableTd>
+                <StateUser status={user.working_situation}>
+                  {user.working_situation}
+                </StateUser>
+
+                <td>
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      handleRemove(user.id);
+                    }}
+                  >
+                    🗑️
+                  </div>
+                </td>
+              </TRow>
+            ))}
+          </tbody>
+        </Table>
+
+        <Pagination
+          currentPage={currentPage}
+          totalCount={users.length}
+          pageSize={PageSize}
+          onPageChange={(page) => setCurrentPage(page)}
         />
       </ContainerColumn>
     </ContainerPage>

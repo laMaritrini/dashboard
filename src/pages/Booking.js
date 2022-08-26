@@ -6,8 +6,8 @@ import {
   fetchBooking,
   removeBooking,
   selectStateDetail,
-} from "../features/booking/BookingsSlice";
-import { UpdateBooking } from "../features/booking/UpdateBooking";
+} from "../features/bookings/BookingsSlice";
+import { UpdateBooking } from "../features/bookings/UpdateBooking";
 
 export function Booking() {
   const { id } = useParams();
@@ -22,7 +22,7 @@ export function Booking() {
   }, [dispatch, id]);
 
   const handleRemove = () => {
-    dispatch(removeBooking(booking.id));
+    dispatch(removeBooking(id));
   };
   const handleOpen = (booking) => {
     setEdit(booking);
@@ -45,8 +45,8 @@ export function Booking() {
       <p>Room Number: {booking.room_type.number} </p>
       <p>Special request: {booking.special_request}</p>
       <button>{booking.status}</button>
-      <button onClick={handleRemove}>Delete</button>
-      <Link to="/bookings">Back to Bookings</Link>
+      <button onClick={() => {handleRemove(booking.id)}}>Delete</button>
+      
       <button
         onClick={() => {
           handleOpen(booking);
@@ -55,6 +55,7 @@ export function Booking() {
         Edit
       </button>
       <UpdateBooking open={open} edit={edit} handleClose={handleClose} />
+        <Link to="/bookings">Back to Bookings</Link>
     </div>
   );
 }

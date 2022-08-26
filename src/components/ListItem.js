@@ -1,11 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { TRow, UserName, Date, Id, PriceRoom } from "../styles/style";
+import { TRow, UserName, Date, Id, PriceRoom, LinkList } from "../styles/style";
 import { CheckStatusRoom } from "../styles/style-buttons";
 import { Image } from "../styles/style-image";
 
-export const ListItem = ({ item, index, moveListItem }) => {
+export const ListItem = ({
+  item,
+  index,
+  moveListItem,
+  handleRemove,
+  number,
+}) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: "item",
     item: { index },
@@ -39,30 +45,48 @@ export const ListItem = ({ item, index, moveListItem }) => {
   const opacity = isDragging ? { opacity: "0" } : { opacity: "1" };
   return (
     <TRow key={item.id} ref={dragDropRef} style={opacity}>
-      <td>
+      <td
+        style={{
+          padding: "20px",
+        }}
+      >
         <Image src={item.photo} alt="" />
       </td>
       <Date>{item.room_number}</Date>
 
       <td>
-        <UserName>{item.room_type}</UserName>
-        <Id>{item.id}</Id>
+        <LinkList to={`/rooms/${item.id}`}>
+          <UserName>{item.room_type}</UserName>
+          <Id>{item.id}</Id>
+        </LinkList>
       </td>
       <td style={{ textOverflow: "" }}>{item.amenities}</td>
 
       <PriceRoom>
+        <span> $</span>
         {item.price}
 
         <span style={{ color: "grey", fontWeight: "400" }}>/night </span>
       </PriceRoom>
 
       <PriceRoom>
+        <span> $</span>
         {item.discount}
         <span style={{ color: "grey", fontWeight: "400" }}>/night</span>
       </PriceRoom>
 
       <td>
         <CheckStatusRoom status={item.status}>{item.status}</CheckStatusRoom>
+      </td>
+      <td>
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            handleRemove(item.id);
+          }}
+        >
+          🗑️
+        </div>
       </td>
     </TRow>
   );

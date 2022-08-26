@@ -3,7 +3,7 @@ import {
   PageNumber,
   PaginationContainer,
 } from "../styles/pagination";
-import { usePagination} from "./UsePagination";
+import { usePagination, DOTS } from "./UsePagination";
 
 export function Pagination({
   onPageChange,
@@ -38,15 +38,25 @@ export function Pagination({
       <ButtonPage disabled={currentPage === 1 ?? true} onClick={onPrevious}>
         Prev
       </ButtonPage>
-      {paginationRange.map((pageNumber, index) => (
-        <PageNumber
-          key={index}
-          selected={pageNumber === currentPage ?? true}
-          onClick={() => onPageChange(pageNumber)}
-        >
-          {pageNumber}
-        </PageNumber>
-      ))}
+      {paginationRange.map((pageNumber, index) => {
+        if (pageNumber === DOTS) {
+          return (
+            <div key={index} >
+              &#8230;
+            </div>
+          );
+        }
+
+        return (
+          <PageNumber
+            key={index}
+            selected={pageNumber === currentPage ?? true}
+            onClick={() => onPageChange(pageNumber)}
+          >
+            {pageNumber}
+          </PageNumber>
+        );
+      })}
 
       <ButtonPage disabled={currentPage === lastPage ?? true} onClick={onNext}>
         Next

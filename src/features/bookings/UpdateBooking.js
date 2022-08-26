@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import {  updateBooking } from "./BookingsSlice";
+import { updateBooking } from "./BookingsSlice";
 import { useDispatch } from "react-redux";
+import { CloseButton } from "../../styles/style-buttons";
 
 export function UpdateBooking({ edit, open, handleClose }) {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ export function UpdateBooking({ edit, open, handleClose }) {
 
   return (
     <form action="">
+      <CloseButton onClick={handleClose}>X</CloseButton>
       <div>
         <label htmlFor="full_name">Full name:</label>
         <input

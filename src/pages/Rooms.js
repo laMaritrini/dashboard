@@ -1,53 +1,74 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ListItem } from "../components/ListItem";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
-import {
-  ContainerColumn,
-  ContainerPage,
-  Table,
-} from "../styles/containers";
+import { ContainerColumn, ContainerPage, Table } from "../styles/containers";
 import { TrHead } from "../styles/style";
+import { useDispatch, useSelector } from "react-redux";
 
-import { MockRooms } from "../data/mockRooms";
 import { Pagination } from "../components/Pagination";
 
-export function Rooms({ auth, setAuth, open, setOpen }) {
-  const [rooms, setRooms] = useState(MockRooms);
+import { fetchRooms, removeRoom, selectStateRooms } from "../features/rooms/RoomsSlice";
+import { AddRoom } from "../features/rooms/AddRoom";
+import { LightButton } from "../styles/style-buttons";
+
+export function Rooms({ open, setOpen }) {
+  const rooms = useSelector(selectStateRooms);
+  const [roomsData, setRoomsData] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRooms());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setRoomsData(rooms);
+  }, [rooms]);
+
+  const handleOpen = () => {
+    setOpenModal(true);
+  };
+  const handleClose = () => {
+    setOpenModal(false);
+  };
 
   let PageSize = 10;
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return rooms.slice(firstPageIndex, lastPageIndex);
-  }, [PageSize, currentPage, rooms]);
+    return roomsData.slice(firstPageIndex, lastPageIndex);
+  }, [PageSize, currentPage, roomsData]);
 
   const moveRoomListItem = useCallback(
     (dragIndex, hoverIndex) => {
-      const dragItem = rooms[dragIndex];
-      const hoverItem = rooms[hoverIndex];
+      const dragItem = roomsData[dragIndex];
+      const hoverItem = roomsData[hoverIndex];
 
-      setRooms((rooms) => {
+      setRoomsData((rooms) => {
         const updateRooms = [...rooms];
         updateRooms[dragIndex] = hoverItem;
         updateRooms[hoverIndex] = dragItem;
         return updateRooms;
       });
     },
-    [rooms]
+    [roomsData]
   );
+     const handleRemove = (id) => {
+       dispatch(removeRoom(id));
+     };
+
   return (
     <ContainerPage>
       <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
-        <Nav
-          title="Rooms"
-          auth={auth}
-          setAuth={setAuth}
-          open={open}
-          setOpen={setOpen}
-        />
+        <Nav title="Rooms" open={open} setOpen={setOpen} />
+        <div>
+          <AddRoom openModal={openModal} handleClose={handleClose} />
+          <LightButton onClick={handleOpen}>Add New Room</LightButton>
+        </div>
         <Table>
           <thead>
             <TrHead>
@@ -65,6 +86,7 @@ export function Rooms({ auth, setAuth, open, setOpen }) {
               <th>Price</th>
               <th>Offer Price</th>
               <th>Status</th>
+              <th style={{ width: "40px"}}></th>
             </TrHead>
           </thead>
           <tbody>
@@ -75,6 +97,7 @@ export function Rooms({ auth, setAuth, open, setOpen }) {
                 item={room}
                 number={room.id}
                 moveListItem={moveRoomListItem}
+                handleRemove={handleRemove}
               />
             ))}
           </tbody>
@@ -82,11 +105,11 @@ export function Rooms({ auth, setAuth, open, setOpen }) {
         <Pagination
           className="pagination-bar"
           currentPage={currentPage}
-          totalCount={rooms.length}
+          totalCount={roomsData.length}
           pageSize={PageSize}
           onPageChange={(page) => setCurrentPage(page)}
         />
-      </ContainerColumn>
+      </ContainerColumn>{" "}
     </ContainerPage>
   );
 }

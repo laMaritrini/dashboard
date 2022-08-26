@@ -6,10 +6,11 @@ import { CloseButton, DefaultButton } from "../../styles/style-buttons";
 
 export function AddBooking({ openModal, handleClose }) {
   const bookings = useSelector(selectState);
+  let id = Math.floor(Math.random() * 100000);
 
   const [booking, setBooking] = useState({
     full_name: "",
-    id: "",
+    id: id,
     order_date: "",
     check_in: "",
     check_out: "",
@@ -22,7 +23,6 @@ export function AddBooking({ openModal, handleClose }) {
   });
   const dispatch = useDispatch();
 
-  let id = Math.floor(Math.random() * 100000);
   if (!openModal) {
     return null;
   }
@@ -124,12 +124,24 @@ export function AddBooking({ openModal, handleClose }) {
         </div>
         <div>
           <label htmlFor="status">Status:</label>
-          <input
+          <select
+            value={booking.status}
+            type="text"
+            name="status"
+            id="status"
+            onChange={handleChange}
+          >
+            <option value="">Select One...</option>
+            <option value="In progress">In progress</option>
+            <option value="Check In">Check In</option>
+            <option value="Check Out">Check Out</option>
+          </select>
+          {/* <input
             type="text"
             value={booking.status}
             name="status"
             onChange={handleChange}
-          />
+          /> */}
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
       </FormBooking>

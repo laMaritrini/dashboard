@@ -50,7 +50,7 @@ export function NavLateral({ open, setOpen }) {
           </LinkContainer>
           <LinkContainer>
             <TbPuzzle />
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/contacts">Contact</NavLink>
           </LinkContainer>
           <LinkContainer>
             <FiUser />
@@ -58,10 +58,16 @@ export function NavLateral({ open, setOpen }) {
           </LinkContainer>
         </nav>
         <UserContainer>
-          <Image src="" alt="" />
+          <Image
+            src="https://imgs.search.brave.com/Ax4LlK9i2UZ6euTsr24B4d7cN0ygtNLrDZWJIleIBjI/rs:fit:514:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5K/QnBnVUpoVHQ4Y0ky/VjA1LVVmNTNBSGFH/MSZwaWQ9QXBp"
+            alt="avatar"
+          />
           <UserName>{auth.username}</UserName>
           <UserEmail>{auth.email}</UserEmail>
-          <ModalUser openModal={openModal} handleClose={handleClose}></ModalUser>
+          <ModalUser
+            openModal={openModal}
+            handleClose={handleClose}
+          ></ModalUser>
           <DefaultButton onClick={handleOpen}>Edit</DefaultButton>
         </UserContainer>
       </div>

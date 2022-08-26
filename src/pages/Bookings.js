@@ -14,13 +14,17 @@ import {
   SelectButton,
   ViewNotesButton,
 } from "../styles/style-buttons";
-import { AddBooking } from "../features/booking/AddBooking";
+import { AddBooking } from "../features/bookings/AddBooking";
 
-import { fetchBookings, selectState } from "../features/booking/BookingsSlice";
+import {
+  fetchBookings,
+  removeBooking,
+  selectState,
+} from "../features/bookings/BookingsSlice";
 
 let PageSize = 10;
 
-export function Bookings({ auth, setAuth, open, setOpen }) {
+export function Bookings({ open, setOpen }) {
   const bookings = useSelector(selectState);
   const dispatch = useDispatch();
   const [roomState, setRoomState] = useState([]);
@@ -58,17 +62,15 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
     setRoomState(orderedRooms);
   }, [bookings, orderBy]);
 
+  const handleRemove = (id) => {
+    dispatch(removeBooking(id));
+  };
+
   return (
     <ContainerPage>
       <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
-        <Nav
-          title="Bookings"
-          auth={auth}
-          setAuth={setAuth}
-          open={open}
-          setOpen={setOpen}
-        />
+        <Nav title="Bookings" open={open} setOpen={setOpen} />
         <div>
           <SelectButton
             value={orderBy}
@@ -99,14 +101,14 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
               <th>Check out</th>
               <th>Special Request</th>
               <th>Room Type</th>
+              <th>Status</th>
               <th
                 style={{
                   borderTopRightRadius: "20px",
                   padding: "20px",
+                  width: "40px",
                 }}
-              >
-                Status
-              </th>
+              ></th>
             </TrHead>
           </thead>
           <tbody>
@@ -137,6 +139,16 @@ export function Bookings({ auth, setAuth, open, setOpen }) {
 
                 <td>
                   <Button status={room.status}>{room.status}</Button>
+                </td>
+                <td>
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      handleRemove(room.id);
+                    }}
+                  >
+                    🗑️
+                  </div>
                 </td>
               </TRow>
             ))}

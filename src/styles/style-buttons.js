@@ -87,6 +87,8 @@ export const CloseButton = styled.button`
   }
 `;
 export const LightButton = styled.button`
+  margin: 20px 0 0 20px;
+  width: fit-content;
   color: #135846;
   font-weight: 900;
   background-color: #ebf1ef;

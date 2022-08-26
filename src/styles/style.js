@@ -11,8 +11,8 @@ export const NavLink = styled(Link)`
   color: #799283;
 `;
 export const LinkList = styled(NavLink)`
-color: black;
-`
+  color: black;
+`;
 export const TRow = styled.tr`
   background-color: #ffffff;
   margin: 0;
@@ -38,6 +38,20 @@ export const KpiTitle = styled.p`
   font-size: 12px;
   font-weight: 400;
   color: #787878;
+`;
+export const TableTd = styled.td`
+  font-weight: 300;
+  font-size: 12px;
+  padding: 5px;
+`;
+export const NumberTd = styled.td`
+  font-size: 14px;
+  font-weight: 600;
+`;
+
+export const StateUser = styled.td`
+  color: ${(props) => (props.status === "ACTIVE" ? "green" : "red")};
+  font-weight: 600;
 `;
 export const UserName = styled.h4`
   font-weight: 500;
@@ -92,4 +106,10 @@ export const FormLogin = styled.form`
     resize: none;
     outline: none;
   }
+`;
+export const ReviewButton = styled.span`
+  cursor: pointer;
+  font-weight: 600;
+  padding: 20px;
+  color: ${props => props.status === "Archive"? 'red': 'green'}
 `;

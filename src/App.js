@@ -8,7 +8,7 @@ import { Rooms } from "./pages/Rooms";
 import { Room } from "./pages/Room";
 import { Bookings } from "./pages/Bookings";
 import { User } from "./pages/User";
-import { Contact } from "./pages/Contact";
+import { Contacts } from "./pages/Contacts";
 import { NewBooking } from "./pages/NewBooking";
 import { NewRoom } from "./pages/NewRoom";
 import { NewUser } from "./pages/NewUser";
@@ -83,8 +83,15 @@ function App() {
             }
           >
             <Route path="/rooms/new" element={<NewRoom />} />
-            <Route path="/rooms/:id" element={<Room />} />
           </Route>
+          <Route
+            path="/rooms/:id"
+            element={
+              <RequireAuth>
+                <Room />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/users"
             element={
@@ -94,13 +101,20 @@ function App() {
             }
           >
             <Route path="/users/new" element={<NewUser />} />
-            <Route path="/users/:id" element={<User />} />
           </Route>
           <Route
-            path="/contact"
+            path="/users/:id"
             element={
               <RequireAuth>
-                <Contact open={open} setOpen={setOpen} />
+                <User />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <RequireAuth>
+                <Contacts open={open} setOpen={setOpen} />
               </RequireAuth>
             }
           />

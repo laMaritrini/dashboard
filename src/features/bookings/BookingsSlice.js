@@ -39,7 +39,7 @@ export const updateBooking = createAsyncThunk(
   "update/updateBooking",
   async (id, data) => {
     const newBookingsArray = MockReservations.map((item) =>
-      item.id === id ?{...item, data }: item
+      item.id === id ? { ...item, data } : item
     );
     return await delay(newBookingsArray, 100);
   }
