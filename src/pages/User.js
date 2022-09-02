@@ -6,7 +6,7 @@ import {
   fetchUser,
   removeUser,
   selectStateDetail,
-} from "../features/users/UsersSlice";
+} from "../features/users/usersSlice";
 
 export function User() {
   const { id } = useParams();

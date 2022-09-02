@@ -6,7 +6,7 @@ import {
   fetchBooking,
   removeBooking,
   selectStateDetail,
-} from "../features/bookings/BookingsSlice";
+} from "../features/bookings/bookingsSlice";
 import { UpdateBooking } from "../features/bookings/UpdateBooking";
 
 export function Booking() {

@@ -23,11 +23,11 @@ export function ModalUser({ openModal, handleClose }) {
         <input
           className="username"
           name="username"
-          placeholder="tim"
+          placeholder=""
           type="text"
-          value={auth.username}
+          value={auth.full_name}
           onChange={(e) =>
-            dispatchAuth({ type: types.changeUsername, value: e.target.value })
+            dispatchAuth({ type: types.full_name, value: e.target.value })
           }
         />
         <br />
@@ -35,11 +35,11 @@ export function ModalUser({ openModal, handleClose }) {
         <input
           className="email"
           name="email"
-          placeholder="tim@mail.com"
+          placeholder=""
           type="email"
           value={auth.email}
           onChange={(e) =>
-            dispatchAuth({ type: types.changeEmail, value: e.target.value })
+            dispatchAuth({ type: types.email, value: e.target.value })
           }
         />
       </FormModal>

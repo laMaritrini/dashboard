@@ -130,10 +130,12 @@ export const ContainerReview = styled.div`
   border-radius: 20px;
   margin: 20px;
   padding: 50px;
+  width: 83%;
   & > div {
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+    flex-wrap: nowrap;
+    overflow: hidden;
+   
   }
 `;
 export const Review = styled.div`

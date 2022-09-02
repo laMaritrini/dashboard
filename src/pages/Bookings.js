@@ -20,7 +20,7 @@ import {
   fetchBookings,
   removeBooking,
   selectState,
-} from "../features/bookings/BookingsSlice";
+} from "../features/bookings/bookingsSlice";
 
 let PageSize = 10;
 

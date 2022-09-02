@@ -23,7 +23,7 @@ export const MockUsers = [
     start_date: "2022-08-10",
     working_functions: "Lorem non culpa laborum aute",
     working_situation: "ACTIVE",
-    password: "3LNHM26186TKUEF72",
+    password: "FRG3T28Y88H8W6GRR",
   },
   {
     full_name: "Bertha Morar",

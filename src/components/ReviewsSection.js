@@ -10,22 +10,52 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchContacts,
   selectStateContacts,
-} from "../features/contact/ContactSlice";
-import { useEffect } from "react";
+} from "../features/contact/contactSlice";
+import { useEffect, useState } from "react";
 
 export function ReviewsSection() {
   const contacts = useSelector(selectStateContacts);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  
+  const carouselScroll = () => {
+    if (currentIndex === contacts.length - 1) {
+      return setCurrentIndex(0);
+    }
+    return setCurrentIndex(currentIndex + 1);
+  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      carouselScroll();
+    }, 2000);
+    return () => clearInterval(interval);
+  });
+  const next = () => {
+    setCurrentIndex(currentIndex + 1);
+  };
+
+  const prev = () => {
+    setCurrentIndex(currentIndex - 1);
+  };
   return (
-    <ContainerReview>
+    <ContainerReview
+     
+    >
       <h3>Latest Review by Customers</h3>
       <div>
         {contacts.map((review) => (
-          <Review key={review.id}>
+          <Review
+            key={review.id}
+            style={{
+              transform: `translate(-${currentIndex * 110}%)`,
+              transition: "1s cubic-bezier(0.39, 0.575, 0.575, 1",
+            }}
+          >
             <p
               style={{
                 width: "300px",
@@ -42,7 +72,7 @@ export function ReviewsSection() {
                 <h4>{review.customer}</h4>
                 <p>{review.date}</p>
               </div>
-              <div style={{display: 'flex'}}>
+              <div style={{ display: "flex" }}>
                 <StyledIconReviewGreen icon={faCheckCircle} />
                 <StyledIconReviewRed icon={faTimesCircle} />
               </div>
@@ -50,6 +80,8 @@ export function ReviewsSection() {
           </Review>
         ))}
       </div>
+      <button onClick={prev}>Prev</button>
+      <button onClick={next}>Next</button>
     </ContainerReview>
   );
 }

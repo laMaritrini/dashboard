@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { CloseButton } from "../../styles/style-buttons";
-import { updateRoom } from "./RoomsSlice";
+import { updateRoom } from "./roomsSlice";
 
 export function UpdateRoom({ edit, open, handleClose }) {
   const dispatch = useDispatch();

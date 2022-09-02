@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { CloseButton } from "../../styles/style-buttons";
 
-import { updateUser } from "./UsersSlice";
+import { updateUser } from "./usersSlice";
 
 export function UpdateUser({ edit, open, handleClose }) {
   const dispatch = useDispatch();

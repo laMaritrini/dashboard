@@ -10,21 +10,19 @@ export function AuthStatus() {
   const { auth, dispatchAuth } = useContext(myContext);
   let navigate = useNavigate();
 
-  if (!auth.isAuth) {
-    return <p>You are not logged in.</p>;
+  if (auth.isAuth) {
+    return (
+      <StyledFontAwesomeIcon
+        className="logout"
+        icon={faArrowRightFromBracket}
+        onClick={() => {
+          dispatchAuth({ type: types.logout });
+
+          navigate("/");
+        }}
+      />
+    );
   }
-
-  return (
-    <StyledFontAwesomeIcon
-      className="logout"
-      icon={faArrowRightFromBracket}
-      onClick={() => {
-        dispatchAuth({ type: types.logout });
-
-        navigate("/");
-      }}
-    />
-  );
 }
 export function RequireAuth(props) {
   const { auth, dispatchAuth } = useContext(myContext);

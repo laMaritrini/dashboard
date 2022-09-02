@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
-import { createNewUser, selectStateUsers } from "./UsersSlice";
+import { createNewUser, selectStateUsers } from "./usersSlice";
 
 export function AddUser({ openModal, handleClose }) {
   const users = useSelector(selectStateUsers);

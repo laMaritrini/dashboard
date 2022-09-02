@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { createNewBooking, selectState } from "./BookingsSlice";
+import { createNewBooking, selectState } from "./bookingsSlice";
 import { useState } from "react";
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";

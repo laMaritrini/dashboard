@@ -8,7 +8,7 @@ import {
   fetchContacts,
   removeContact,
   selectStateContacts,
-} from "../features/contact/ContactSlice";
+} from "../features/contact/contactSlice";
 import { ContainerColumn, ContainerPage, Table } from "../styles/containers";
 import {
   Date,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { updateBooking } from "./BookingsSlice";
+import { updateBooking } from "./bookingsSlice";
 import { useDispatch } from "react-redux";
 import { CloseButton } from "../../styles/style-buttons";
 

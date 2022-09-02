@@ -18,9 +18,10 @@ import { useContext } from "react";
 import { myContext } from "../App";
 import { useState } from "react";
 import { ModalUser } from "./EditUser";
+import { MockUsers } from "../data/mockUsers";
 
-export function NavLateral({ open, setOpen }) {
-  const { auth, dispatchAuth } = useContext(myContext);
+export function NavLateral({ open }) {
+  const { auth } = useContext(myContext);
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpen = () => {
@@ -29,6 +30,12 @@ export function NavLateral({ open, setOpen }) {
   const handleClose = () => {
     setOpenModal(false);
   };
+
+  let photoUser = MockUsers.find((item) => item.full_name === auth.full_name);
+  if (photoUser) {
+    photoUser = photoUser.photo;
+  }
+
   return (
     <ContainerMenuLateral open={open} className="container-lateral-menu">
       <div>
@@ -58,11 +65,8 @@ export function NavLateral({ open, setOpen }) {
           </LinkContainer>
         </nav>
         <UserContainer>
-          <Image
-            src="https://imgs.search.brave.com/Ax4LlK9i2UZ6euTsr24B4d7cN0ygtNLrDZWJIleIBjI/rs:fit:514:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5K/QnBnVUpoVHQ4Y0ky/VjA1LVVmNTNBSGFH/MSZwaWQ9QXBp"
-            alt="avatar"
-          />
-          <UserName>{auth.username}</UserName>
+          <Image src={photoUser} alt="avatar" />
+          <UserName>{auth.full_name}</UserName>
           <UserEmail>{auth.email}</UserEmail>
           <ModalUser
             openModal={openModal}

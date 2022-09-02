@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Pagination } from "../components/Pagination";
 
-import { fetchRooms, removeRoom, selectStateRooms } from "../features/rooms/RoomsSlice";
+import { fetchRooms, removeRoom, selectStateRooms } from "../features/rooms/roomsSlice";
 import { AddRoom } from "../features/rooms/AddRoom";
 import { LightButton } from "../styles/style-buttons";
 

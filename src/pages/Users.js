@@ -14,7 +14,7 @@ import {
   fetchUsers,
   removeUser,
   selectStateUsers,
-} from "../features/users/UsersSlice";
+} from "../features/users/usersSlice";
 import { Image } from "../styles/style-image";
 import { AddUser } from "../features/users/AddUser";
 

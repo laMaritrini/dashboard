@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchRoom, removeRoom, selectStateDetail } from "../features/rooms/RoomsSlice";
+import { fetchRoom, removeRoom, selectStateDetail } from "../features/rooms/roomsSlice";
 import { UpdateRoom } from "../features/rooms/UpdateRoom";
 
 export function Room() {
