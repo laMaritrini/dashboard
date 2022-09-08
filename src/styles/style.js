@@ -86,7 +86,7 @@ export const FormLogin = styled.form`
   flex-direction: column;
   align-items: center;
   width: 40%;
-  height: 450px;
+  height: 550px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: white;
   border-radius: 20px;

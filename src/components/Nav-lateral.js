@@ -31,9 +31,13 @@ export function NavLateral({ open }) {
     setOpenModal(false);
   };
 
-  let photoUser = MockUsers.find((item) => item.full_name === auth.full_name);
+  let photoUser = MockUsers.find((item) => item.email === auth.email);
   if (photoUser) {
     photoUser = photoUser.photo;
+  }
+  let photoName = MockUsers.find((item) => item.email === auth.email);
+  if (photoName) {
+    photoName = photoName.full_name;
   }
 
   return (
@@ -66,7 +70,8 @@ export function NavLateral({ open }) {
         </nav>
         <UserContainer>
           <Image src={photoUser} alt="avatar" />
-          <UserName>{auth.full_name}</UserName>
+
+          <UserName>{photoName}</UserName>
           <UserEmail>{auth.email}</UserEmail>
           <ModalUser
             openModal={openModal}

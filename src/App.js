@@ -16,7 +16,7 @@ import { useReducer, useState } from "react";
 import { useEffect } from "react";
 import { Login } from "./components/Login";
 
-import { RequireAuth } from "./components/Auth";
+import { RequireAuth } from "./components/auth";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { createContext } from "react";

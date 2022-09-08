@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { AuthStatus } from "./Auth";
+import { AuthStatus } from "./auth";
 import { StyledFontAwesomeIcon } from "../styles/icons";
 import { faEnvelope, faBell } from "@fortawesome/free-regular-svg-icons";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";

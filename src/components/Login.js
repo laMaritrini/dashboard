@@ -12,7 +12,6 @@ export function Login() {
   let location = useLocation();
   const { auth, dispatchAuth } = useContext(myContext);
   const [input, setInput] = useState({
-    full_name: "",
     email: "",
     password: "",
   });
@@ -26,7 +25,6 @@ export function Login() {
       dispatchAuth({
         type: types.login,
         value: {
-          full_name: dataInput.full_name,
           email: dataInput.email,
         },
       });
@@ -43,14 +41,6 @@ export function Login() {
   return (
     <FormLogin onSubmit={handleSubmit}>
       <h1>Login</h1>
-      <label htmlFor="full_name">Username:</label>
-      <input
-        className="full_name"
-        name="full_name"
-        placeholder="Full Name"
-        value={input.full_name}
-        onChange={handleChange}
-      />
 
       <label htmlFor="email">Email:</label>
       <input
@@ -73,6 +63,9 @@ export function Login() {
       <DefaultButton type="submit" className="login">
         Login
       </DefaultButton>
+
+      <p>Email: Dorothy79@hotmail.com</p>
+      <p>Password: FRG3T28Y88H8W6GRR</p>
       <NavLink to={"/"}>Dashboard</NavLink>
     </FormLogin>
   );

@@ -37,7 +37,7 @@ export const SectionTitleBar = styled.div`
 `;
 
 export const ContainerMenuLateral = styled.div`
-  position: sticky;
+  position: relative;
   top: 0;
   left: 0;
   transition-duration: 2s;
@@ -55,7 +55,7 @@ export const ContainerMenuLateral = styled.div`
   padding-left: 20px;
   text-align: left;
   width: 300px;
-  height: 100vh;
+
 `;
 export const Table = styled.table`
   border-collapse: separate;
@@ -125,17 +125,19 @@ export const UserContainer = styled.div`
 `;
 
 export const ContainerReview = styled.div`
+  z-index: 0;
   text-align: start;
+  max-width: 80vw;
+  max-height: 100%;
   background-color: white;
   border-radius: 20px;
   margin: 20px;
-  padding: 50px;
-  width: 83%;
+  padding: 40px;
   & > div {
+    z-index: 0;
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
-   
   }
 `;
 export const Review = styled.div`
