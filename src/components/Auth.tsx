@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import * as React from "react";
 import { StyledFontAwesomeIcon } from "../styles/icons";
 import { useContext } from "react";
 import { myContext } from "../App";
@@ -24,8 +25,9 @@ export function AuthStatus() {
     );
   }
 }
-export function RequireAuth(props) {
-  const { auth, dispatchAuth } = useContext(myContext);
+export function RequireAuth(props: any) {
+  const { auth } = useContext(myContext);
+
   let location = useLocation();
 
   if (!auth.isAuth) {

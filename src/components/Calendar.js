@@ -10,10 +10,11 @@ export const StyleWrapper = styled.div`
   border-collapse: collapse;
   height: 400px;
   width: 500px;
-  padding:20px 50px;
+  padding: 20px 50px;
   .fc-button.fc-prev-button,
   .fc-button.fc-next-button,
   .fc-button.fc-button-primary {
+    z-index: 0;
     border: none;
     color: black;
     background: inherit;
@@ -30,11 +31,13 @@ export const StyleWrapper = styled.div`
     }
   }
   .fc .fc-toolbar {
+    z-index: 0;
     display: flex;
     justify-content: flex-end;
     align-self: end;
   }
   .fc .fc-toolbar-title {
+    z-index: 0;
     font-size: 14px;
     margin: 0;
     align-self: center;
@@ -43,6 +46,7 @@ export const StyleWrapper = styled.div`
     border-style: none;
   }
   .fc-col-header-cell-cushion {
+    z-index: 0;
     color: #799283;
     font-weight: lighter;
   }

@@ -1,5 +1,5 @@
 import "./App.css";
-
+import * as React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
 import { Users } from "./pages/Users";
@@ -22,15 +22,15 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { createContext } from "react";
 import { authReducer, initialAuthState } from "./reducerLogin/ReducerLogin";
 
-export const myContext = createContext();
-
+let contextValue;
+export const myContext = createContext(contextValue);
 function App() {
   const [open, setOpen] = useState(true);
   const [auth, dispatchAuth] = useReducer(
     authReducer,
-    JSON.parse(localStorage.getItem("auth_data")) ?? initialAuthState
+    JSON.parse(localStorage.getItem("auth_data") || "{}") ?? initialAuthState
   );
-  const contextValue = { auth, dispatchAuth };
+  contextValue = { auth, dispatchAuth };
 
   useEffect(() => {
     if (auth.isAuth) {

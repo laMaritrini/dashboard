@@ -1,14 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
+import * as React from "react";
 import { createNewBooking, selectState } from "./bookingsSlice";
 import { useState } from "react";
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { BookingsI } from "../../interfaces";
 
-export function AddBooking({ openModal, handleClose }) {
-  const bookings = useSelector(selectState);
+export function AddBooking({ openModal, handleClose }: any) {
+  const bookings = useAppSelector(selectState);
   let id = Math.floor(Math.random() * 100000);
 
-  const [booking, setBooking] = useState({
+  const [booking, setBooking] = useState<BookingsI>({
     full_name: "",
     id: id,
     order_date: "",
@@ -21,15 +23,15 @@ export function AddBooking({ openModal, handleClose }) {
     },
     status: "",
   });
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   if (!openModal) {
     return null;
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    dispatch(createNewBooking(booking));
+    dispatch(createNewBooking());
     setBooking(
       {
         full_name: "",
@@ -44,12 +46,14 @@ export function AddBooking({ openModal, handleClose }) {
         },
         status: "",
       },
-      ...bookings
+      ...(bookings as [])
     );
     handleClose();
   };
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
     setBooking({ ...booking, [e.target.name]: e.target.value });
   };
 
@@ -126,7 +130,6 @@ export function AddBooking({ openModal, handleClose }) {
           <label htmlFor="status">Status:</label>
           <select
             value={booking.status}
-            type="text"
             name="status"
             id="status"
             onChange={handleChange}

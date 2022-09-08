@@ -56,7 +56,7 @@ export const PageNumber = styled.div`
     color: white;
     cursor: pointer;
   }
-  ${(props) =>
+  ${(props: any) =>
     props.selected
       ? css`
           background-color: #135846;

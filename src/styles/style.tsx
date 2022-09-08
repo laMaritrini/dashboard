@@ -50,7 +50,7 @@ export const NumberTd = styled.td`
 `;
 
 export const StateUser = styled.td`
-  color: ${(props) => (props.status === "ACTIVE" ? "green" : "red")};
+  color: ${(props: any) => (props.status === "ACTIVE" ? "green" : "red")};
   font-weight: 600;
 `;
 export const UserName = styled.h4`
@@ -111,5 +111,5 @@ export const ReviewButton = styled.span`
   cursor: pointer;
   font-weight: 600;
   padding: 20px;
-  color: ${props => props.status === "Archive"? 'red': 'green'}
+  color: ${(props: any) => (props.status === "Archive" ? "red" : "green")};
 `;

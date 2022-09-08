@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import * as React from "react";
 import { Footer, NavLink, UserEmail, UserName } from "../styles/style";
 import {
   ContainerMenuLateral,
@@ -13,14 +14,14 @@ import { AiOutlineSchedule } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { TbPuzzle } from "react-icons/tb";
 
-import travl from "../travl.png";
+import travl from "../assets/travl.png";
 import { useContext } from "react";
 import { myContext } from "../App";
 import { useState } from "react";
 import { ModalUser } from "./EditUser";
 import { MockUsers } from "../data/mockUsers";
 
-export function NavLateral({ open }) {
+export function NavLateral({ open }: any) {
   const { auth } = useContext(myContext);
   const [openModal, setOpenModal] = useState(false);
 
@@ -31,13 +32,15 @@ export function NavLateral({ open }) {
     setOpenModal(false);
   };
 
-  let photoUser = MockUsers.find((item) => item.full_name === auth.full_name);
+  let photoUser = MockUsers.find(
+    (item: any) => item.full_name === auth.full_name
+  );
   if (photoUser) {
     photoUser = photoUser.photo;
   }
 
   return (
-    <ContainerMenuLateral open={open} className="container-lateral-menu">
+    <ContainerMenuLateral open={open}>
       <div>
         <div>
           <Logo src={travl} alt="logo" width="200px" />

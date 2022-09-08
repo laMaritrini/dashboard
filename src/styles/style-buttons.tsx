@@ -1,20 +1,26 @@
 import styled from "styled-components";
+interface PropsI {
+  status: {
+    color: string;
+    background: string;
+  };
+}
 
 export const Button = styled.button`
-  color: ${(props) =>
-    props.status === "In progress"
+  color: ${(props: any) =>
+    props.color === "In progress"
       ? "#fec260"
-      : "" || props.status === "Check In"
+      : "" || props.color === "Check In"
       ? "#5ad07a"
-      : "" || props.status === "Check Out"
+      : "" || props.color === "Check Out"
       ? "#e23428"
       : ""};
-  background-color: ${(props) =>
-    props.status === "In progress"
+  background-color: ${(props: any) =>
+    props.color === "In progress"
       ? "#fff8bc"
-      : "" || props.status === "Check In"
+      : "" || props.color === "Check In"
       ? "#e8ffee"
-      : "" || props.status === "Check Out"
+      : "" || props.color === "Check Out"
       ? "#ffedec"
       : ""};
   width: 70%;
@@ -35,22 +41,43 @@ export const CheckStatusRoom = styled(Button)`
   color: white;
   font-size: 0.9vw;
   text-align: center;
-  background-color: ${(props) =>
+  background-color: ${(props: any) =>
     props.status === "Available" ? "green" : "red"};
 `;
 
-export const DefaultButton = styled(Button)`
+export const DefaultButton = styled.button`
   color: #135846;
   background-color: #ebf1ef;
   font-size: 14px;
   padding: 16px 24px;
   width: fit-content;
+  font-weight: 600;
+  margin: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
-export const ViewNotesButton = styled(Button)`
+export const ViewNotesButton = styled.button`
   color: #212121;
   background-color: #eef9f2;
   z-index: 0;
+  width: 70%;
+  font-size: 0.9vw;
+  font-weight: 600;
+  margin: 1em;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 export const NavPageButton = styled(Button)`

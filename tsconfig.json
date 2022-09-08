@@ -1,0 +1,9 @@
+{
+  "include": ["src/*", " types"],
+  "compilerOptions": {
+    "target": "es5",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
+  },
+  "typeRoots": ["./src/types/index.d.ts", "./node_modules/react-scrips/lib/"]
+}

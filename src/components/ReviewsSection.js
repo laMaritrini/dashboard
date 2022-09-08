@@ -22,7 +22,6 @@ export function ReviewsSection() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  
   const carouselScroll = () => {
     if (currentIndex === contacts.length - 1) {
       return setCurrentIndex(0);
@@ -43,9 +42,7 @@ export function ReviewsSection() {
     setCurrentIndex(currentIndex - 1);
   };
   return (
-    <ContainerReview
-     
-    >
+    <ContainerReview>
       <h3>Latest Review by Customers</h3>
       <div>
         {contacts.map((review) => (

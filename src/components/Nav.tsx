@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Outlet } from "react-router-dom";
 import { AuthStatus } from "./Auth";
 import { StyledFontAwesomeIcon } from "../styles/icons";
@@ -9,13 +10,12 @@ import {
   SectionTitleBar,
 } from "../styles/containers";
 
-export function Nav({ title, auth, setAuth, open, setOpen }) {
+export function Nav({ title, open, setOpen }) {
   return (
     <ContainerMenuHead>
       <SectionTitleBar>
         <StyledFontAwesomeIcon
           icon={faArrowRightArrowLeft}
-         
           onClick={() => {
             setOpen(!open);
           }}
@@ -26,7 +26,7 @@ export function Nav({ title, auth, setAuth, open, setOpen }) {
       <ContainerRow>
         <StyledFontAwesomeIcon icon={faEnvelope} />
         <StyledFontAwesomeIcon icon={faBell} />
-        <AuthStatus auth={auth} setAuth={setAuth} />
+        <AuthStatus />
         <Outlet />
       </ContainerRow>
     </ContainerMenuHead>

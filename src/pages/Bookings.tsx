@@ -1,6 +1,7 @@
+import * as React from "react";
 import { useMemo } from "react";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import { Pagination } from "../components/Pagination";
@@ -15,6 +16,7 @@ import {
   ViewNotesButton,
 } from "../styles/style-buttons";
 import { AddBooking } from "../features/bookings/AddBooking";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 
 import {
   fetchBookings,
@@ -24,9 +26,9 @@ import {
 
 let PageSize = 10;
 
-export function Bookings({ open, setOpen }) {
-  const bookings = useSelector(selectState);
-  const dispatch = useDispatch();
+export function Bookings({ open, setOpen }: any) {
+  const bookings = useAppSelector(selectState);
+  const dispatch = useAppDispatch();
   const [roomState, setRoomState] = useState([]);
   const [orderBy, setOrderBy] = useState("full_name");
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,8 +52,8 @@ export function Bookings({ open, setOpen }) {
   }, [currentPage, roomState]);
 
   useEffect(() => {
-    const orderedRooms = bookings.filter((room) => room[orderBy]);
-    orderedRooms.sort((a, b) => {
+    const orderedRooms = bookings.filter((room: any) => room[orderBy]);
+    orderedRooms.sort((a: string, b: string) => {
       if (a[orderBy] < b[orderBy]) {
         return -1;
       } else if (a[orderBy] > b[orderBy]) {
@@ -62,8 +64,8 @@ export function Bookings({ open, setOpen }) {
     setRoomState(orderedRooms);
   }, [bookings, orderBy]);
 
-  const handleRemove = (id) => {
-    dispatch(removeBooking(id));
+  const handleRemove = (id: string) => {
+    dispatch(removeBooking());
   };
 
   return (
@@ -74,7 +76,9 @@ export function Bookings({ open, setOpen }) {
         <div>
           <SelectButton
             value={orderBy}
-            onChange={(e) => setOrderBy(e.target.value)}
+            onChange={(
+              e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+            ) => setOrderBy(e.target.value)}
           >
             <option value="full_name">Guest</option>
             <option value="order_date">Order Date</option>
@@ -112,7 +116,7 @@ export function Bookings({ open, setOpen }) {
             </TrHead>
           </thead>
           <tbody>
-            {currentTableData.map((room) => (
+            {currentTableData.map((room: any) => (
               <TRow key={room.id}>
                 <td style={{ padding: "20px" }}>
                   <LinkList to={`/bookings/${room.id}`}>
@@ -138,7 +142,7 @@ export function Bookings({ open, setOpen }) {
                 </Date>
 
                 <td>
-                  <Button status={room.status}>{room.status}</Button>
+                  <Button color={room.status}>{room.status}</Button>
                 </td>
                 <td>
                   <div
@@ -159,7 +163,7 @@ export function Bookings({ open, setOpen }) {
           currentPage={currentPage}
           totalCount={roomState.length}
           pageSize={PageSize}
-          onPageChange={(page) => setCurrentPage(page)}
+          onPageChange={(page: number) => setCurrentPage(page)}
         />
       </ContainerColumn>
     </ContainerPage>

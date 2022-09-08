@@ -1,3 +1,5 @@
+import { InitialAuthStateI } from "../interfaces";
+
 export const types = {
   login: "login",
   logout: "logout",
@@ -5,7 +7,7 @@ export const types = {
   email: "email",
 };
 
-export const authReducer = (state, action) => {
+export const authReducer = (state: typeof initialAuthState, action: any) => {
   switch (action.type) {
     case types.login:
       return {
@@ -13,7 +15,6 @@ export const authReducer = (state, action) => {
         isAuth: true,
         full_name: action.value.full_name,
         email: action.value.email,
-       
       };
     case types.logout:
       return { ...state, isAuth: false };
@@ -26,9 +27,9 @@ export const authReducer = (state, action) => {
       return state;
   }
 };
-export const initialAuthState = {
+
+export const initialAuthState: InitialAuthStateI = {
   isAuth: false,
   full_name: "",
   email: "",
-
 };
