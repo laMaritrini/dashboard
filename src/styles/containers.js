@@ -55,7 +55,6 @@ export const ContainerMenuLateral = styled.div`
   padding-left: 20px;
   text-align: left;
   width: 300px;
-
 `;
 export const Table = styled.table`
   border-collapse: separate;
@@ -127,7 +126,7 @@ export const UserContainer = styled.div`
 export const ContainerReview = styled.div`
   z-index: 0;
   text-align: start;
-  max-width: 80vw;
+  max-width: 76vw;
   max-height: 100%;
   background-color: white;
   border-radius: 20px;
