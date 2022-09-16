@@ -96,3 +96,19 @@ export const LightButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
 `;
+export const SliderButton = styled.button`
+  margin: 20px 0 0 20px;
+  border: none;
+  width: fit-content;
+  color: #ebf1ef;
+  font-weight: 900;
+  background-color: #135846;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  &:active {
+    color: #135846;
+    background-color: #ebf1ef;
+    border: 1px solid #135846;
+  }
+`;

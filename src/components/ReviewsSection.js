@@ -12,6 +12,7 @@ import {
   selectStateContacts,
 } from "../features/contact/contactSlice";
 import { useEffect, useState } from "react";
+import { SliderButton } from "../styles/style-buttons";
 
 export function ReviewsSection() {
   const contacts = useSelector(selectStateContacts);
@@ -22,7 +23,6 @@ export function ReviewsSection() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  
   const carouselScroll = () => {
     if (currentIndex === contacts.length - 1) {
       return setCurrentIndex(0);
@@ -43,9 +43,7 @@ export function ReviewsSection() {
     setCurrentIndex(currentIndex - 1);
   };
   return (
-    <ContainerReview
-     
-    >
+    <ContainerReview>
       <h3>Latest Review by Customers</h3>
       <div>
         {contacts.map((review) => (
@@ -80,8 +78,8 @@ export function ReviewsSection() {
           </Review>
         ))}
       </div>
-      <button onClick={prev}>Prev</button>
-      <button onClick={next}>Next</button>
+      <SliderButton onClick={prev}>← Prev</SliderButton>
+      <SliderButton onClick={next}>Next →</SliderButton>
     </ContainerReview>
   );
 }
