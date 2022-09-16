@@ -5,7 +5,7 @@ export const MockReservations = [
     order_date: "2021-10-17",
     check_in: "2022-05-30",
     check_out: "2022-06-29",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 55,
@@ -18,7 +18,7 @@ export const MockReservations = [
     order_date: "2022-04-14",
     check_in: "2021-11-20",
     check_out: "2022-03-12",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 18,
@@ -31,7 +31,7 @@ export const MockReservations = [
     order_date: "2022-04-14",
     check_in: "2021-09-06",
     check_out: "2021-11-09",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 89,
@@ -44,7 +44,7 @@ export const MockReservations = [
     order_date: "2022-01-02",
     check_in: "2021-08-25",
     check_out: "2022-07-14",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Single bed",
       number: 46,
@@ -57,7 +57,7 @@ export const MockReservations = [
     order_date: "2022-07-08",
     check_in: "2022-05-01",
     check_out: "2021-09-30",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 36,
@@ -70,7 +70,7 @@ export const MockReservations = [
     order_date: "2022-01-20",
     check_in: "2021-09-02",
     check_out: "2022-02-14",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 88,
@@ -83,7 +83,7 @@ export const MockReservations = [
     order_date: "2022-01-22",
     check_in: "2022-02-09",
     check_out: "2022-05-28",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 64,
@@ -96,7 +96,7 @@ export const MockReservations = [
     order_date: "2021-10-25",
     check_in: "2021-10-12",
     check_out: "2021-10-18",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 51,
@@ -109,7 +109,7 @@ export const MockReservations = [
     order_date: "2021-08-10",
     check_in: "2022-02-28",
     check_out: "2022-04-05",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 74,
@@ -122,7 +122,7 @@ export const MockReservations = [
     order_date: "2022-03-06",
     check_in: "2022-05-11",
     check_out: "2022-01-29",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Suite",
       number: 27,
@@ -135,7 +135,7 @@ export const MockReservations = [
     order_date: "2021-11-08",
     check_in: "2022-01-07",
     check_out: "2022-05-22",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 42,
@@ -148,7 +148,7 @@ export const MockReservations = [
     order_date: "2022-04-20",
     check_in: "2021-10-13",
     check_out: "2022-07-20",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 75,
@@ -161,7 +161,7 @@ export const MockReservations = [
     order_date: "2021-11-07",
     check_in: "2021-10-13",
     check_out: "2022-02-17",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 3,
@@ -174,7 +174,7 @@ export const MockReservations = [
     order_date: "2021-10-16",
     check_in: "2022-05-19",
     check_out: "2022-02-26",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Single bed",
       number: 38,
@@ -187,7 +187,7 @@ export const MockReservations = [
     order_date: "2022-03-24",
     check_in: "2021-11-25",
     check_out: "2021-09-21",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 67,
@@ -200,7 +200,7 @@ export const MockReservations = [
     order_date: "2022-01-08",
     check_in: "2022-05-03",
     check_out: "2021-12-12",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 50,
@@ -213,7 +213,7 @@ export const MockReservations = [
     order_date: "2021-09-17",
     check_in: "2021-11-05",
     check_out: "2021-11-30",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Suite",
       number: 39,
@@ -226,7 +226,7 @@ export const MockReservations = [
     order_date: "2021-08-16",
     check_in: "2022-07-27",
     check_out: "2022-05-25",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 41,
@@ -239,7 +239,7 @@ export const MockReservations = [
     order_date: "2022-02-02",
     check_in: "2022-05-31",
     check_out: "2022-03-15",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Single bed",
       number: 80,
@@ -252,7 +252,7 @@ export const MockReservations = [
     order_date: "2022-07-27",
     check_in: "2022-06-11",
     check_out: "2022-02-23",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Single bed",
       number: 53,
@@ -265,7 +265,7 @@ export const MockReservations = [
     order_date: "2022-05-13",
     check_in: "2022-01-01",
     check_out: "2021-11-14",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 30,
@@ -278,7 +278,7 @@ export const MockReservations = [
     order_date: "2022-07-03",
     check_in: "2022-04-14",
     check_out: "2022-03-15",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Suite",
       number: 2,
@@ -291,7 +291,7 @@ export const MockReservations = [
     order_date: "2021-12-19",
     check_in: "2022-04-15",
     check_out: "2021-11-27",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 94,
@@ -304,7 +304,7 @@ export const MockReservations = [
     order_date: "2022-06-29",
     check_in: "2021-09-15",
     check_out: "2021-12-29",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 22,
@@ -317,7 +317,7 @@ export const MockReservations = [
     order_date: "2022-03-14",
     check_in: "2021-09-14",
     check_out: "2022-06-24",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Suite",
       number: 76,
@@ -330,7 +330,7 @@ export const MockReservations = [
     order_date: "2022-02-21",
     check_in: "2022-07-09",
     check_out: "2022-07-17",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 62,
@@ -343,7 +343,7 @@ export const MockReservations = [
     order_date: "2021-12-21",
     check_in: "2022-02-14",
     check_out: "2022-02-21",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Single bed",
       number: 55,
@@ -356,7 +356,7 @@ export const MockReservations = [
     order_date: "2022-04-11",
     check_in: "2021-09-06",
     check_out: "2021-09-09",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Suite",
       number: 89,
@@ -369,7 +369,7 @@ export const MockReservations = [
     order_date: "2021-11-23",
     check_in: "2022-04-10",
     check_out: "2021-11-13",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 17,
@@ -382,7 +382,7 @@ export const MockReservations = [
     order_date: "2022-01-29",
     check_in: "2022-01-22",
     check_out: "2021-11-07",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 6,
@@ -395,7 +395,7 @@ export const MockReservations = [
     order_date: "2021-09-09",
     check_in: "2022-08-02",
     check_out: "2022-04-13",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Suite",
       number: 27,
@@ -408,7 +408,7 @@ export const MockReservations = [
     order_date: "2022-01-13",
     check_in: "2021-08-12",
     check_out: "2022-07-21",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 94,
@@ -421,7 +421,7 @@ export const MockReservations = [
     order_date: "2022-01-04",
     check_in: "2022-01-20",
     check_out: "2022-01-28",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Suite",
       number: 11,
@@ -434,7 +434,7 @@ export const MockReservations = [
     order_date: "2022-06-16",
     check_in: "2022-05-27",
     check_out: "2022-03-28",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Suite",
       number: 88,
@@ -447,7 +447,7 @@ export const MockReservations = [
     order_date: "2022-03-31",
     check_in: "2022-03-23",
     check_out: "2022-06-10",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double Superior",
       number: 14,
@@ -460,7 +460,7 @@ export const MockReservations = [
     order_date: "2022-01-16",
     check_in: "2021-10-31",
     check_out: "2022-07-25",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 20,
@@ -473,7 +473,7 @@ export const MockReservations = [
     order_date: "2022-03-30",
     check_in: "2021-09-20",
     check_out: "2022-06-18",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Double bed",
       number: 20,
@@ -486,7 +486,7 @@ export const MockReservations = [
     order_date: "2022-06-25",
     check_in: "2021-09-30",
     check_out: "2022-06-21",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Single bed",
       number: 12,
@@ -499,7 +499,7 @@ export const MockReservations = [
     order_date: "2022-04-22",
     check_in: "2022-06-30",
     check_out: "2022-06-23",
-    special_request: "special_request",
+    special_request: "A pic of Charlie Sheen on the bedside table",
     room_type: {
       type: "Single bed",
       number: 84,

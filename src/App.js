@@ -68,7 +68,7 @@ function App() {
             path="/bookings/:id"
             element={
               <RequireAuth>
-                <Booking />
+                <Booking open={open} setOpen={setOpen} />
               </RequireAuth>
             }
           />

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { updateBooking } from "./bookingsSlice";
 import { useDispatch } from "react-redux";
-import { CloseButton } from "../../styles/style-buttons";
+import { CloseButton, DefaultButton } from "../../styles/style-buttons";
+import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 
-export function UpdateBooking({ edit, open, handleClose }) {
+export function UpdateBooking({ edit, openModal, handleClose }) {
   const dispatch = useDispatch();
   const [editForm, setEditForm] = useState({
     full_name: "",
@@ -25,7 +26,7 @@ export function UpdateBooking({ edit, open, handleClose }) {
     }
   }, [edit]);
 
-  if (!open) {
+  if (!openModal) {
     return null;
   }
   const handleChange = (e) => {
@@ -50,54 +51,56 @@ export function UpdateBooking({ edit, open, handleClose }) {
   };
 
   return (
-    <form action="">
+    <BookingModal>
       <CloseButton onClick={handleClose}>X</CloseButton>
-      <div>
-        <label htmlFor="full_name">Full name:</label>
-        <input
-          type="text"
-          value={editForm.full_name}
-          name="full_name"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="order_date">Order date:</label>
-        <input
-          type="date"
-          value={editForm.order_date}
-          name="order_date"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="check_in">Check In:</label>
-        <input
-          type="date"
-          value={editForm.check_in}
-          name="check_in"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="check_out">Check Out:</label>
-        <input
-          type="date"
-          value={editForm.check_out}
-          name="check_out"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="special_request">Special Request:</label>
-        <input
-          type="text "
-          value={editForm.special_request}
-          name="special_request"
-          onChange={handleChange}
-        />
-      </div>
-      {/* <div>
+      <TitleModal>Edit booking info</TitleModal>
+      <FormBooking>
+        <div>
+          <label htmlFor="full_name">Full name:</label>
+          <input
+            type="text"
+            value={editForm.full_name}
+            name="full_name"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="order_date">Order date:</label>
+          <input
+            type="date"
+            value={editForm.order_date}
+            name="order_date"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="check_in">Check In:</label>
+          <input
+            type="date"
+            value={editForm.check_in}
+            name="check_in"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="check_out">Check Out:</label>
+          <input
+            type="date"
+            value={editForm.check_out}
+            name="check_out"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="special_request">Special Request:</label>
+          <input
+            type="text "
+            value={editForm.special_request}
+            name="special_request"
+            onChange={handleChange}
+          />
+        </div>
+        {/* <div>
         <label htmlFor="type">Room Type:</label>
         <input
           type="text"
@@ -115,16 +118,23 @@ export function UpdateBooking({ edit, open, handleClose }) {
           onChange={handleChange}
         />
       </div> */}
-      <div>
-        <label htmlFor="status">Status:</label>
-        <input
-          type="text"
-          value={editForm.status}
-          name="status"
-          onChange={handleChange}
-        />
-      </div>
-      <button onClick={handleSubmit}>Save</button>
-    </form>
+        <div>
+          <label htmlFor="status">Status:</label>
+          <select
+            value={editForm.status}
+            type="text"
+            name="status"
+            id="status"
+            onChange={handleChange}
+          >
+            <option value="">Select One...</option>
+            <option value="In progress">In progress</option>
+            <option value="Check In">Check In</option>
+            <option value="Check Out">Check Out</option>
+          </select>
+        </div>
+        <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
+      </FormBooking>
+    </BookingModal>
   );
 }

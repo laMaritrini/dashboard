@@ -62,7 +62,7 @@ export function AddUser({ openModal, handleClose }) {
         <div>
           <label htmlFor="photo">Photo:</label>
           <input
-            type="text"
+            type="file"
             value={user.photo}
             name="photo"
             onChange={handleChange}
