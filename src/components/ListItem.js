@@ -1,7 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { TRow, UserName, Date, Id, PriceRoom, LinkList } from "../styles/style";
+import {
+  TRow,
+  UserName,
+  Date,
+  Id,
+  PriceRoom,
+  LinkList,
+  PerNight,
+} from "../styles/style";
 import { CheckStatusRoom } from "../styles/style-buttons";
 import { Image } from "../styles/style-image";
 
@@ -66,13 +74,13 @@ export const ListItem = ({
         <span> $</span>
         {item.price}
 
-        <span style={{ color: "grey", fontWeight: "400" }}>/night </span>
+        <PerNight>/night </PerNight>
       </PriceRoom>
 
       <PriceRoom>
         <span> $</span>
         {item.discount}
-        <span style={{ color: "grey", fontWeight: "400" }}>/night</span>
+        <PerNight>/night</PerNight>
       </PriceRoom>
 
       <td>

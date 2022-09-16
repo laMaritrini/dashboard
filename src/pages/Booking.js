@@ -78,7 +78,7 @@ export function Booking({ open, setOpen }) {
           <div>
             <ButtonEdit
               onClick={() => {
-                handleOpen(booking);
+                handleOpen();
               }}
             >
               Edit

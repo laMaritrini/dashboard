@@ -88,7 +88,7 @@ function App() {
             path="/rooms/:id"
             element={
               <RequireAuth>
-                <Room />
+                <Room open={open} setOpen={setOpen} />
               </RequireAuth>
             }
           />
@@ -106,7 +106,7 @@ function App() {
             path="/users/:id"
             element={
               <RequireAuth>
-                <User />
+                <User open={open} setOpen={setOpen} />
               </RequireAuth>
             }
           />

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Modal } from "./modal";
 import { Id } from "./style";
-import { Button } from "./style-buttons";
+import { Button, CheckStatusRoom } from "./style-buttons";
 
 export const ContainerDetail = styled.div`
   margin: 30px;
@@ -69,4 +69,20 @@ export const LinkDetail = styled(Link)`
 export const ModalDetail = styled(Modal)`
   top: 30%;
   left: 40%;
+`;
+export const RoomBlock = styled.div`
+  display: flex;
+`;
+export const PhotoDetail = styled.img`
+  width: 50%;
+  margin: 0 50px 20px 0;
+  border-radius: 20px;
+`;
+
+export const CheckStatusButton = styled(CheckStatusRoom)`
+  width: fit-content;
+`;
+export const PriceDetail = styled.div`
+  font-weight: 700;
+  font-size: 16px;
 `;

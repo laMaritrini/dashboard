@@ -111,5 +111,9 @@ export const ReviewButton = styled.span`
   cursor: pointer;
   font-weight: 600;
   padding: 20px;
-  color: ${props => props.status === "Archive"? 'red': 'green'}
+  color: ${(props) => (props.status === "Archive" ? "red" : "green")};
+`;
+export const PerNight = styled.span`
+  color: grey;
+  font-weight: 400;
 `;

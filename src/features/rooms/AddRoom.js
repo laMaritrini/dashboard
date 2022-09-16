@@ -58,7 +58,7 @@ export function AddRoom({ openModal, handleClose }) {
         <div>
           <label htmlFor="photo">Photo:</label>
           <input
-            type="text"
+            type="file"
             value={room.photo}
             name="photo"
             onChange={handleChange}
