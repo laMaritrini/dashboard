@@ -14,11 +14,11 @@ export const ContainerDetail = styled.div`
 `;
 
 export const NameDetail = styled.h2`
-  padding: 30px 30px 0 30px;
+  padding: 30px 30px 0 0px;
 `;
 export const IdDetail = styled(Id)`
   font-size: 15px;
-  padding: 0 30px;
+  padding: 0 30 px 0 0;
 `;
 
 export const ItemsDetail = styled.p`
@@ -85,4 +85,12 @@ export const CheckStatusButton = styled(CheckStatusRoom)`
 export const PriceDetail = styled.div`
   font-weight: 700;
   font-size: 16px;
+`;
+export const StatusUserDetail = styled.div`
+  color: ${(props) => (props.status === "ACTIVE" ? "green" : "red")};
+  font-weight: 600;
+`;
+export const TitleDetail = styled.h3`
+  font-weight: 600;
+  font-size: 30px;
 `;

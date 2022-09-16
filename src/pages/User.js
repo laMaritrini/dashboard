@@ -1,18 +1,32 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Nav } from "../components/Nav";
+import { NavLateral } from "../components/Nav-lateral";
 import { UpdateUser } from "../features/users/UpdateUser";
 import {
   fetchUser,
   removeUser,
   selectStateDetail,
 } from "../features/users/usersSlice";
+import { ContainerColumn, ContainerPage } from "../styles/containers";
+import {
+  ButtonDelete,
+  ButtonEdit,
+  ContainerDetail,
+  ItemsDetail,
+  LinkDetail,
+  PhotoDetail,
+  RoomBlock,
+  StatusUserDetail,
+  TitleDetail,
+} from "../styles/detail-page";
 
-export function User() {
+export function User({ open, setOpen }) {
   const { id } = useParams();
   const user = useSelector(selectStateDetail);
   const [edit, setEdit] = useState("");
-  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,12 +38,12 @@ export function User() {
   };
   const handleOpen = (room) => {
     setEdit(room);
-    setOpen(true);
+    setOpenModal(true);
   };
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setOpenModal(false);
   const showPassword = () => {
     let input = document.getElementById("input");
-    // eslint-disable-next-line no-cond-assign
+
     if (input.type === "password") {
       input.type = "text";
     } else {
@@ -38,42 +52,66 @@ export function User() {
   };
 
   return (
-    <div>
-      <h3>User Detail </h3>
-      <img src={user.photo} alt="" />
-      <p>Full Name: {user.full_name}</p>
-      <p>Work Position: {user.job_title}</p>
-      <p>Email: {user.email}</p>
-      <p>Phone Number: {user.phone_number}</p>
-      <p>Start Date: {user.start_date}</p>
-      <p>Description: {user.working_functions}</p>
-      <span>Password: </span>
-      <input type="password" id="input" value={user.password} name="password" />
-      <br />
-      <input
-        type="checkbox"
-        name="checkbox"
-        onClick={showPassword}
-        value="checkbox"
-      />
-      Show Password
-      <p>Status: {user.working_situation}</p>
-      <button
-        onClick={() => {
-          handleRemove(user.id);
-        }}
-      >
-        Delete
-      </button>
-      <button
-        onClick={() => {
-          handleOpen(user);
-        }}
-      >
-        Edit
-      </button>
-      <UpdateUser open={open} edit={edit} handleClose={handleClose} />
-      <Link to="/users">Back to Users List</Link>
-    </div>
+    <ContainerPage>
+      <NavLateral open={open} setOpen={setOpen} />
+      <ContainerColumn>
+        <Nav title="User Detail" open={open} setOpen={setOpen} />
+        <ContainerDetail>
+          <RoomBlock>
+            <PhotoDetail src={user.photo} alt="" />
+            <div>
+              <ItemsDetail>Full Name </ItemsDetail>
+              <TitleDetail>{user.full_name}</TitleDetail>
+              <ItemsDetail>Work Position </ItemsDetail>
+              <h4>{user.job_title}</h4>
+            </div>
+          </RoomBlock>
+          <ItemsDetail>Email </ItemsDetail>
+          <p>{user.email}</p>
+          <ItemsDetail>Phone Number </ItemsDetail>
+          <p>{user.phone_number}</p>
+          <ItemsDetail>Start Date </ItemsDetail>
+          <p>{user.start_date}</p>
+          <ItemsDetail>Description </ItemsDetail>
+          <p>{user.working_functions}</p>
+          <ItemsDetail>Password </ItemsDetail>
+          <input
+            type="password"
+            id="input"
+            value={user.password}
+            name="password"
+          />
+          <br />
+          <input type="checkbox" name="checkbox" onClick={showPassword} />
+          Show Password
+          <ItemsDetail>Status </ItemsDetail>
+          <StatusUserDetail status={user.working_situation}>
+            {user.working_situation}
+          </StatusUserDetail>
+          <div>
+            <ButtonEdit
+              onClick={() => {
+                handleOpen(user);
+              }}
+            >
+              Edit
+            </ButtonEdit>
+            <ButtonDelete
+              onClick={() => {
+                handleRemove(user.id);
+              }}
+            >
+              🗑️
+            </ButtonDelete>
+            <UpdateUser
+              openModal={openModal}
+              edit={edit}
+              handleClose={handleClose}
+            />
+          </div>
+          <LinkDetail to="/users">← Back to Users List</LinkDetail>
+        </ContainerDetail>
+      </ContainerColumn>
+    </ContainerPage>
   );
 }
