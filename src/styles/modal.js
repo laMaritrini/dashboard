@@ -15,7 +15,7 @@ export const Modal = styled.div`
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border-radius: 20px;
-  z-index: 1;
+  z-index: 3;
 `;
 export const BookingModal = styled(Modal)`
   display: flex;
@@ -25,9 +25,9 @@ export const BookingModal = styled(Modal)`
   top: 20%;
   left: 30%;
   & > button {
-   position: absolute;
-   top: 20px;
-   right: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
 `;
 
