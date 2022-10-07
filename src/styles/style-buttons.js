@@ -36,7 +36,7 @@ export const CheckStatusRoom = styled(Button)`
   font-size: 0.9vw;
   text-align: center;
   background-color: ${(props) =>
-    props.status === "Available" ? "green" : "red"};
+    props.status === "AVAILABLE" ? "green" : "red"};
 `;
 
 export const DefaultButton = styled(Button)`

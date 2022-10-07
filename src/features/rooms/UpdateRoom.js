@@ -120,8 +120,8 @@ export function UpdateRoom({ edit, openModal, handleClose }) {
             onChange={handleChange}
           >
             <option value="">Select One...</option>
-            <option value="Available">Available</option>
-            <option value="Booked">Booked</option>
+            <option value="Available">AVAILABLE</option>
+            <option value="Booked">BOOKED</option>
           </select>
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>

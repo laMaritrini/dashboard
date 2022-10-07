@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { MockReservations } from "../../data/mockReservations";
+import { getBookings, getBooking } from "../../service/api-booking";
 
 export function delay(data, time) {
   return new Promise((resolve, reject) => {
@@ -9,16 +10,13 @@ export function delay(data, time) {
   });
 }
 
-export const fetchBookings = createAsyncThunk(
-  "post/fetchBookings",
-  async () => {
-    return await delay(MockReservations, 100);
-  }
-);
+export const fetchBookings = createAsyncThunk("get/fetchBookings", async () => {
+  return await getBookings();
+});
 
 export const fetchBooking = createAsyncThunk("get/fetchBooking", async (id) => {
-  const oneBooking = MockReservations.find((item) => item.id === id);
-  return await delay(oneBooking, 100);
+  const response = await getBooking(id);
+  return response;
 });
 
 export const createNewBooking = createAsyncThunk(

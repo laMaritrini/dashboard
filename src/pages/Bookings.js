@@ -21,6 +21,9 @@ import {
   removeBooking,
   selectState,
 } from "../features/bookings/bookingsSlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 let PageSize = 10;
 
@@ -38,6 +41,7 @@ export function Bookings({ open, setOpen }) {
   const handleClose = () => {
     setOpenModal(false);
   };
+  console.log(bookings);
 
   useEffect(() => {
     dispatch(fetchBookings());
@@ -70,6 +74,7 @@ export function Bookings({ open, setOpen }) {
     <ContainerPage>
       <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
+        <ToastContainer autoClose={2000} />
         <Nav title="Bookings" open={open} setOpen={setOpen} />
         <div>
           <SelectButton
@@ -113,27 +118,27 @@ export function Bookings({ open, setOpen }) {
           </thead>
           <tbody>
             {currentTableData.map((room) => (
-              <TRow key={room.id}>
+              <TRow key={room._id}>
                 <td style={{ padding: "20px" }}>
-                  <LinkList to={`/bookings/${room.id}`}>
+                  <LinkList to={`/bookings/${room._id}`}>
                     <UserName>{room.full_name}</UserName>
-                    <Id>{room.id}</Id>
+                    <Id>{room._id}</Id>
                   </LinkList>
                 </td>
 
-                <Date>{room.order_date}</Date>
+                <Date>{room.order_date.slice(0, 10)}</Date>
 
-                <Date>{room.check_in}</Date>
+                <Date>{room.check_in.slice(0, 10)}</Date>
 
-                <Date>{room.check_out}</Date>
+                <Date>{room.check_out.slice(0, 10)}</Date>
 
                 <td>
                   <ViewNotesButton>View Notes</ViewNotesButton>
                 </td>
                 <Date>
                   <div>
-                    {room.room_type.type}
-                    <span>- {room.room_type.number}</span>
+                    {room.id_room.room_type}
+                    <span>- {room.id_room.room_number}</span>
                   </div>
                 </Date>
 
@@ -144,7 +149,7 @@ export function Bookings({ open, setOpen }) {
                   <div
                     style={{ cursor: "pointer" }}
                     onClick={() => {
-                      handleRemove(room.id);
+                      handleRemove(room._id);
                     }}
                   >
                     🗑️

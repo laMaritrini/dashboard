@@ -1,9 +1,10 @@
 import { useState } from "react";
+
 import { useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { myContext } from "../App";
-import { MockUsers } from "../data/mockUsers";
 import { types } from "../reducerLogin/ReducerLogin";
+import { loginUser } from "../service/api-login";
 import { FormLogin, NavLink } from "../styles/style";
 import { DefaultButton } from "../styles/style-buttons";
 
@@ -11,33 +12,32 @@ export function Login() {
   let navigate = useNavigate();
   let location = useLocation();
   const { auth, dispatchAuth } = useContext(myContext);
-  const [input, setInput] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   console.log(auth);
-  function handleSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    const dataInput = MockUsers.find(
-      (item) => item.password === input.password && item.email === input.email
-    );
-    if (dataInput) {
+
+    const token = await loginUser({
+      email,
+      password,
+    });
+
+    if (token) {
       dispatchAuth({
         type: types.login,
-        value: {
-          email: dataInput.email,
-        },
+        value: token,
+  
       });
+
       let from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
     } else {
-      dispatchAuth({ type: types.logout });
+      dispatchAuth({ type: types.logout, token: "" });
     }
   }
 
-  const handleChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
   return (
     <FormLogin onSubmit={handleSubmit}>
       <h1>Login</h1>
@@ -47,8 +47,8 @@ export function Login() {
         className="email"
         name="email"
         placeholder="email"
-        value={input.email}
-        onChange={handleChange}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
 
       <label htmlFor="password">Password: </label>
@@ -56,16 +56,16 @@ export function Login() {
         className="password"
         name="password"
         type="password"
-        value={input.password}
-        onChange={handleChange}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
       <DefaultButton type="submit" className="login">
         Login
       </DefaultButton>
 
-      <p>Email: Dorothy79@hotmail.com</p>
-      <p>Password: FRG3T28Y88H8W6GRR</p>
+      <p>Email: Veda76@hotmail.com</p>
+      <p>Password: 12345</p>
       <NavLink to={"/"}>Dashboard</NavLink>
     </FormLogin>
   );

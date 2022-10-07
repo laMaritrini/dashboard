@@ -48,7 +48,7 @@ export function ReviewsSection() {
       <div>
         {contacts.map((review) => (
           <Review
-            key={review.id}
+            key={review._id}
             style={{
               transform: `translate(-${currentIndex * 110}%)`,
               transition: "1s cubic-bezier(0.39, 0.575, 0.575, 1",
@@ -68,7 +68,7 @@ export function ReviewsSection() {
               <Image src={review.photo} alt="avatar" />
               <div>
                 <h4>{review.customer}</h4>
-                <p>{review.date}</p>
+                <p>{review.date.slice(0, 10)}</p>
               </div>
               <div style={{ display: "flex" }}>
                 <StyledIconReviewGreen icon={faCheckCircle} />

@@ -1,19 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { useState } from "react";
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
-import { createNewUser, selectStateUsers } from "./usersSlice";
+import { createNewUser } from "./usersSlice";
 
 export function AddUser({ openModal, handleClose }) {
-  const users = useSelector(selectStateUsers);
-  let id = Math.floor(Math.random() * 100000);
-
   const [user, setUser] = useState({
     photo: "",
     full_name: "",
     job_title: "",
-    id: id,
     email: "",
     working_functions: "",
     phone_number: "",
@@ -30,27 +26,12 @@ export function AddUser({ openModal, handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createNewUser(user));
-    setUser(
-      {
-        photo: "",
-        full_name: "",
-        job_title: "",
-        id: id,
-        email: "",
-        working_functions: "",
-        phone_number: "",
-        start_date: "",
-        working_situation: "",
-        password: "",
-      },
-      ...users
-    );
     handleClose();
   };
+  console.log(user);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   return (
@@ -63,6 +44,7 @@ export function AddUser({ openModal, handleClose }) {
           <label htmlFor="photo">Photo:</label>
           <input
             type="file"
+            accept="image/*"
             value={user.photo}
             name="photo"
             onChange={handleChange}

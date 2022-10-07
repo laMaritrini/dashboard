@@ -1,41 +1,40 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { MockUsers } from "../../data/mockUsers";
 
-export function delay(data, time) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data);
-    }, time);
-  });
-}
+import {
+  createUser,
+  deleteUser,
+  editUser,
+  getUser,
+  getUsers,
+} from "../../service/api-user";
 
-export const fetchUsers = createAsyncThunk("post/fetchUsers", async () => {
-  return await delay(MockUsers, 100);
+export const fetchUsers = createAsyncThunk("get/fetchUsers", async () => {
+  return await getUsers();
 });
 
 export const fetchUser = createAsyncThunk("get/fetchUser", async (id) => {
-  const oneUser = MockUsers.find((item) => item.id === id);
-  return await delay(oneUser, 100);
+  const response = await getUser(id);
+  return response;
 });
 
 export const createNewUser = createAsyncThunk(
   "create/createNewUser",
   async (data) => {
-    const newArray = data;
-    return await delay((MockUsers, newArray), 100);
+    const response = await createUser(data);
+    return response;
   }
 );
+
 export const removeUser = createAsyncThunk("delete/removeUser", async (id) => {
-  const newUsersArray = MockUsers.filter((item) => item.id !== id);
-  return await delay(newUsersArray, 100);
+  return await deleteUser(id);
 });
+
 export const updateUser = createAsyncThunk(
   "update/updateUser",
   async (id, data) => {
-    const newUsersArray = MockUsers.map((item) =>
-      item.id === id ? { ...item, data } : item
-    );
-    return await delay(newUsersArray, 100);
+    const response = await editUser(id, data);
+    console.log(data, "resp");
+    return response;
   }
 );
 
@@ -63,11 +62,20 @@ const usersSlice = createSlice({
     });
     builder.addCase(removeUser.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.users = action.payload;
+      const newUsers = state.users.filter(
+        (item) => item._id !== action.payload
+      );
+      state.users = [...newUsers];
     });
     builder.addCase(updateUser.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.users = action.payload;
+      const index = state.users.findIndex(
+        (item) => item._id === action.payload._id
+      );
+      state.users[index] = {
+        ...state.users[index],
+        ...action.payload,
+      };
     });
   },
 });

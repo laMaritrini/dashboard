@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { MockRooms } from "../../data/mockRooms";
+import { getRoom, getRooms } from "../../service/api-rooms";
 
 export function delay(data, time) {
   return new Promise((resolve, reject) => {
@@ -9,14 +10,13 @@ export function delay(data, time) {
   });
 }
 
-export const fetchRooms = createAsyncThunk("post/fetchRooms",
- async () => {
-  return await delay(MockRooms, 100);
+export const fetchRooms = createAsyncThunk("post/fetchRooms", async () => {
+  return await getRooms();
 });
 
 export const fetchRoom = createAsyncThunk("get/fetchRoom", async (id) => {
-  const oneRoom = MockRooms.find((item) => item.id === id);
-  return await delay(oneRoom, 100);
+  const oneRoom = await getRoom(id);
+  return oneRoom;
 });
 
 export const createNewRoom = createAsyncThunk(
@@ -26,13 +26,10 @@ export const createNewRoom = createAsyncThunk(
     return await delay((MockRooms, newArray), 100);
   }
 );
-export const removeRoom = createAsyncThunk(
-  "delete/removeRoom",
-  async (id) => {
-    const newRoomsArray = MockRooms.filter((item) => item.id !== id);
-    return await delay(newRoomsArray, 100);
-  }
-);
+export const removeRoom = createAsyncThunk("delete/removeRoom", async (id) => {
+  const newRoomsArray = MockRooms.filter((item) => item.id !== id);
+  return await delay(newRoomsArray, 100);
+});
 export const updateRoom = createAsyncThunk(
   "update/updateRoom",
   async (id, data) => {
@@ -56,7 +53,6 @@ const roomsSlice = createSlice({
     builder.addCase(fetchRooms.fulfilled, (state, action) => {
       state.status = "succeeded";
       state.rooms = action.payload;
-
     });
     builder.addCase(fetchRoom.fulfilled, (state, action) => {
       state.status = "succeeded";
@@ -78,7 +74,6 @@ const roomsSlice = createSlice({
 });
 
 export default roomsSlice.reducer;
-
 
 export const selectStateRooms = (state) => state.rooms.rooms;
 export const selectStateDetail = (state) => state.rooms.room;

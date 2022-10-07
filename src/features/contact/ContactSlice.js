@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { MockContacts } from "../../data/mockContacts";
+import { getContacts } from "../../service/api-contact";
 
 export function delay(data, time) {
   return new Promise((resolve, reject) => {
@@ -12,7 +13,7 @@ export function delay(data, time) {
 export const fetchContacts = createAsyncThunk(
   "post/fetchContacts",
   async () => {
-    return await delay(MockContacts, 100);
+    return await getContacts();
   }
 );
 

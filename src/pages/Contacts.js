@@ -73,18 +73,18 @@ export function Contacts({ open, setOpen }) {
             </TrHead>
           </thead>
           <tbody>
-            {currentTableData.map((review) => (
-              <TRow key={review.id}>
+            {currentTableData.map((review, index) => (
+              <TRow key={review._id}>
                 <td
                   style={{
                     padding: "20px",
                   }}
                 >
-                  {review.id}
+                  {index}
                 </td>
-                <Date>{review.date}</Date>
+                <Date>{review.date.slice(0, 10)}</Date>
                 <td>
-                  <LinkList to={`/contacts/${review.id}`}>
+                  <LinkList to={`/contacts/${review._id}`}>
                     <UserName> {review.customer}</UserName>
                   </LinkList>
                 </td>
@@ -96,7 +96,7 @@ export function Contacts({ open, setOpen }) {
                   <ReviewButton
                     status="Archive"
                     onClick={() => {
-                      handleRemove(review.id);
+                      handleRemove(review._id);
                     }}
                   >
                     Archive

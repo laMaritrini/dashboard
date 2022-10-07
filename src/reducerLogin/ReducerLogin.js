@@ -11,12 +11,11 @@ export const authReducer = (state, action) => {
       return {
         ...state,
         isAuth: true,
-        full_name: action.value.full_name,
+        token: action.value.token,
         email: action.value.email,
-       
       };
     case types.logout:
-      return { ...state, isAuth: false };
+      return initialAuthState;
     case types.full_name:
       return { ...state, full_name: action.value };
     case types.email:
@@ -28,7 +27,6 @@ export const authReducer = (state, action) => {
 };
 export const initialAuthState = {
   isAuth: false,
-  full_name: "",
+  token: "",
   email: "",
-
 };

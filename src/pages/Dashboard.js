@@ -14,11 +14,20 @@ import { StyledIconKpi } from "../styles/icons";
 import { ReviewsSection } from "../components/ReviewsSection";
 import { BarChart } from "../components/BarChart";
 import { Calendar } from "../components/Calendar";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsers, selectStateUsers } from "../features/users/usersSlice";
+import { useEffect } from "react";
 
 export function Dashboard({ open, setOpen }) {
+  const users = useSelector(selectStateUsers);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
   return (
     <ContainerPage>
-      <NavLateral open={open} setOpen={setOpen} />
+      <NavLateral open={open} setOpen={setOpen} users={users} />
       <div style={{ width: "100%" }}>
         <ContainerColumn>
           <Nav title="Dashboard" open={open} setOpen={setOpen} />

@@ -52,7 +52,7 @@ export const ListItem = ({
 
   const opacity = isDragging ? { opacity: "0" } : { opacity: "1" };
   return (
-    <TRow key={item.id} ref={dragDropRef} style={opacity}>
+    <TRow key={item._id} ref={dragDropRef} style={opacity}>
       <td
         style={{
           padding: "20px",
@@ -63,12 +63,12 @@ export const ListItem = ({
       <Date>{item.room_number}</Date>
 
       <td>
-        <LinkList to={`/rooms/${item.id}`}>
+        <LinkList to={`/rooms/${item._id}`}>
           <UserName>{item.room_type}</UserName>
-          <Id>{item.id}</Id>
+          <Id>{item._id}</Id>
         </LinkList>
       </td>
-      <td style={{ textOverflow: "" }}>{item.amenities}</td>
+      <td style={{ textOverflow: "" }}>{item.facilities}</td>
 
       <PriceRoom>
         <span> $</span>
@@ -79,7 +79,7 @@ export const ListItem = ({
 
       <PriceRoom>
         <span> $</span>
-        {item.discount}
+        {item.offer_price}
         <PerNight>/night</PerNight>
       </PriceRoom>
 

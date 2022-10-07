@@ -28,6 +28,7 @@ export function Room({ open, setOpen }) {
   const room = useSelector(selectStateDetail);
   const [edit, setEdit] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  console.log(room)
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -52,7 +53,7 @@ export function Room({ open, setOpen }) {
           <RoomBlock>
             <PhotoDetail src={room.photo} alt="" />
             <div>
-              <Id>ID {room.id}</Id>
+              <Id>ID {room._id}</Id>
               <ItemsDetail>Room Type </ItemsDetail>
               <p>{room.room_type}</p>
               <ItemsDetail>Room Number </ItemsDetail>
@@ -60,7 +61,7 @@ export function Room({ open, setOpen }) {
             </div>
           </RoomBlock>
           <ItemsDetail>Facilities </ItemsDetail>
-          <p>{room.amenities}</p>
+          <p>{room.facilities}</p>
           <ItemsDetail>Description </ItemsDetail>
           <p>{room.description}</p>
           <ItemsDetail>Price </ItemsDetail>
@@ -70,7 +71,7 @@ export function Room({ open, setOpen }) {
           <ItemsDetail>Offer Price </ItemsDetail>
           <PriceDetail>
             <span> $</span>
-            {room.discount} <PerNight>/night</PerNight>
+            {room.offer_price} <PerNight>/night</PerNight>
           </PriceDetail>
           <CheckStatusButton status={room.status}>
             {room.status}
@@ -85,7 +86,7 @@ export function Room({ open, setOpen }) {
             </ButtonEdit>
             <ButtonDelete
               onClick={() => {
-                handleRemove(room.id);
+                handleRemove(room._id);
               }}
             >
               🗑️

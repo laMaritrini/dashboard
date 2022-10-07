@@ -1,54 +1,47 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
 
 import { updateUser } from "./usersSlice";
 
-export function UpdateUser({ edit, openModal, handleClose }) {
+export function UpdateUser({ user, edit, openModal, handleClose }) {
   const dispatch = useDispatch();
+
   const [editForm, setEditForm] = useState({
-    photo: "",
-    full_name: "",
-    job_title: "",
-    email: "",
-    working_functions: "",
-    phone_number: "",
-    start_date: "",
-    working_situation: "",
-    password: "",
+    photo: user.photo,
+    full_name: user.full_name,
+    job_title: user.job_title,
+    email: user.email,
+    working_functions: user.working_functions,
+    phone_number: user.phone_number,
+    start_date: user.start_date,
+    working_situation: user.working_situation,
+    password: user.password,
   });
   useEffect(() => {
-    if (edit) {
-      setEditForm(edit);
+    if (user) {
+      setEditForm(user);
     } else {
       setEditForm("");
     }
-  }, [edit]);
+  }, [user]);
 
   if (!openModal) {
     return null;
   }
+  console.log(user._id);
   const handleChange = (e) => {
     setEditForm({ ...editForm, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUser({ id: edit.id, editForm }));
-    setEditForm({
-      photo: "",
-      full_name: "",
-      job_title: "",
-      email: "",
-      working_functions: "",
-      phone_number: "",
-      start_date: "",
-      working_situation: "",
-      password: "",
-    });
+    dispatch(updateUser(user._id, editForm));
+
     handleClose();
   };
-
+  console.log(editForm);
   return (
     <BookingModal>
       <CloseButton onClick={handleClose}>X</CloseButton>

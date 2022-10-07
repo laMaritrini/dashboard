@@ -23,6 +23,7 @@ import {
   NameDetail,
 } from "../styles/detail-page";
 
+
 export function Booking({ open, setOpen }) {
   const { id } = useParams();
   const booking = useSelector(selectStateDetail);
@@ -44,7 +45,7 @@ export function Booking({ open, setOpen }) {
   };
   const handleClose = () => setOpenModal(false);
 
-  if (!booking.id) {
+  if (!booking._id) {
     return null;
   }
   return (
@@ -53,25 +54,26 @@ export function Booking({ open, setOpen }) {
       <ContainerColumn>
         <Nav title="Booking Detail" open={open} setOpen={setOpen} />
         <ContainerDetail>
+      
           <NameDetail>{booking.full_name}</NameDetail>
-          <IdDetail>ID {booking.id}</IdDetail>
+          <IdDetail>ID {booking._id}</IdDetail>
           <ItemsDetail>Order Date </ItemsDetail>
-          <p> {booking.order_date}</p>
+          <p> {booking.order_date.slice(0, 10)}</p>
           <CheckBlock>
             <div>
               <ItemsDetail>Check In</ItemsDetail>
-              <p>{booking.check_in}</p>
+              <p>{booking.check_in.slice(0, 10)}</p>
             </div>
             <div>
               <ItemsDetail>Check Out</ItemsDetail>
-              <p>{booking.check_out}</p>
+              <p>{booking.check_out.slice(0, 10)}</p>
             </div>
           </CheckBlock>
 
           <ItemsDetail>Room Type</ItemsDetail>
-          <p>{booking.room_type.type} </p>
+          <p>{booking.id_room.room_type} </p>
           <ItemsDetail>Room Number </ItemsDetail>
-          <p>{booking.room_type.number}</p>
+          <p>{booking.id_room.room_number}</p>
           <ItemsDetail>Special request</ItemsDetail>
           <p>{booking.special_request}</p>
           <ButtonStatus status={booking.status}>{booking.status}</ButtonStatus>
@@ -85,7 +87,7 @@ export function Booking({ open, setOpen }) {
             </ButtonEdit>
             <ButtonDelete
               onClick={() => {
-                handleRemove(booking.id);
+                handleRemove(booking._id);
               }}
             >
               🗑️

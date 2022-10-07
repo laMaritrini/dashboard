@@ -1,6 +1,6 @@
-import { useMemo } from "react";
-import { useEffect, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import { Pagination } from "../components/Pagination";
@@ -37,15 +37,15 @@ export function Users({ open, setOpen }) {
     dispatch(fetchUsers());
   }, [dispatch]);
 
+  const handleRemove = (id) => {
+    dispatch(removeUser(id));
+  };
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return users.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, users]);
-
-  const handleRemove = (id) => {
-    dispatch(removeUser(id));
-  };
 
   return (
     <ContainerPage>
@@ -98,7 +98,7 @@ export function Users({ open, setOpen }) {
           </thead>
           <tbody>
             {currentTableData.map((user) => (
-              <TRow key={user.id}>
+              <TRow key={user._id}>
                 <td
                   style={{
                     padding: "20px",
@@ -107,9 +107,9 @@ export function Users({ open, setOpen }) {
                   <Image src={user.photo} alt="" />
                 </td>
                 <td>
-                  <LinkList to={`/users/${user.id}`}>
+                  <LinkList to={`/users/${user._id}`}>
                     <UserName>{user.full_name}</UserName>
-                    <Id>{user.id}</Id>
+                    <Id>{user._id}</Id>
                   </LinkList>
                 </td>
                 <td>{user.job_title}</td>
@@ -118,7 +118,7 @@ export function Users({ open, setOpen }) {
                   <span>📞</span>
                   {user.phone_number}
                 </NumberTd>
-                <NumberTd>{user.start_date}</NumberTd>
+                <NumberTd>{user.start_date.slice(0, 10)}</NumberTd>
                 <TableTd>{user.working_functions}</TableTd>
                 <StateUser status={user.working_situation}>
                   {user.working_situation}
@@ -128,7 +128,7 @@ export function Users({ open, setOpen }) {
                   <div
                     style={{ cursor: "pointer" }}
                     onClick={() => {
-                      handleRemove(user.id);
+                      handleRemove(user._id);
                     }}
                   >
                     🗑️

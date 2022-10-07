@@ -16,7 +16,7 @@ export function AuthStatus() {
         className="logout"
         icon={faArrowRightFromBracket}
         onClick={() => {
-          dispatchAuth({ type: types.logout });
+          dispatchAuth({ type: types.logout, token: null });
 
           navigate("/");
         }}

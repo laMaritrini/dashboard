@@ -92,10 +92,10 @@ export function Rooms({ open, setOpen }) {
           <tbody>
             {currentTableData.map((room, index) => (
               <ListItem
-                key={room.id}
+                key={room._id}
                 index={index}
                 item={room}
-                number={room.id}
+                number={room._id}
                 moveListItem={moveRoomListItem}
                 handleRemove={handleRemove}
               />

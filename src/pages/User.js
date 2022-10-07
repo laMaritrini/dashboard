@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import { UpdateUser } from "../features/users/UpdateUser";
@@ -24,6 +25,7 @@ import {
 
 export function User({ open, setOpen }) {
   const { id } = useParams();
+
   const user = useSelector(selectStateDetail);
   const [edit, setEdit] = useState("");
   const [openModal, setOpenModal] = useState(false);
@@ -31,7 +33,7 @@ export function User({ open, setOpen }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser(id));
-  }, [dispatch, id]);
+  }, [id, dispatch]);
 
   const handleRemove = () => {
     dispatch(removeUser(id));
@@ -41,15 +43,6 @@ export function User({ open, setOpen }) {
     setOpenModal(true);
   };
   const handleClose = () => setOpenModal(false);
-  const showPassword = () => {
-    let input = document.getElementById("input");
-
-    if (input.type === "password") {
-      input.type = "text";
-    } else {
-      input.type = "password";
-    }
-  };
 
   return (
     <ContainerPage>
@@ -71,19 +64,10 @@ export function User({ open, setOpen }) {
           <ItemsDetail>Phone Number </ItemsDetail>
           <p>{user.phone_number}</p>
           <ItemsDetail>Start Date </ItemsDetail>
-          <p>{user.start_date}</p>
+          <p>{user.start_date.slice(0, 10)}</p>
           <ItemsDetail>Description </ItemsDetail>
           <p>{user.working_functions}</p>
-          <ItemsDetail>Password </ItemsDetail>
-          <input
-            type="password"
-            id="input"
-            value={user.password}
-            name="password"
-          />
-          <br />
-          <input type="checkbox" name="checkbox" onClick={showPassword} />
-          Show Password
+
           <ItemsDetail>Status </ItemsDetail>
           <StatusUserDetail status={user.working_situation}>
             {user.working_situation}
@@ -98,13 +82,14 @@ export function User({ open, setOpen }) {
             </ButtonEdit>
             <ButtonDelete
               onClick={() => {
-                handleRemove(user.id);
+                handleRemove(user._id);
               }}
             >
               🗑️
             </ButtonDelete>
             <UpdateUser
               openModal={openModal}
+              user={user}
               edit={edit}
               handleClose={handleClose}
             />

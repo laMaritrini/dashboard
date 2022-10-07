@@ -6,17 +6,15 @@ import { CloseButton, DefaultButton } from "../../styles/style-buttons";
 
 export function AddRoom({ openModal, handleClose }) {
   const rooms = useSelector(selectStateRooms);
-  let id = Math.floor(Math.random() * 100000);
 
   const [room, setRoom] = useState({
     photo: "",
     room_number: "",
     room_type: "",
-    id: id,
-    amenities: "",
+    facilities: "",
     description: "",
     price: "",
-    discount: "",
+    offer_price: "",
     status: "",
   });
   const dispatch = useDispatch();
@@ -33,11 +31,10 @@ export function AddRoom({ openModal, handleClose }) {
         photo: "",
         room_number: "",
         room_type: "",
-        id: id,
-        amenities: "",
+        facilities: "",
         description: "",
         price: "",
-        discount: "",
+        offer_price: "",
         status: "",
       },
       ...rooms
@@ -129,8 +126,8 @@ export function AddRoom({ openModal, handleClose }) {
             onChange={handleChange}
           >
             <option value="">Select One...</option>
-            <option value="Available">Available</option>
-            <option value="Booked">Booked</option>
+            <option value="Available">AVAILABLE</option>
+            <option value="Booked">BOOKED</option>
           </select>
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
