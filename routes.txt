@@ -1,0 +1,29 @@
+Dashboard:
+/                   ---> Home component
+
+Bookings:
+
+/bookings           ---> Bookings List
+/bookings/new       ---> Create a new booking
+/bookings/:id       ---> Booking detail
+
+Rooms:
+
+/rooms              ---> Rooms List
+/rooms/new          ---> Create a new room
+/rooms/:id          ---> Room details
+
+Users:
+
+/users              ---> Users List
+/users/new          ---> Create a new user
+/users/id           ---> User details
+
+
+Contact:
+
+/contact            ---> Messages list
+
+
+Login:
+/login              ---> Login page
