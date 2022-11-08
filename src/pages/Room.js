@@ -28,7 +28,7 @@ export function Room({ open, setOpen }) {
   const room = useSelector(selectStateDetail);
   const [edit, setEdit] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  console.log(room)
+
 
   const dispatch = useDispatch();
   useEffect(() => {

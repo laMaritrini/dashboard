@@ -11,11 +11,10 @@ import { DefaultButton } from "../styles/style-buttons";
 export function Login() {
   let navigate = useNavigate();
   let location = useLocation();
-  const { auth, dispatchAuth } = useContext(myContext);
+  const { dispatchAuth } = useContext(myContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(auth);
-
+ 
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -27,14 +26,13 @@ export function Login() {
     if (token) {
       dispatchAuth({
         type: types.login,
-        value: token,
-  
+        value: { token, email },
       });
 
       let from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
     } else {
-      dispatchAuth({ type: types.logout, token: "" });
+      dispatchAuth({ type: types.logout, value: "" });
     }
   }
 

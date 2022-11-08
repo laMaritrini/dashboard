@@ -64,7 +64,7 @@ export function User({ open, setOpen }) {
           <ItemsDetail>Phone Number </ItemsDetail>
           <p>{user.phone_number}</p>
           <ItemsDetail>Start Date </ItemsDetail>
-          <p>{user.start_date.slice(0, 10)}</p>
+          <p>{user.start_date}</p>
           <ItemsDetail>Description </ItemsDetail>
           <p>{user.working_functions}</p>
 

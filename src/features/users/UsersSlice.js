@@ -31,16 +31,15 @@ export const removeUser = createAsyncThunk("delete/removeUser", async (id) => {
 
 export const updateUser = createAsyncThunk(
   "update/updateUser",
-  async (id, data) => {
+  async ({id, data}) => {
     const response = await editUser(id, data);
-    console.log(data, "resp");
     return response;
   }
 );
 
 const initialState = {
   users: [],
-  user: [],
+  user: {},
 };
 
 const usersSlice = createSlice({
@@ -69,13 +68,9 @@ const usersSlice = createSlice({
     });
     builder.addCase(updateUser.fulfilled, (state, action) => {
       state.status = "succeeded";
-      const index = state.users.findIndex(
-        (item) => item._id === action.payload._id
+      state.users = state.users.map((item) =>
+        item._id === action.payload.id ? action.payload : item
       );
-      state.users[index] = {
-        ...state.users[index],
-        ...action.payload,
-      };
     });
   },
 });

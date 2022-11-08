@@ -12,11 +12,8 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
     check_in: "",
     check_out: "",
     special_request: "",
-    room_type: {
-      type: "",
-      number: "",
-    },
     status: "",
+    id_room: {},
   });
   useEffect(() => {
     if (edit) {
@@ -25,6 +22,7 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
       setEditForm("");
     }
   }, [edit]);
+  console.log(edit);
 
   if (!openModal) {
     return null;
@@ -34,19 +32,8 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateBooking({ id: edit.id, editForm }));
-    setEditForm({
-      full_name: "",
-      order_date: "",
-      check_in: "",
-      check_out: "",
-      special_request: "",
-      room_type: {
-        type: "",
-        number: "",
-      },
-      status: "",
-    });
+    dispatch(updateBooking({ id: edit._id, data: editForm }));
+
     handleClose();
   };
 
@@ -100,24 +87,6 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
             onChange={handleChange}
           />
         </div>
-        {/* <div>
-        <label htmlFor="type">Room Type:</label>
-        <input
-          type="text"
-          value={editForm.room_type.type}
-          name="type"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="number">Room Number:</label>
-        <input
-          type="number"
-          value={editForm.room_type.number}
-          name="number"
-          onChange={handleChange}
-        />
-      </div> */}
         <div>
           <label htmlFor="status">Status:</label>
           <select
@@ -132,6 +101,16 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
             <option value="Check In">Check In</option>
             <option value="Check Out">Check Out</option>
           </select>
+        </div>
+        <div>
+          <label htmlFor="id_room">Room ID:</label>
+          <input
+            type="text "
+            value={editForm.id_room}
+            name="id_room"
+            onChange={handleChange}
+            placeholder="Id room"
+          />
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
       </FormBooking>

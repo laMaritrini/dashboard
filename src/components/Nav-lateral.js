@@ -38,6 +38,8 @@ export function NavLateral({ open }) {
   const handleClose = () => {
     setOpenModal(false);
   };
+  // if (!users) return null;
+  // let userLogged = users.find((user) => user.email === auth.email);
 
   return (
     <ContainerMenuLateral open={open} className="container-lateral-menu">
@@ -68,9 +70,9 @@ export function NavLateral({ open }) {
           </LinkContainer>
         </nav>
         <UserContainer>
-          <Image src="" alt="avatar" />
+          {/* <Image src={userLogged.photo} alt="avatar" />
 
-          <UserName></UserName>
+          <UserName>{userLogged.full_name}</UserName> */}
           <UserEmail>{auth.email}</UserEmail>
           <EditUser
             openModal={openModal}

@@ -1,14 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { MockReservations } from "../../data/mockReservations";
-import { getBookings, getBooking } from "../../service/api-booking";
-
-export function delay(data, time) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data);
-    }, time);
-  });
-}
+import {
+  getBookings,
+  getBooking,
+  createBooking,
+  deleteBooking,
+  editBooking,
+} from "../../service/api-booking";
 
 export const fetchBookings = createAsyncThunk("get/fetchBookings", async () => {
   return await getBookings();
@@ -22,30 +19,27 @@ export const fetchBooking = createAsyncThunk("get/fetchBooking", async (id) => {
 export const createNewBooking = createAsyncThunk(
   "create/createNewBooking",
   async (data) => {
-    const newArray = data;
-    return await delay((MockReservations, newArray), 100);
+    const response = await createBooking(data);
+    return response;
   }
 );
 export const removeBooking = createAsyncThunk(
   "delete/removeBooking",
   async (id) => {
-    const newBookingsArray = MockReservations.filter((item) => item.id !== id);
-    return await delay(newBookingsArray, 100);
+    return await deleteBooking(id);
   }
 );
 export const updateBooking = createAsyncThunk(
   "update/updateBooking",
   async (id, data) => {
-    const newBookingsArray = MockReservations.map((item) =>
-      item.id === id ? { ...item, data } : item
-    );
-    return await delay(newBookingsArray, 100);
+    const response = await editBooking(id, data);
+    return response;
   }
 );
 
 const initialState = {
   bookings: [],
-  booking: [],
+  booking: {},
 };
 
 const bookingsSlice = createSlice({
@@ -67,11 +61,16 @@ const bookingsSlice = createSlice({
     });
     builder.addCase(removeBooking.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.bookings = action.payload;
+      const newBookingList = state.bookings.filter(
+        (item) => item._id !== action.payload
+      );
+      state.rooms = [...newBookingList];
     });
     builder.addCase(updateBooking.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.bookings = action.payload;
+      state.bookings = state.bookings.map((item) =>
+        item._id === action.payload._id ? action.payload : item
+      );
     });
   },
 });

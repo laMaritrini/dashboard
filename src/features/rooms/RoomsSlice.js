@@ -1,16 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { MockRooms } from "../../data/mockRooms";
-import { getRoom, getRooms } from "../../service/api-rooms";
+import {
+  createRoom,
+  deleteRoom,
+  editRoom,
+  getRoom,
+  getRooms,
+} from "../../service/api-rooms";
 
-export function delay(data, time) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data);
-    }, time);
-  });
-}
 
-export const fetchRooms = createAsyncThunk("post/fetchRooms", async () => {
+export const fetchRooms = createAsyncThunk("get/fetchRooms", async () => {
   return await getRooms();
 });
 
@@ -22,27 +20,24 @@ export const fetchRoom = createAsyncThunk("get/fetchRoom", async (id) => {
 export const createNewRoom = createAsyncThunk(
   "create/createNewRoom",
   async (data) => {
-    const newArray = data;
-    return await delay((MockRooms, newArray), 100);
+    const response = await createRoom(data);
+    return response;
   }
 );
 export const removeRoom = createAsyncThunk("delete/removeRoom", async (id) => {
-  const newRoomsArray = MockRooms.filter((item) => item.id !== id);
-  return await delay(newRoomsArray, 100);
+  return await deleteRoom(id);
 });
 export const updateRoom = createAsyncThunk(
   "update/updateRoom",
-  async (id, data) => {
-    const newRoomsArray = MockRooms.map((item) =>
-      item.id === id ? { ...item, data } : item
-    );
-    return await delay(newRoomsArray, 100);
+  async ({id, data}) => {
+    const response = await editRoom(id, data);
+    return response;
   }
 );
 
 const initialState = {
   rooms: [],
-  room: [],
+  room: {},
 };
 
 const roomsSlice = createSlice({
@@ -64,11 +59,16 @@ const roomsSlice = createSlice({
     });
     builder.addCase(removeRoom.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.rooms = action.payload;
+      const newRoomsList = state.rooms.filter(
+        (item) => item._id !== action.payload
+      );
+      state.rooms = [...newRoomsList];
     });
     builder.addCase(updateRoom.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.rooms = action.payload;
+      state.rooms = state.rooms.map((item) =>
+        item._id === action.payload._id ? action.payload : item
+      );
     });
   },
 });

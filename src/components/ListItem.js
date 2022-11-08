@@ -90,7 +90,7 @@ export const ListItem = ({
         <div
           style={{ cursor: "pointer" }}
           onClick={() => {
-            handleRemove(item.id);
+            handleRemove(item._id);
           }}
         >
           🗑️

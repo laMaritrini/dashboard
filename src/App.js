@@ -24,8 +24,6 @@ import { authReducer, initialAuthState } from "./reducerLogin/ReducerLogin";
 
 export const myContext = createContext();
 
-
-
 function App() {
   const [open, setOpen] = useState(true);
   const [auth, dispatchAuth] = useReducer(
@@ -33,7 +31,6 @@ function App() {
     JSON.parse(localStorage.getItem("auth_data")) ?? initialAuthState
   );
   const contextValue = { auth, dispatchAuth };
-
 
   useEffect(() => {
     if (auth.isAuth) {

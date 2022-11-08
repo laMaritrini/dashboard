@@ -136,12 +136,7 @@ export function AddBooking({ openModal, handleClose }) {
             <option value="Check In">Check In</option>
             <option value="Check Out">Check Out</option>
           </select>
-          {/* <input
-            type="text"
-            value={booking.status}
-            name="status"
-            onChange={handleChange}
-          /> */}
+      
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
       </FormBooking>

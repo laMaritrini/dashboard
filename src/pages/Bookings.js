@@ -23,7 +23,7 @@ import {
 } from "../features/bookings/bookingsSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { toast } from "react-toastify";
+
 
 let PageSize = 10;
 
@@ -117,39 +117,39 @@ export function Bookings({ open, setOpen }) {
             </TrHead>
           </thead>
           <tbody>
-            {currentTableData.map((room) => (
-              <TRow key={room._id}>
+            {currentTableData.map((booking) => (
+              <TRow key={booking._id}>
                 <td style={{ padding: "20px" }}>
-                  <LinkList to={`/bookings/${room._id}`}>
-                    <UserName>{room.full_name}</UserName>
-                    <Id>{room._id}</Id>
+                  <LinkList to={`/bookings/${booking._id}`}>
+                    <UserName>{booking.full_name}</UserName>
+                    <Id>{booking._id}</Id>
                   </LinkList>
                 </td>
 
-                <Date>{room.order_date.slice(0, 10)}</Date>
+                <Date>{booking.order_date.slice(0, 10)}</Date>
 
-                <Date>{room.check_in.slice(0, 10)}</Date>
+                <Date>{booking.check_in.slice(0, 10)}</Date>
 
-                <Date>{room.check_out.slice(0, 10)}</Date>
+                <Date>{booking.check_out.slice(0, 10)}</Date>
 
                 <td>
                   <ViewNotesButton>View Notes</ViewNotesButton>
                 </td>
                 <Date>
                   <div>
-                    {room.id_room.room_type}
-                    <span>- {room.id_room.room_number}</span>
+                    {booking.id_room.room_type}
+                    <span>- {booking.id_room.room_number}</span>
                   </div>
                 </Date>
 
                 <td>
-                  <Button status={room.status}>{room.status}</Button>
+                  <Button status={booking.status}>{booking.status}</Button>
                 </td>
                 <td>
                   <div
                     style={{ cursor: "pointer" }}
                     onClick={() => {
-                      handleRemove(room._id);
+                      handleRemove(booking._id);
                     }}
                   >
                     🗑️

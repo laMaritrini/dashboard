@@ -23,6 +23,7 @@ export function UpdateRoom({ edit, openModal, handleClose }) {
       setEditForm("");
     }
   }, [edit]);
+  console.log(edit);
 
   if (!openModal) {
     return null;
@@ -32,17 +33,7 @@ export function UpdateRoom({ edit, openModal, handleClose }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateRoom({ id: edit.id, editForm }));
-    setEditForm({
-      photo: "",
-      room_number: "",
-      room_type: "",
-      amenities: "",
-      description: "",
-      price: "",
-      discount: "",
-      status: "",
-    });
+    dispatch(updateRoom({ id: edit._id, data: editForm }));
     handleClose();
   };
 
@@ -53,7 +44,12 @@ export function UpdateRoom({ edit, openModal, handleClose }) {
       <FormBooking>
         <div>
           <label htmlFor="photo">Photo:</label>
-          <input type="file" value="" name="photo" onChange={handleChange} />
+          <input
+            type="text"
+            value={editForm.photo}
+            name="photo"
+            onChange={handleChange}
+          />
         </div>
 
         <div>
@@ -120,8 +116,8 @@ export function UpdateRoom({ edit, openModal, handleClose }) {
             onChange={handleChange}
           >
             <option value="">Select One...</option>
-            <option value="Available">AVAILABLE</option>
-            <option value="Booked">BOOKED</option>
+            <option value="AVAILABLE">AVAILABLE</option>
+            <option value="BOOKED">BOOKED</option>
           </select>
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>

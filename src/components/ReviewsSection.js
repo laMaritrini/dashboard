@@ -66,7 +66,7 @@ export function ReviewsSection() {
 
             <div>
               <Image src={review.photo} alt="avatar" />
-              <div>
+              <div style={{paddingLeft: '10px'}}>
                 <h4>{review.customer}</h4>
                 <p>{review.date.slice(0, 10)}</p>
               </div>

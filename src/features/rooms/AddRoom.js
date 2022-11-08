@@ -55,7 +55,7 @@ export function AddRoom({ openModal, handleClose }) {
         <div>
           <label htmlFor="photo">Photo:</label>
           <input
-            type="file"
+            type="text"
             value={room.photo}
             name="photo"
             onChange={handleChange}
@@ -73,19 +73,26 @@ export function AddRoom({ openModal, handleClose }) {
         </div>
         <div>
           <label htmlFor="room_type">Room Type:</label>
-          <input
-            type="text"
+          <select
             value={room.room_type}
+            type="text"
             name="room_type"
+            id="room_type"
             onChange={handleChange}
-          />
+          >
+            <option value="">Select One...</option>
+            <option value="Double Superior">Double Superior</option>
+            <option value="Single Bed">Single Bed</option>
+            <option value="Suite">Suite</option>
+            <option value="Double Bed">Double Bed</option>
+          </select>
         </div>
         <div>
-          <label htmlFor="amenities">Facilities:</label>
+          <label htmlFor="facilities">Facilities:</label>
           <input
             type="text"
-            value={room.amenities}
-            name="amenities"
+            value={room.facilities}
+            name="facilities"
             onChange={handleChange}
           />
         </div>
@@ -126,8 +133,8 @@ export function AddRoom({ openModal, handleClose }) {
             onChange={handleChange}
           >
             <option value="">Select One...</option>
-            <option value="Available">AVAILABLE</option>
-            <option value="Booked">BOOKED</option>
+            <option value="AVAILABLE">AVAILABLE</option>
+            <option value="BOOKED">BOOKED</option>
           </select>
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>

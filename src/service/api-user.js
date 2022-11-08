@@ -4,13 +4,14 @@ import { API_URL } from "./env";
 
 async function apiRequest(url, method, data) {
   const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
- 
-  const token = dataStorage.token;
+
   const response = await fetch(url, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${
+        dataStorage !== null ? dataStorage.token.token : ""
+      }`,
       "Content-Type": "application/json",
     },
   });
