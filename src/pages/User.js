@@ -9,7 +9,7 @@ import {
   fetchUser,
   removeUser,
   selectStateDetail,
-} from "../features/users/usersSlice";
+} from "../features/users/UsersSlice";
 import { ContainerColumn, ContainerPage } from "../styles/containers";
 import {
   ButtonDelete,

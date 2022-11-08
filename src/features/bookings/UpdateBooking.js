@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { updateBooking } from "./bookingsSlice";
+import { updateBooking } from "./BookingsSlice";
 import { useDispatch } from "react-redux";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
@@ -109,7 +109,7 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
             value={editForm.id_room}
             name="id_room"
             onChange={handleChange}
-            placeholder="Id room"
+            placeholder="id room"
           />
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>

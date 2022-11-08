@@ -8,7 +8,7 @@ import {
   fetchBooking,
   removeBooking,
   selectStateDetail,
-} from "../features/bookings/bookingsSlice";
+} from "../features/bookings/BookingsSlice";
 import { UpdateBooking } from "../features/bookings/UpdateBooking";
 import { ContainerColumn, ContainerPage } from "../styles/containers";
 import {

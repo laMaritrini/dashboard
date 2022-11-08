@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
-import { updateRoom } from "./roomsSlice";
+import { updateRoom } from "./RoomsSlice";
 
 export function UpdateRoom({ edit, openModal, handleClose }) {
   const dispatch = useDispatch();

@@ -20,7 +20,7 @@ import { useState } from "react";
 import { EditUser } from "./EditUser";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers, selectStateUsers } from "../features/users/usersSlice";
+import { fetchUsers, selectStateUsers } from "../features/users/UsersSlice";
 
 export function NavLateral({ open }) {
   const users = useSelector(selectStateUsers);

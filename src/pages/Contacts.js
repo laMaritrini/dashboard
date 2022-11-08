@@ -2,13 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
-import { Pagination } from "../components/Pagination";
+import { Pagination } from "../components/pagination";
 import { ReviewsSection } from "../components/ReviewsSection";
 import {
   fetchContacts,
   removeContact,
   selectStateContacts,
-} from "../features/contact/contactSlice";
+} from "../features/contact/ContactSlice";
 import { ContainerColumn, ContainerPage, Table } from "../styles/containers";
 import {
   Date,

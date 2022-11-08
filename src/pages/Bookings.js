@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
-import { Pagination } from "../components/Pagination";
+import { Pagination } from "../components/pagination";
 import { LinkList } from "../styles/style";
 
 import { ContainerColumn, ContainerPage, Table } from "../styles/containers";
@@ -20,7 +20,7 @@ import {
   fetchBookings,
   removeBooking,
   selectState,
-} from "../features/bookings/bookingsSlice";
+} from "../features/bookings/BookingsSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

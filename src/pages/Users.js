@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
-import { Pagination } from "../components/Pagination";
+import { Pagination } from "../components/pagination";
 import { LinkList, NumberTd, StateUser, TableTd } from "../styles/style";
 
 import { ContainerColumn, ContainerPage, Table } from "../styles/containers";
@@ -14,7 +14,7 @@ import {
   fetchUsers,
   removeUser,
   selectStateUsers,
-} from "../features/users/usersSlice";
+} from "../features/users/UsersSlice";
 import { Image } from "../styles/style-image";
 import { AddUser } from "../features/users/AddUser";
 

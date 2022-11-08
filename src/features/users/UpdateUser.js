@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
 
-import { updateUser } from "./usersSlice";
+import { updateUser } from "./UsersSlice";
 
 export function UpdateUser({ user, edit, openModal, handleClose }) {
   const dispatch = useDispatch();

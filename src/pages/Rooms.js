@@ -6,9 +6,9 @@ import { ContainerColumn, ContainerPage, Table } from "../styles/containers";
 import { TrHead } from "../styles/style";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Pagination } from "../components/Pagination";
+import { Pagination } from "../components/pagination";
 
-import { fetchRooms, removeRoom, selectStateRooms } from "../features/rooms/roomsSlice";
+import { fetchRooms, removeRoom, selectStateRooms } from "../features/rooms/RoomsSlice";
 import { AddRoom } from "../features/rooms/AddRoom";
 import { LightButton } from "../styles/style-buttons";
 

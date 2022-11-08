@@ -3,7 +3,7 @@ import {
   PageNumber,
   PaginationContainer,
 } from "../styles/pagination";
-import { usePagination, DOTS } from "./UsePagination";
+import { usePagination, DOTS } from "./usePagination";
 
 export function Pagination({
   onPageChange,

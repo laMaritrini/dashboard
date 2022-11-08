@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchContacts,
   selectStateContacts,
-} from "../features/contact/contactSlice";
+} from "../features/contact/ContactSlice";
 import { useEffect, useState } from "react";
 import { SliderButton } from "../styles/style-buttons";
 

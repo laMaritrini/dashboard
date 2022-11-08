@@ -7,7 +7,7 @@ import {
   fetchRoom,
   removeRoom,
   selectStateDetail,
-} from "../features/rooms/roomsSlice";
+} from "../features/rooms/RoomsSlice";
 import { UpdateRoom } from "../features/rooms/UpdateRoom";
 import { ContainerColumn, ContainerPage } from "../styles/containers";
 import {

@@ -15,7 +15,7 @@ import { ReviewsSection } from "../components/ReviewsSection";
 import { BarChart } from "../components/BarChart";
 import { Calendar } from "../components/Calendar";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers, selectStateUsers } from "../features/users/usersSlice";
+import { fetchUsers, selectStateUsers } from "../features/users/UsersSlice";
 import { useEffect } from "react";
 
 export function Dashboard({ open, setOpen }) {

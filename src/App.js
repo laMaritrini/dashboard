@@ -9,9 +9,7 @@ import { Room } from "./pages/Room";
 import { Bookings } from "./pages/Bookings";
 import { User } from "./pages/User";
 import { Contacts } from "./pages/Contacts";
-import { NewBooking } from "./pages/NewBooking";
-import { NewRoom } from "./pages/NewRoom";
-import { NewUser } from "./pages/NewUser";
+
 import { useReducer, useState } from "react";
 import { useEffect } from "react";
 import { Login } from "./components/Login";
@@ -61,7 +59,7 @@ function App() {
               </RequireAuth>
             }
           >
-            <Route path="/bookings/new" element={<NewBooking />} />
+         
           </Route>
 
           <Route
@@ -82,7 +80,7 @@ function App() {
               </RequireAuth>
             }
           >
-            <Route path="/rooms/new" element={<NewRoom />} />
+        
           </Route>
           <Route
             path="/rooms/:id"
@@ -100,7 +98,7 @@ function App() {
               </RequireAuth>
             }
           >
-            <Route path="/users/new" element={<NewUser />} />
+         
           </Route>
           <Route
             path="/users/:id"
