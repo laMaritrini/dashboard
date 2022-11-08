@@ -1,9 +1,9 @@
 import fetch from "cross-fetch";
-import { API_LOGIN } from "./env";
+import { REACT_APP_API_LOGIN } from "./env";
 
 export async function loginUser(credentials) {
   try {
-    const response = await fetch(API_LOGIN, {
+    const response = await fetch(REACT_APP_API_LOGIN, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,11 +1,10 @@
 import fetch from "cross-fetch";
 
-import { API_URL } from "./env";
+import { REACT_APP_API_URL } from "./env";
 
 async function apiRequest(url, method, data) {
   const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
 
- 
   const response = await fetch(url, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
@@ -23,7 +22,7 @@ async function apiRequest(url, method, data) {
 }
 export const getBookings = async () => {
   try {
-    const response = await apiRequest(`${API_URL}bookings`, "GET");
+    const response = await apiRequest(`${REACT_APP_API_URL}bookings`, "GET");
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -34,7 +33,10 @@ export const getBookings = async () => {
 };
 export const getBooking = async (id) => {
   try {
-    const response = await apiRequest(`${API_URL}bookings/${id}`, "GET");
+    const response = await apiRequest(
+      `${REACT_APP_API_URL}bookings/${id}`,
+      "GET"
+    );
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -45,7 +47,10 @@ export const getBooking = async (id) => {
 };
 export const deleteBooking = async (id) => {
   try {
-    const response = await apiRequest(`${API_URL}bookings/${id}`, "DELETE");
+    const response = await apiRequest(
+      `${REACT_APP_API_URL}bookings/${id}`,
+      "DELETE"
+    );
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -58,7 +63,11 @@ export const deleteBooking = async (id) => {
 
 export const createBooking = async (data) => {
   try {
-    const response = await apiRequest(`${API_URL}bookings`, "POST", data);
+    const response = await apiRequest(
+      `${REACT_APP_API_URL}bookings`,
+      "POST",
+      data
+    );
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -69,7 +78,11 @@ export const createBooking = async (data) => {
 };
 export const editBooking = async ({ id, data }) => {
   try {
-    const response = await apiRequest(`${API_URL}bookings/${id}`, "PATCH", data);
+    const response = await apiRequest(
+      `${REACT_APP_API_URL}bookings/${id}`,
+      "PATCH",
+      data
+    );
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }

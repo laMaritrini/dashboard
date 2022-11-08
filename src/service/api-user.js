@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 
-import { API_URL } from "./env";
+import { REACT_APP_API_URL } from "./env";
 
 async function apiRequest(url, method, data) {
   const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
@@ -22,7 +22,7 @@ async function apiRequest(url, method, data) {
 }
 export const getUsers = async () => {
   try {
-    const users = await apiRequest(`${API_URL}users`, "GET");
+    const users = await apiRequest(`${REACT_APP_API_URL}users`, "GET");
     if (users.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -33,7 +33,7 @@ export const getUsers = async () => {
 };
 export const getUser = async (id) => {
   try {
-    const user = await apiRequest(`${API_URL}users/${id}`, "GET");
+    const user = await apiRequest(`${REACT_APP_API_URL}users/${id}`, "GET");
     if (user.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -44,7 +44,7 @@ export const getUser = async (id) => {
 };
 export const deleteUser = async (id) => {
   try {
-    const user = await apiRequest(`${API_URL}users/${id}`, "DELETE");
+    const user = await apiRequest(`${REACT_APP_API_URL}users/${id}`, "DELETE");
     if (user.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -57,7 +57,7 @@ export const deleteUser = async (id) => {
 
 export const createUser = async (data) => {
   try {
-    const user = await apiRequest(`${API_URL}users`, "POST", data);
+    const user = await apiRequest(`${REACT_APP_API_URL}users`, "POST", data);
     if (user.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -68,7 +68,11 @@ export const createUser = async (data) => {
 };
 export const editUser = async (id, data) => {
   try {
-    const response = await apiRequest(`${API_URL}users/${id}`, "PATCH", data);
+    const response = await apiRequest(
+      `${REACT_APP_API_URL}users/${id}`,
+      "PATCH",
+      data
+    );
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
