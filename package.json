@@ -16,6 +16,8 @@
     "@testing-library/user-event": "^13.5.0",
     "cross-fetch": "^3.1.5",
     "d3": "^7.6.1",
+    "dotenv": "^16.0.3",
+    "env-cmd": "^10.1.0",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
@@ -35,7 +37,8 @@
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "build:staging": "env-cmd -f .env.staging npm run build"
   },
   "eslintConfig": {
     "extends": [
