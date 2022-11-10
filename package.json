@@ -38,7 +38,7 @@
     "cypress:open": "cypress open",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build:staging": "env-cmd -f .env.staging npm run build"
+    "build:production": "env-cmd -f .env.production npm run build"
   },
   "eslintConfig": {
     "extends": [

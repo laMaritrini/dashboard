@@ -1,9 +1,9 @@
 import fetch from "cross-fetch";
-import { REACT_APP_API_LOGIN } from "./env";
+
 
 export async function loginUser(credentials) {
   try {
-    const response = await fetch(REACT_APP_API_LOGIN, {
+    const response = await fetch(process.env.REACT_APP_API_LOGIN, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,8 +16,8 @@ export async function loginUser(credentials) {
 
       return jsonResponse;
     } else {
-      // eslint-disable-next-line no-unused-vars
       const jsonResponse = await response.json();
+      return jsonResponse;
     }
   } catch (error) {
     console.error(error);

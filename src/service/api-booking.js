@@ -1,7 +1,5 @@
 import fetch from "cross-fetch";
 
-import { REACT_APP_API_URL } from "./env";
-
 async function apiRequest(url, method, data) {
   const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
 
@@ -22,7 +20,10 @@ async function apiRequest(url, method, data) {
 }
 export const getBookings = async () => {
   try {
-    const response = await apiRequest(`${REACT_APP_API_URL}bookings`, "GET");
+    const response = await apiRequest(
+      `${process.env.REACT_APP_API_URL}bookings`,
+      "GET"
+    );
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -34,7 +35,7 @@ export const getBookings = async () => {
 export const getBooking = async (id) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}bookings/${id}`,
+      `${process.env.REACT_APP_API_URL}bookings/${id}`,
       "GET"
     );
     if (response.status >= 400) {
@@ -48,7 +49,7 @@ export const getBooking = async (id) => {
 export const deleteBooking = async (id) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}bookings/${id}`,
+      `${process.env.REACT_APP_API_URL}bookings/${id}`,
       "DELETE"
     );
     if (response.status >= 400) {
@@ -64,7 +65,7 @@ export const deleteBooking = async (id) => {
 export const createBooking = async (data) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}bookings`,
+      `${process.env.REACT_APP_API_URL}bookings`,
       "POST",
       data
     );
@@ -79,7 +80,7 @@ export const createBooking = async (data) => {
 export const editBooking = async ({ id, data }) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}bookings/${id}`,
+      `${process.env.REACT_APP_API_URL}bookings/${id}`,
       "PATCH",
       data
     );

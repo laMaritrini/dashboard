@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 
-import { REACT_APP_API_URL } from "./env";
+
 
 async function apiRequest(url, method, data) {
   const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
@@ -22,7 +22,7 @@ async function apiRequest(url, method, data) {
 }
 export const getRooms = async () => {
   try {
-    const response = await apiRequest(`${REACT_APP_API_URL}rooms`, "GET");
+    const response = await apiRequest(`${process.env.REACT_APP_API_URL}rooms`, "GET");
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -33,7 +33,7 @@ export const getRooms = async () => {
 };
 export const getRoom = async (id) => {
   try {
-    const response = await apiRequest(`${REACT_APP_API_URL}rooms/${id}`, "GET");
+    const response = await apiRequest(`${process.env.REACT_APP_API_URL}rooms/${id}`, "GET");
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -46,7 +46,7 @@ export const getRoom = async (id) => {
 export const deleteRoom = async (id) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}rooms/${id}`,
+      `${process.env.REACT_APP_API_URL}rooms/${id}`,
       "DELETE"
     );
     if (response.status >= 400) {
@@ -62,7 +62,7 @@ export const deleteRoom = async (id) => {
 export const createRoom = async (data) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}rooms`,
+      `${process.env.REACT_APP_API_URL}rooms`,
       "POST",
       data
     );
@@ -77,7 +77,7 @@ export const createRoom = async (data) => {
 export const editRoom = async ({ id, data }) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}rooms/${id}`,
+      `${process.env.REACT_APP_API_URL}rooms/${id}`,
       "PATCH",
       data
     );

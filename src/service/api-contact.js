@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 
-import { REACT_APP_API_URL } from "./env";
+
 
 async function apiRequest(url, method, data) {
   const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
@@ -22,7 +22,7 @@ async function apiRequest(url, method, data) {
 }
 export const getContacts = async () => {
   try {
-    const response = await apiRequest(`${REACT_APP_API_URL}contacts`, "GET");
+    const response = await apiRequest(`${process.env.REACT_APP_API_URL}contacts`, "GET");
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -34,7 +34,7 @@ export const getContacts = async () => {
 export const getContact = async (id) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}contacts/${id}`,
+      `${process.env.REACT_APP_API_URL}contacts/${id}`,
       "GET"
     );
     if (response.status >= 400) {
@@ -48,7 +48,7 @@ export const getContact = async (id) => {
 export const deleteContact = async (id) => {
   try {
     const response = await apiRequest(
-      `${REACT_APP_API_URL}contacts/${id}`,
+      `${process.env.REACT_APP_API_URL}contacts/${id}`,
       "DELETE"
     );
     if (response.status >= 400) {
