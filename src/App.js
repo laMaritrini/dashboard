@@ -49,8 +49,7 @@ function App() {
               <RequireAuth>
                 <Dashboard open={open} setOpen={setOpen} />
               </RequireAuth>
-            }
-          ></Route>
+            }          ></Route>
           <Route
             path="/bookings"
             element={
@@ -58,9 +57,7 @@ function App() {
                 <Bookings open={open} setOpen={setOpen} />
               </RequireAuth>
             }
-          >
-         
-          </Route>
+          ></Route>
 
           <Route
             path="/bookings/:id"
@@ -79,9 +76,7 @@ function App() {
                 </DndProvider>
               </RequireAuth>
             }
-          >
-        
-          </Route>
+          ></Route>
           <Route
             path="/rooms/:id"
             element={
@@ -97,9 +92,7 @@ function App() {
                 <Users open={open} setOpen={setOpen} />
               </RequireAuth>
             }
-          >
-         
-          </Route>
+          ></Route>
           <Route
             path="/users/:id"
             element={
