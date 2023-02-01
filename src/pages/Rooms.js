@@ -8,7 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Pagination } from "../components/pagination";
 
-import { fetchRooms, removeRoom, selectStateRooms } from "../features/rooms/RoomsSlice";
+import {
+  fetchRooms,
+  removeRoom,
+  selectStateRooms,
+} from "../features/rooms/RoomsSlice";
 import { AddRoom } from "../features/rooms/AddRoom";
 import { LightButton } from "../styles/style-buttons";
 
@@ -56,9 +60,9 @@ export function Rooms({ open, setOpen }) {
     },
     [roomsData]
   );
-     const handleRemove = (id) => {
-       dispatch(removeRoom(id));
-     };
+  const handleRemove = (id) => {
+    dispatch(removeRoom(id));
+  };
 
   return (
     <ContainerPage>
@@ -71,11 +75,11 @@ export function Rooms({ open, setOpen }) {
         </div>
         <Table>
           <thead>
-            <TrHead>
+            <TrHead style={{ fontSize: "14px" }}>
               <th
                 style={{
                   borderTopLeftRadius: "20px",
-                  padding: "20px",
+                  padding: "10px 20px",
                 }}
               >
                 Photo
@@ -86,7 +90,7 @@ export function Rooms({ open, setOpen }) {
               <th>Price</th>
               <th>Offer Price</th>
               <th>Status</th>
-              <th style={{ width: "40px"}}></th>
+              <th style={{ width: "40px" }}></th>
             </TrHead>
           </thead>
           <tbody>

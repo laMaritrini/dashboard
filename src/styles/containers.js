@@ -89,7 +89,7 @@ export const KpiBox = styled.div`
 `;
 export const LinkContainer = styled.div`
   display: flex;
-  height: 50px;
+  height: 40px;
   align-items: center;
   padding-left: 20px;
   & svg {
@@ -115,8 +115,8 @@ export const UserContainer = styled.div`
   padding: 20px;
   margin-bottom: 70px;
   text-align: center;
-  width: 215px;
-  height: 225px;
+  width: 180px;
+  height: 180px;
   background-color: white;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,

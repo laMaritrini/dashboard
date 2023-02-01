@@ -89,12 +89,12 @@ export function Bookings({ open, setOpen }) {
         </div>
         <Table>
           <thead>
-            <TrHead>
+            <TrHead style={{ fontSize: "14px" }}>
               <th
                 style={{
                   width: "200px",
                   borderTopLeftRadius: "20px",
-                  padding: "20px",
+                  padding: "15px",
                 }}
               >
                 Guest
@@ -117,7 +117,7 @@ export function Bookings({ open, setOpen }) {
           <tbody>
             {currentTableData.map((booking) => (
               <TRow key={booking._id}>
-                <td style={{ padding: "20px" }}>
+                <td style={{ padding: "10px 20px" }}>
                   <LinkList to={`/bookings/${booking._id}`}>
                     <UserName>{booking.full_name}</UserName>
                     <Id>{booking._id}</Id>

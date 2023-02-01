@@ -58,8 +58,9 @@ export function ReviewsSection({ contacts, open }) {
             <p
               style={{
                 width: "300px",
-                height: "100px",
+                height: "150px",
                 overflow: "hidden",
+                fontSize: '12px'
               }}
             >
               {review.comment}
@@ -68,8 +69,8 @@ export function ReviewsSection({ contacts, open }) {
             <div>
               <Image src={review.photo} alt="avatar" />
               <div style={{ paddingLeft: "10px" }}>
-                <h4>{review.customer}</h4>
-                <p>{review.date.slice(0, 10)}</p>
+                <h4 style={{ fontSize: "12px" }}>{review.customer}</h4>
+                <p style={{ fontSize: "10px" }}>{review.date.slice(0, 10)}</p>
               </div>
               <div style={{ display: "flex" }}>
                 <StyledIconReviewGreen icon={faCheckCircle} />

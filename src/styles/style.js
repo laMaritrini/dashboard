@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const NavLink = styled(Link)`
   text-align: center;
   list-style-type: none;
-  font-size: 18px;
+  font-size: 15px;
   text-decoration: none;
   text-align: left;
   padding: 8px;
@@ -16,6 +16,7 @@ export const LinkList = styled(NavLink)`
 export const TRow = styled.tr`
   background-color: #ffffff;
   margin: 0;
+
   text-align: left;
   &:hover {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
@@ -26,7 +27,6 @@ export const TRow = styled.tr`
 export const TrHead = styled.tr`
   background-color: white;
   border-radius: 20px;
-  padding: 60px;
   margin-bottom: 2px;
 `;
 
@@ -41,44 +41,47 @@ export const KpiTitle = styled.p`
 `;
 export const TableTd = styled.td`
   font-weight: 300;
-  font-size: 12px;
+  font-size: 10px;
   padding: 5px;
 `;
 export const NumberTd = styled.td`
-  font-size: 14px;
+  font-size: 10px;
+  padding-right: 3px;
   font-weight: 600;
 `;
 
 export const StateUser = styled.td`
   color: ${(props) => (props.status === "ACTIVE" ? "green" : "red")};
   font-weight: 600;
+  font-size: 12px;
 `;
 export const UserName = styled.h4`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
+  padding: 3px
 `;
 export const UserEmail = styled.p`
   font-weight: 300;
   color: #b2b2b2;
-  font-size: 12px;
+  font-size: 10px;
 `;
 export const Footer = styled.p`
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
 `;
 
 export const Id = styled.div`
   font-weight: 300;
   color: #799283;
-  font-size: 10px;
+  font-size: 7px;
 `;
 export const Date = styled.td`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
 `;
 export const PriceRoom = styled.td`
   font-weight: 700;
-  font-size: 16px;
+  font-size: 12px;
 `;
 export const FormLogin = styled.form`
   padding: 40px;

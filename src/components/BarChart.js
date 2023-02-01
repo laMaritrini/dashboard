@@ -82,10 +82,12 @@ export function BarChart() {
               .text(`Sales: $${data.value}`)
               .style("color", "#135846")
               .style("visibility", "visible")
+              .style("padding-left", "20px")
           : toolTip
               .text(`Occupancy: ${data.value}%`)
               .style("color", "#E23428")
-              .style("visibility", "visible");
+              .style("visibility", "visible")
+              .style("padding-left", "20px");
       }
       function mouseLeave(event, data) {
         d3.select(this).attr("opacity", 1);

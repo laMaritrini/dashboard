@@ -21,7 +21,7 @@ export const Button = styled.button`
   font-size: 0.9vw;
   font-weight: 600;
   margin: 1em;
-  padding: 16px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -51,6 +51,7 @@ export const ViewNotesButton = styled(Button)`
   color: #212121;
   background-color: #eef9f2;
   z-index: 0;
+  padding: 10px;
 `;
 
 export const NavPageButton = styled(Button)`

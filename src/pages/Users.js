@@ -58,12 +58,12 @@ export function Users({ open, setOpen }) {
         </div>
         <Table>
           <thead>
-            <TrHead>
+            <TrHead style={{ fontSize: "14px" }}>
               <th
                 style={{
-                  width: "130px",
+                  width: "120px",
                   borderTopLeftRadius: "20px",
-                  padding: "20px",
+                  padding: "10px 20px",
                 }}
               >
                 Photo
@@ -101,7 +101,7 @@ export function Users({ open, setOpen }) {
               <TRow key={user._id}>
                 <td
                   style={{
-                    padding: "20px",
+                    padding: "10px",
                   }}
                 >
                   <Image src={user.photo} alt="" />
@@ -109,10 +109,10 @@ export function Users({ open, setOpen }) {
                 <td>
                   <LinkList to={`/users/${user._id}`}>
                     <UserName>{user.full_name}</UserName>
-                    <Id>{user._id}</Id>
+                    <Id style={{ fontSize: "5px" }}>{user._id}</Id>
                   </LinkList>
                 </td>
-                <td>{user.job_title}</td>
+                <td style={{ fontSize: "10px" }}>{user.job_title}</td>
                 <TableTd>{user.email}</TableTd>
                 <NumberTd>
                   <span>📞</span>

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { AuthStatus } from "./auth";
 import { StyledFontAwesomeIcon } from "../styles/icons";
-import { faEnvelope, faBell } from "@fortawesome/free-regular-svg-icons";
+// import { faEnvelope, faBell } from "@fortawesome/free-regular-svg-icons";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import {
   ContainerRow,
@@ -24,8 +24,8 @@ export function Nav({ title, auth, setAuth, open, setOpen }) {
       </SectionTitleBar>
 
       <ContainerRow>
-        <StyledFontAwesomeIcon icon={faEnvelope} />
-        <StyledFontAwesomeIcon icon={faBell} />
+        {/* <StyledFontAwesomeIcon icon={faEnvelope} />
+        <StyledFontAwesomeIcon icon={faBell} /> */}
         <AuthStatus auth={auth} setAuth={setAuth} />
         <Outlet />
       </ContainerRow>

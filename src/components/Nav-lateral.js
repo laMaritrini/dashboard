@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Footer, NavLink, UserEmail, UserName } from "../styles/style";
+import { Footer, NavLink, UserEmail } from "../styles/style";
 import {
   ContainerMenuLateral,
   LinkContainer,
@@ -85,9 +85,9 @@ export function NavLateral({ open }) {
           <DefaultButton onClick={handleOpen}>Edit</DefaultButton>
         </UserContainer>
       </div>
-      <footer>
+      <footer style={{fontSize: '8px'}}>
         <Footer>Travl Hotel Admin Dashboard</Footer>
-        <p>© 2020 All Rights Reserved</p>
+        <p >© 2020 All Rights Reserved</p>
       </footer>
     </ContainerMenuLateral>
   );

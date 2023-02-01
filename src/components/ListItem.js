@@ -55,7 +55,7 @@ export const ListItem = ({
     <TRow key={item._id} ref={dragDropRef} style={opacity}>
       <td
         style={{
-          padding: "20px",
+          padding: "10px",
         }}
       >
         <Image src={item.photo} alt="" />
@@ -68,7 +68,7 @@ export const ListItem = ({
           <Id>{item._id}</Id>
         </LinkList>
       </td>
-      <td style={{ textOverflow: "" }}>{item.facilities}</td>
+      <td style={{ textOverflow: "", fontSize: '10px', padding: '3px' }}>{item.facilities}</td>
 
       <PriceRoom>
         <span> $</span>
