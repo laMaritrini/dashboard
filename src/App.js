@@ -41,75 +41,120 @@ function App() {
   return (
     <div className="App">
       <myContext.Provider value={contextValue}>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route
+        <DndProvider backend={HTML5Backend}>
+          <Routes>
+            <Route
+              path="/*"
+              element={
+                <RequireAuth>
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={<Dashboard open={open} setOpen={setOpen} />}
+                    />
+
+                    <Route
+                      path="/bookings"
+                      element={<Bookings open={open} setOpen={setOpen} />}
+                    />
+                    <Route
+                      path="/bookings/:id"
+                      element={<Booking open={open} setOpen={setOpen} />}
+                    />
+                    <Route
+                      path="/rooms"
+                      element={<Rooms open={open} setOpen={setOpen} />}
+                    />
+                    <Route
+                      path="/rooms/:id"
+                      element={<Room open={open} setOpen={setOpen} />}
+                    />
+                    <Route
+                      path="/users"
+                      element={<Users open={open} setOpen={setOpen} />}
+                    />
+                    <Route
+                      path="/users/:id"
+                      element={<User open={open} setOpen={setOpen} />}
+                    />
+                    <Route
+                      path="/contacts"
+                      element={<Contacts open={open} setOpen={setOpen} />}
+                    />
+                  </Routes>
+                </RequireAuth>
+              }
+            />
+            {/* <Route
             path="/"
             element={
               <RequireAuth>
-                <Dashboard open={open} setOpen={setOpen} />
+              <Dashboard open={open} setOpen={setOpen} />
               </RequireAuth>
             }          ></Route>
-          <Route
+            <Route
             path="/bookings"
             element={
               <RequireAuth>
-                <Bookings open={open} setOpen={setOpen} />
+              <Bookings open={open} setOpen={setOpen} />
               </RequireAuth>
             }
-          ></Route>
-
-          <Route
+            ></Route>
+            
+            <Route
             path="/bookings/:id"
             element={
               <RequireAuth>
-                <Booking open={open} setOpen={setOpen} />
+              <Booking open={open} setOpen={setOpen} />
               </RequireAuth>
             }
-          />
-          <Route
+            />
+            <Route
             path="/rooms"
             element={
               <RequireAuth>
-                <DndProvider backend={HTML5Backend}>
-                  <Rooms open={open} setOpen={setOpen} />
-                </DndProvider>
+              <DndProvider backend={HTML5Backend}>
+              <Rooms open={open} setOpen={setOpen} />
+              </DndProvider>
               </RequireAuth>
             }
-          ></Route>
-          <Route
+            ></Route>
+            <Route
             path="/rooms/:id"
             element={
               <RequireAuth>
-                <Room open={open} setOpen={setOpen} />
+              <Room open={open} setOpen={setOpen} />
               </RequireAuth>
             }
-          />
-          <Route
+            />
+            <Route
             path="/users"
             element={
               <RequireAuth>
-                <Users open={open} setOpen={setOpen} />
+              <Users open={open} setOpen={setOpen} />
               </RequireAuth>
             }
-          ></Route>
-          <Route
+            ></Route>
+            <Route
             path="/users/:id"
             element={
               <RequireAuth>
-                <User open={open} setOpen={setOpen} />
+              <User open={open} setOpen={setOpen} />
               </RequireAuth>
             }
-          />
-          <Route
+            />
+            <Route
             path="/contacts"
             element={
               <RequireAuth>
-                <Contacts open={open} setOpen={setOpen} />
+              <Contacts open={open} setOpen={setOpen} />
               </RequireAuth>
             }
-          />
-        </Routes>
+          /> */}
+
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </DndProvider>
       </myContext.Provider>
     </div>
   );

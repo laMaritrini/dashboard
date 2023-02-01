@@ -1,9 +1,9 @@
 import fetch from "cross-fetch";
 
-
+import {dataStorage} from "./api-login";
 
 async function apiRequest(url, method, data) {
-  const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
+  // const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
 
   const response = await fetch(url, {
     method: method,
@@ -22,7 +22,10 @@ async function apiRequest(url, method, data) {
 }
 export const getRooms = async () => {
   try {
-    const response = await apiRequest(`${process.env.REACT_APP_API_URL}rooms`, "GET");
+    const response = await apiRequest(
+      `${process.env.REACT_APP_API_URL}rooms`,
+      "GET"
+    );
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
@@ -33,7 +36,10 @@ export const getRooms = async () => {
 };
 export const getRoom = async (id) => {
   try {
-    const response = await apiRequest(`${process.env.REACT_APP_API_URL}rooms/${id}`, "GET");
+    const response = await apiRequest(
+      `${process.env.REACT_APP_API_URL}rooms/${id}`,
+      "GET"
+    );
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }

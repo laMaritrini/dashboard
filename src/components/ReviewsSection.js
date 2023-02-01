@@ -6,22 +6,23 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import { Image } from "../styles/style-image";
 
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchContacts,
-  selectStateContacts,
-} from "../features/contact/ContactSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import {
+//   fetchContacts,
+//   selectStateContacts,
+// } from "../features/contact/ContactSlice";
 import { useEffect, useState } from "react";
 import { SliderButton } from "../styles/style-buttons";
 
-export function ReviewsSection() {
-  const contacts = useSelector(selectStateContacts);
+export function ReviewsSection({ contacts, open }) {
+  // const contacts = useSelector(selectStateContacts);
+  // console.log(contacts, 'cont');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   const carouselScroll = () => {
     if (currentIndex === contacts.length - 1) {
@@ -43,7 +44,7 @@ export function ReviewsSection() {
     setCurrentIndex(currentIndex - 1);
   };
   return (
-    <ContainerReview>
+    <ContainerReview open={open}>
       <h3>Latest Review by Customers</h3>
       <div>
         {contacts.map((review) => (
@@ -66,7 +67,7 @@ export function ReviewsSection() {
 
             <div>
               <Image src={review.photo} alt="avatar" />
-              <div style={{paddingLeft: '10px'}}>
+              <div style={{ paddingLeft: "10px" }}>
                 <h4>{review.customer}</h4>
                 <p>{review.date.slice(0, 10)}</p>
               </div>

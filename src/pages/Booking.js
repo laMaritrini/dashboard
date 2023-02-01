@@ -49,12 +49,11 @@ export function Booking({ open, setOpen }) {
     return null;
   }
   return (
-    <ContainerPage>
+    <ContainerPage open={open}>
       <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
         <Nav title="Booking Detail" open={open} setOpen={setOpen} />
         <ContainerDetail>
-      
           <NameDetail>{booking.full_name}</NameDetail>
           <IdDetail>ID {booking._id}</IdDetail>
           <ItemsDetail>Order Date </ItemsDetail>

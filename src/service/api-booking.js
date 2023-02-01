@@ -1,8 +1,7 @@
 import fetch from "cross-fetch";
+import {dataStorage} from "./api-login";
 
 async function apiRequest(url, method, data) {
-  const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
-
   const response = await fetch(url, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,

@@ -12,6 +12,7 @@ import { BiKey } from "react-icons/bi";
 import { AiOutlineSchedule } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { TbPuzzle } from "react-icons/tb";
+import { FaUserEdit } from "react-icons/fa";
 
 import travl from "../travl.png";
 import { useContext, useEffect } from "react";
@@ -70,9 +71,11 @@ export function NavLateral({ open }) {
           </LinkContainer>
         </nav>
         <UserContainer>
-          {/* <Image src={userLogged.photo} alt="avatar" />
-
-          <UserName>{userLogged.full_name}</UserName> */}
+          {/* <Image src={} alt="avatar" /> */}
+          <div style={{ color: "#799283" }}>
+            <FaUserEdit style={{ fontSize: "50px" }} />
+          </div>
+          {/* <UserName>{userLogged.full_name}</UserName> */}
           <UserEmail>{auth.email}</UserEmail>
           <EditUser
             openModal={openModal}

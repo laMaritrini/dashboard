@@ -9,8 +9,8 @@ export const StyleWrapper = styled.div`
   border: 0;
   border-collapse: collapse;
   height: 400px;
-  width: 500px;
-  padding:20px 50px;
+  width: 400px;
+  padding:10px 10px;
   .fc-button.fc-prev-button,
   .fc-button.fc-next-button,
   .fc-button.fc-button-primary {

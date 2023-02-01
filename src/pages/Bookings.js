@@ -24,7 +24,6 @@ import {
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 let PageSize = 10;
 
 export function Bookings({ open, setOpen }) {
@@ -41,7 +40,6 @@ export function Bookings({ open, setOpen }) {
   const handleClose = () => {
     setOpenModal(false);
   };
-  console.log(bookings);
 
   useEffect(() => {
     dispatch(fetchBookings());

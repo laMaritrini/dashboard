@@ -46,7 +46,7 @@ export function Contacts({ open, setOpen }) {
       <NavLateral open={open} setOpen={setOpen} />
       <ContainerColumn>
         <Nav title="Contact Reviews" open={open} setOpen={setOpen} />
-        <ReviewsSection contacts={contacts} />
+        <ReviewsSection open={open} contacts={contacts} />
         <Table>
           <thead>
             <TrHead>

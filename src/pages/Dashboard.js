@@ -17,16 +17,23 @@ import { Calendar } from "../components/Calendar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers, selectStateUsers } from "../features/users/UsersSlice";
 import { useEffect } from "react";
+import {
+  fetchContacts,
+  selectStateContacts,
+} from "../features/contact/ContactSlice";
 
 export function Dashboard({ open, setOpen }) {
   const users = useSelector(selectStateUsers);
+  const contacts = useSelector(selectStateContacts);
   const dispatch = useDispatch();
-  
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
   return (
-    <ContainerPage>
+    <ContainerPage open={open}>
       <NavLateral open={open} setOpen={setOpen} users={users} />
       <div style={{ width: "100%" }}>
         <ContainerColumn>
@@ -73,12 +80,11 @@ export function Dashboard({ open, setOpen }) {
             </KpiBox>
           </ContainerRowWrap>
         </ContainerColumn>
-        <div style={{ display: "flex", alignItems: "center", padding: "40px" }}>
+        <div style={{ display: "flex", padding: "20px" }}>
           <Calendar />
           <BarChart />
         </div>
-
-        <ReviewsSection />
+        {contacts && <ReviewsSection open={open} contacts={contacts} />}
       </div>
     </ContainerPage>
   );

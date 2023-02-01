@@ -1,23 +1,7 @@
-import fetch from "cross-fetch";
+// import fetch from "cross-fetch";
+// import { dataStorage } from "./api-login";
+import { apiRequest } from "./api-login";
 
-async function apiRequest(url, method, data) {
-  const dataStorage = JSON.parse(localStorage.getItem("auth_data"));
-
-  const response = await fetch(url, {
-    method: method,
-    body: data ? JSON.stringify(data) : undefined,
-    headers: {
-      Authorization: `Bearer ${
-        dataStorage !== null ? dataStorage.token.token : ""
-      }`,
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.ok) {
-    const json = await response.json();
-    return json;
-  }
-}
 export const getUsers = async () => {
   try {
     const users = await apiRequest(

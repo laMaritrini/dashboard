@@ -126,7 +126,16 @@ export const UserContainer = styled.div`
 export const ContainerReview = styled.div`
   z-index: 0;
   text-align: start;
-  max-width: 76vw;
+  ${(props) => {
+    return props.open
+      ? css`
+          max-width: 74vw;
+        `
+      : css`
+          max-width: 100vw;
+        `;
+  }};
+
   max-height: 100%;
   background-color: white;
   border-radius: 20px;

@@ -13,8 +13,8 @@ const data = [
 
 export function BarChart() {
   const isRef = useRef(false);
-  const margin = { top: 40, right: 20, bottom: 20, left: 40 };
-  const width = 350;
+  const margin = { top: 0, right: 10, bottom: 0, left: 10 };
+  const width = 430;
   const height = 300;
   useEffect(() => {
     if (isRef.current) {
@@ -144,10 +144,10 @@ export function BarChart() {
   return (
     <div
       style={{
-        width: "500px",
-        height: "400px",
-        padding: "30px",
-        margin: "30px",
+        // width: "fit-content",
+        // height: "350px",
+        padding: "5px 20px",
+        margin: "0px 20px",
         borderRadius: "20px",
         backgroundColor: "white",
       }}
