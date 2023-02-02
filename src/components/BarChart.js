@@ -12,8 +12,8 @@ const data = [
 ];
 
 export function BarChart() {
-  const margin = { top: 0, right: 10, bottom: 0, left: 10 };
-  const width = 430;
+  const margin = { top: 10, right: 10, bottom: 10, left: 20 };
+  const width = 400;
   const height = 300;
   useEffect(() => {
     const svg = d3
@@ -80,12 +80,12 @@ export function BarChart() {
             .text(`Sales: $${data.value}`)
             .style("color", "#135846")
             .style("visibility", "visible")
-            .style("padding-left", "20px")
+            .style("padding-left", "30px")
         : toolTip
             .text(`Occupancy: ${data.value}%`)
             .style("color", "#E23428")
             .style("visibility", "visible")
-            .style("padding-left", "20px");
+            .style("padding-left", "30px");
     }
     function mouseLeave(event, data) {
       d3.select(this).attr("opacity", 1);
@@ -140,8 +140,8 @@ export function BarChart() {
   return (
     <div
       style={{
-        // width: "fit-content",
-        // height: "350px",
+        height: "400px",
+        width: "482px",
         padding: "5px 20px",
         margin: "0px 20px",
         borderRadius: "20px",
