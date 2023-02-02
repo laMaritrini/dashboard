@@ -22,6 +22,9 @@ import {
   selectStateContacts,
 } from "../features/contact/ContactSlice";
 
+
+
+
 export function Dashboard({ open, setOpen }) {
   const users = useSelector(selectStateUsers);
   const contacts = useSelector(selectStateContacts);
@@ -82,7 +85,7 @@ export function Dashboard({ open, setOpen }) {
         </ContainerColumn>
         <div style={{ display: "flex", padding: "20px" }}>
           <Calendar />
-          <BarChart />
+          <BarChart  />
         </div>
         {contacts && <ReviewsSection open={open} contacts={contacts} />}
       </div>

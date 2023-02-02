@@ -9,7 +9,8 @@ import {
 } from "../../service/api-user";
 
 export const fetchUsers = createAsyncThunk("get/fetchUsers", async () => {
-  return await getUsers();
+  const response = await getUsers();
+  return response;
 });
 
 export const fetchUser = createAsyncThunk("get/fetchUser", async (id) => {
@@ -31,7 +32,7 @@ export const removeUser = createAsyncThunk("delete/removeUser", async (id) => {
 
 export const updateUser = createAsyncThunk(
   "update/updateUser",
-  async ({id, data}) => {
+  async ({ id, data }) => {
     const response = await editUser(id, data);
     return response;
   }
