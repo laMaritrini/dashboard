@@ -70,9 +70,9 @@ export function Booking({ open, setOpen }) {
           </CheckBlock>
 
           <ItemsDetail>Room Type</ItemsDetail>
-          <p>{booking.id_room.room_type} </p>
+          <p>{booking.room_type} </p>
           <ItemsDetail>Room Number </ItemsDetail>
-          <p>{booking.id_room.room_number}</p>
+          <p>{booking.room_number}</p>
           <ItemsDetail>Special request</ItemsDetail>
           <p>{booking.special_request}</p>
           <ButtonStatus status={booking.status}>{booking.status}</ButtonStatus>

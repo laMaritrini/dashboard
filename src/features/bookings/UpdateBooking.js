@@ -12,8 +12,9 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
     check_in: "",
     check_out: "",
     special_request: "",
+    room_type: "",
+    room_number: "",
     status: "",
-    id_room: {},
   });
   useEffect(() => {
     if (edit) {
@@ -103,13 +104,27 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
           </select>
         </div>
         <div>
-          <label htmlFor="id_room">Room ID:</label>
-          <input
-            type="text "
-            value={editForm.id_room}
-            name="id_room"
+          <label htmlFor="room_type">Room Type:</label>
+          <select
+            type="text"
+            value={editForm.room_type}
+            name="room_type"
             onChange={handleChange}
-            placeholder="id room"
+          >
+            <option value="">Select One...</option>
+            <option value="Double Superior">Double Superior</option>
+            <option value="Suite">Suite</option>
+            <option value="Double Bed">Double Bed</option>
+            <option value="Single Bed">Single Bed</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="room_number">Room Number:</label>
+          <input
+            type="number"
+            value={editForm.room_number}
+            name="room_number"
+            onChange={handleChange}
           />
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>

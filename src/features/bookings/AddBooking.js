@@ -15,10 +15,8 @@ export function AddBooking({ openModal, handleClose }) {
     check_in: "",
     check_out: "",
     special_request: "",
-    room_type: {
-      type: "",
-      number: "",
-    },
+    room_type: "",
+    room_number: "",
     status: "",
   });
   const dispatch = useDispatch();
@@ -26,6 +24,13 @@ export function AddBooking({ openModal, handleClose }) {
   if (!openModal) {
     return null;
   }
+
+  const handleChange = (e) => {
+    setBooking({
+      ...booking,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,19 +43,13 @@ export function AddBooking({ openModal, handleClose }) {
         check_in: "",
         check_out: "",
         special_request: "",
-        room_type: {
-          type: "",
-          number: "",
-        },
+        room_type: "",
+        room_number: "",
         status: "",
       },
       ...bookings
     );
     handleClose();
-  };
-
-  const handleChange = (e) => {
-    setBooking({ ...booking, [e.target.name]: e.target.value });
   };
 
   return (
@@ -105,21 +104,29 @@ export function AddBooking({ openModal, handleClose }) {
           />
         </div>
         <div>
-          <label htmlFor="type">Room Type:</label>
-          <input
+          <label htmlFor="room_type">Room Type:</label>
+          <select
             type="text"
-            value={booking.room_type.type}
-            name="type"
+            value={booking.room_type}
+            name="room_type"
             onChange={handleChange}
-          />
+            id="room_type"
+          >
+            <option value="">Select One...</option>
+            <option value="Double Superior">Double Superior</option>
+            <option value="Suite">Suite</option>
+            <option value="Double Bed">Double Bed</option>
+            <option value="Single Bed">Single Bed</option>
+          </select>
         </div>
         <div>
-          <label htmlFor="number">Room Number:</label>
+          <label htmlFor="room_number">Room Number:</label>
           <input
             type="number"
-            value={booking.room_type.number}
-            name="number"
+            value={booking.room_number}
+            name="room_number"
             onChange={handleChange}
+            id="room_number"
           />
         </div>
         <div>
@@ -136,7 +143,6 @@ export function AddBooking({ openModal, handleClose }) {
             <option value="Check In">Check In</option>
             <option value="Check Out">Check Out</option>
           </select>
-      
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
       </FormBooking>

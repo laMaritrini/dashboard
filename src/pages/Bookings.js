@@ -135,8 +135,8 @@ export function Bookings({ open, setOpen }) {
                 </td>
                 <Date>
                   <div>
-                    {booking.id_room.room_type}
-                    <span>- {booking.id_room.room_number}</span>
+                    {booking.room_type}
+                    <span>- {booking.room_number}</span>
                   </div>
                 </Date>
 
