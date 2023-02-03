@@ -16,11 +16,14 @@ import {
 import { AddRoom } from "../features/rooms/AddRoom";
 import { LightButton } from "../styles/style-buttons";
 
+let PageSize = 10;
+
 export function Rooms({ open, setOpen }) {
   const rooms = useSelector(selectStateRooms);
   const [roomsData, setRoomsData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,13 +41,20 @@ export function Rooms({ open, setOpen }) {
     setOpenModal(false);
   };
 
-  let PageSize = 10;
+  const handleRemove = (id) => {
+    dispatch(removeRoom(id));
+    setRoomsData(roomsData.filter((room) => room._id !== id));
+    console.log(roomsData);
+  };
 
+  
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return roomsData.slice(firstPageIndex, lastPageIndex);
-  }, [PageSize, currentPage, roomsData]);
+  }, [currentPage, roomsData]);
+
+
 
   const moveRoomListItem = useCallback(
     (dragIndex, hoverIndex) => {
@@ -60,9 +70,6 @@ export function Rooms({ open, setOpen }) {
     },
     [roomsData]
   );
-  const handleRemove = (id) => {
-    dispatch(removeRoom(id));
-  };
 
   return (
     <ContainerPage>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import {
@@ -28,7 +28,7 @@ export function Room({ open, setOpen }) {
   const room = useSelector(selectStateDetail);
   const [edit, setEdit] = useState("");
   const [openModal, setOpenModal] = useState(false);
-
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,6 +37,7 @@ export function Room({ open, setOpen }) {
 
   const handleRemove = () => {
     dispatch(removeRoom(id));
+    navigate(-1);
   };
   const handleOpen = (room) => {
     setEdit(room);

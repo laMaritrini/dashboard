@@ -1,11 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useState } from "react";
 import { BookingModal, FormBooking, TitleModal } from "../../styles/modal";
 import { CloseButton, DefaultButton } from "../../styles/style-buttons";
-import { createNewUser } from "./UsersSlice";
+import { createNewUser, selectStateUsers } from "./UsersSlice";
 
 export function AddUser({ openModal, handleClose }) {
+  const users = useSelector(selectStateUsers);
   const [user, setUser] = useState({
     photo: "",
     full_name: "",
@@ -27,8 +28,22 @@ export function AddUser({ openModal, handleClose }) {
     e.preventDefault();
     dispatch(createNewUser(user));
     handleClose();
+    setUser(
+      {
+        photo: "",
+        full_name: "",
+        job_title: "",
+        email: "",
+        working_functions: "",
+        phone_number: "",
+        start_date: "",
+        working_situation: "",
+        password: "",
+      },
+      ...users
+    );
   };
-  console.log(user);
+  console.log(users);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -43,8 +58,7 @@ export function AddUser({ openModal, handleClose }) {
         <div>
           <label htmlFor="photo">Photo:</label>
           <input
-            type="file"
-            accept="image/*"
+            type="text"
             value={user.photo}
             name="photo"
             onChange={handleChange}

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import { UpdateUser } from "../features/users/UpdateUser";
@@ -31,6 +30,8 @@ export function User({ open, setOpen }) {
   const [openModal, setOpenModal] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(fetchUser(id));
   }, [id, dispatch]);
@@ -83,6 +84,7 @@ export function User({ open, setOpen }) {
             <ButtonDelete
               onClick={() => {
                 handleRemove(user._id);
+                navigate(-1);
               }}
             >
               🗑️

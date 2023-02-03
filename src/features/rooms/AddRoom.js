@@ -115,11 +115,11 @@ export function AddRoom({ openModal, handleClose }) {
           />
         </div>
         <div>
-          <label htmlFor="discount">Offer Price:</label>
+          <label htmlFor="offer_price">Offer Price:</label>
           <input
             type="number"
-            value={room.discount}
-            name="discount"
+            value={room.offer_price}
+            name="offer_price"
             onChange={handleChange}
           />
         </div>

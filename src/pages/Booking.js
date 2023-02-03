@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Nav } from "../components/Nav";
 import { NavLateral } from "../components/Nav-lateral";
 import {
@@ -23,15 +23,17 @@ import {
   NameDetail,
 } from "../styles/detail-page";
 
-
 export function Booking({ open, setOpen }) {
   const { id } = useParams();
   const booking = useSelector(selectStateDetail);
+  const [newBooking, setNewBooking] = useState({});
 
   const [edit, setEdit] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(fetchBooking(id));
   }, [dispatch, id]);
@@ -43,7 +45,15 @@ export function Booking({ open, setOpen }) {
     setEdit(booking);
     setOpenModal(true);
   };
-  const handleClose = () => setOpenModal(false);
+
+  useEffect(() => {
+    setNewBooking(booking);
+  }, [booking]);
+
+  const handleClose = () => {
+    setOpenModal(false);
+    setNewBooking(newBooking);
+  };
 
   if (!booking._id) {
     return null;
@@ -87,6 +97,7 @@ export function Booking({ open, setOpen }) {
             <ButtonDelete
               onClick={() => {
                 handleRemove(booking._id);
+                navigate(-1);
               }}
             >
               🗑️

@@ -23,6 +23,7 @@ let PageSize = 10;
 export function Users({ open, setOpen }) {
   const users = useSelector(selectStateUsers);
   const dispatch = useDispatch();
+  const [usersData, setUsersData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
 
@@ -37,15 +38,22 @@ export function Users({ open, setOpen }) {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  const handleRemove = (id) => {
-    dispatch(removeUser(id));
-  };
+  useEffect(() => {
+    setUsersData(users);
+  }, [users]);
+
+  
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return users.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, users]);
+    return usersData.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, usersData]);
+
+  const handleRemove = (id) => {
+    dispatch(removeUser(id));
+    setUsersData(usersData.filter((users) => users._id !== id));
+  };
 
   return (
     <ContainerPage>

@@ -29,7 +29,7 @@ let PageSize = 10;
 export function Bookings({ open, setOpen }) {
   const bookings = useSelector(selectState);
   const dispatch = useDispatch();
-  const [roomState, setRoomState] = useState([]);
+  const [bookingState, setBookingState] = useState([]);
   const [orderBy, setOrderBy] = useState("full_name");
   const [currentPage, setCurrentPage] = useState(1);
   const [openModal, setOpenModal] = useState(false);
@@ -48,8 +48,8 @@ export function Bookings({ open, setOpen }) {
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return roomState.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, roomState]);
+    return bookingState.slice(firstPageIndex, lastPageIndex);
+  }, [ currentPage, bookingState]);
 
   useEffect(() => {
     const orderedRooms = bookings.filter((room) => room[orderBy]);
@@ -61,11 +61,12 @@ export function Bookings({ open, setOpen }) {
       }
       return 0;
     });
-    setRoomState(orderedRooms);
+    setBookingState(orderedRooms);
   }, [bookings, orderBy]);
 
   const handleRemove = (id) => {
     dispatch(removeBooking(id));
+    setBookingState(bookingState.filter((booking) => booking._id !== id));
   };
 
   return (
@@ -160,7 +161,7 @@ export function Bookings({ open, setOpen }) {
 
         <Pagination
           currentPage={currentPage}
-          totalCount={roomState.length}
+          totalCount={bookingState.length}
           pageSize={PageSize}
           onPageChange={(page) => setCurrentPage(page)}
         />

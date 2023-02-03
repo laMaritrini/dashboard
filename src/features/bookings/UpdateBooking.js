@@ -31,10 +31,10 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
   const handleChange = (e) => {
     setEditForm({ ...editForm, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateBooking({ id: edit._id, data: editForm }));
-
     handleClose();
   };
 
@@ -88,21 +88,7 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor="status">Status:</label>
-          <select
-            value={editForm.status}
-            type="text"
-            name="status"
-            id="status"
-            onChange={handleChange}
-          >
-            <option value="">Select One...</option>
-            <option value="In progress">In progress</option>
-            <option value="Check In">Check In</option>
-            <option value="Check Out">Check Out</option>
-          </select>
-        </div>
+
         <div>
           <label htmlFor="room_type">Room Type:</label>
           <select
@@ -126,6 +112,21 @@ export function UpdateBooking({ edit, openModal, handleClose }) {
             name="room_number"
             onChange={handleChange}
           />
+        </div>
+        <div>
+          <label htmlFor="status">Status:</label>
+          <select
+            value={editForm.status}
+            type="text"
+            name="status"
+            id="status"
+            onChange={handleChange}
+          >
+            <option value="">Select One...</option>
+            <option value="In progress">In progress</option>
+            <option value="Check In">Check In</option>
+            <option value="Check Out">Check Out</option>
+          </select>
         </div>
         <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
       </FormBooking>

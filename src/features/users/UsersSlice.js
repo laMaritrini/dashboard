@@ -9,8 +9,7 @@ import {
 } from "../../service/api-user";
 
 export const fetchUsers = createAsyncThunk("get/fetchUsers", async () => {
-  const response = await getUsers();
-  return response;
+  return await getUsers();
 });
 
 export const fetchUser = createAsyncThunk("get/fetchUser", async (id) => {
