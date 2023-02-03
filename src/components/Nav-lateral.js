@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Footer, NavLink, UserEmail } from "../styles/style";
+import { Footer, NavLink, UserEmail, UserName } from "../styles/style";
 import {
   ContainerMenuLateral,
   LinkContainer,
@@ -12,9 +12,9 @@ import { BiKey } from "react-icons/bi";
 import { AiOutlineSchedule } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { TbPuzzle } from "react-icons/tb";
-import { FaUserEdit } from "react-icons/fa";
-
-import travl from "../travl.png";
+// import { FaUserEdit } from "react-icons/fa";
+import avatar from "../assets/avatar.png";
+import travl from "../assets/travl.png";
 import { useContext, useEffect } from "react";
 import { myContext } from "../App";
 import { useState } from "react";
@@ -71,11 +71,9 @@ export function NavLateral({ open }) {
           </LinkContainer>
         </nav>
         <UserContainer>
-          {/* <Image src={} alt="avatar" /> */}
-          <div style={{ color: "#799283" }}>
-            <FaUserEdit style={{ fontSize: "50px" }} />
-          </div>
-          {/* <UserName>{userLogged.full_name}</UserName> */}
+          <Image src={avatar} alt="avatar" />
+         
+          <UserName>Oliver Feest</UserName>
           <UserEmail>{auth.email}</UserEmail>
           <EditUser
             openModal={openModal}
@@ -85,9 +83,9 @@ export function NavLateral({ open }) {
           <DefaultButton onClick={handleOpen}>Edit</DefaultButton>
         </UserContainer>
       </div>
-      <footer style={{fontSize: '8px'}}>
+      <footer style={{ fontSize: "8px" }}>
         <Footer>Travl Hotel Admin Dashboard</Footer>
-        <p >© 2020 All Rights Reserved</p>
+        <p>© 2020 All Rights Reserved</p>
       </footer>
     </ContainerMenuLateral>
   );

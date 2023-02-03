@@ -116,7 +116,7 @@ export const UserContainer = styled.div`
   margin-bottom: 70px;
   text-align: center;
   width: 180px;
-  height: 180px;
+  height: 200px;
   background-color: white;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,

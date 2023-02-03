@@ -38,7 +38,7 @@ export function UpdateUser({ user, edit, openModal, handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setEditForm(editForm);
-    dispatch(updateUser({id: edit._id, data: editForm}));
+    dispatch(updateUser({ id: edit._id, data: editForm }));
     handleClose();
   };
 
@@ -50,7 +50,12 @@ export function UpdateUser({ user, edit, openModal, handleClose }) {
       <FormBooking>
         <div>
           <label htmlFor="photo">Photo:</label>
-          <input type="file" value="" name="photo" onChange={handleChange} />
+          <input
+            type="text"
+            value={editForm.photo}
+            name="photo"
+            onChange={handleChange}
+          />
         </div>
 
         <div>
