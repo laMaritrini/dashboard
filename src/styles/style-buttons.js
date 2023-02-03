@@ -45,6 +45,11 @@ export const DefaultButton = styled(Button)`
   font-size: 14px;
   padding: 16px 24px;
   width: fit-content;
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
 `;
 
 export const ViewNotesButton = styled(Button)`

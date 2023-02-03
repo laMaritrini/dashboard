@@ -31,6 +31,25 @@ export function AddBooking({ openModal, handleClose }) {
       [e.target.name]: e.target.value,
     });
   };
+  const SubmitButton = () => {
+    if (
+      !booking.full_name ||
+      !booking.order_date ||
+      !booking.check_in ||
+      !booking.check_out ||
+      !booking.room_type ||
+      !booking.room_number ||
+      !booking.status
+    ) {
+      return (
+        <DefaultButton disabled onClick={handleSubmit}>
+          Save
+        </DefaultButton>
+      );
+    } else {
+      return <DefaultButton onClick={handleSubmit}>Save</DefaultButton>;
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -144,7 +163,7 @@ export function AddBooking({ openModal, handleClose }) {
             <option value="Check Out">Check Out</option>
           </select>
         </div>
-        <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
+        <SubmitButton />
       </FormBooking>
     </BookingModal>
   );

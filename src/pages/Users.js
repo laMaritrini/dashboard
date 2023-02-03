@@ -42,18 +42,16 @@ export function Users({ open, setOpen }) {
     setUsersData(users);
   }, [users]);
 
-  
+  const handleRemove = (id) => {
+    dispatch(removeUser(id));
+    setUsersData(usersData.filter((users) => users._id !== id));
+  };
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return usersData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, usersData]);
-
-  const handleRemove = (id) => {
-    dispatch(removeUser(id));
-    setUsersData(usersData.filter((users) => users._id !== id));
-  };
 
   return (
     <ContainerPage>

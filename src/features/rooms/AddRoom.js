@@ -45,6 +45,25 @@ export function AddRoom({ openModal, handleClose }) {
   const handleChange = (e) => {
     setRoom({ ...room, [e.target.name]: e.target.value });
   };
+  const SubmitButton = () => {
+    if (
+      !room.photo ||
+      !room.room_number ||
+      !room.room_type ||
+      !room.facilities ||
+      !room.description ||
+      !room.price ||
+      !room.status
+    ) {
+      return (
+        <DefaultButton disabled onClick={handleSubmit}>
+          Save
+        </DefaultButton>
+      );
+    } else {
+      return <DefaultButton onClick={handleSubmit}>Save</DefaultButton>;
+    }
+  };
 
   return (
     <BookingModal>
@@ -137,7 +156,7 @@ export function AddRoom({ openModal, handleClose }) {
             <option value="BOOKED">BOOKED</option>
           </select>
         </div>
-        <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
+        <SubmitButton />
       </FormBooking>
     </BookingModal>
   );

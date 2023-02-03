@@ -49,6 +49,28 @@ export function AddUser({ openModal, handleClose }) {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const SubmitButton = () => {
+    if (
+      !user.photo ||
+      !user.full_name ||
+      !user.job_title ||
+      !user.email ||
+      !user.working_functions ||
+      !user.phone_number ||
+      !user.start_date ||
+      !user.working_situation ||
+      !user.password
+    ) {
+      return (
+        <DefaultButton disabled onClick={handleSubmit}>
+          Save
+        </DefaultButton>
+      );
+    } else {
+      return <DefaultButton onClick={handleSubmit}>Save</DefaultButton>;
+    }
+  };
+
   return (
     <BookingModal>
       <CloseButton onClick={handleClose}>X</CloseButton>
@@ -149,7 +171,7 @@ export function AddUser({ openModal, handleClose }) {
             onChange={handleChange}
           />
         </div>
-        <DefaultButton onClick={handleSubmit}>Save</DefaultButton>
+        <SubmitButton />
       </FormBooking>
     </BookingModal>
   );
